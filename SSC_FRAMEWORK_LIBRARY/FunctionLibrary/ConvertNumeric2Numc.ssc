@@ -1,0 +1,40 @@
+
+/* 
+Formats the BOM Position Quantity for consumption by PRS via multi-value characteristic.
+*/
+
+function CONVERT_NUMERIC_2_NUMC {
+    status released
+    characteristics
+    BOM_POSITION_QUANTITY  primary,
+    BOM_POSITION_QUANTITY_NUMCHAR	// Assumes 6 digit long zero leading NUMC
+}
+function CONVERT_NUM_TO_NUMC {status released characteristics 
+		NUMERIC_PARAM primary,  // Numeric
+    	STRING_LENGTH primary,	// Numeric Optional
+    	CONVERTED_NUMC 	        // Leading zero numeric String
+}
+
+characteristic NUMERIC_PARAM {names EN "Numeric Parameter" status released numericLength 4 }
+characteristic STRING_LENGTH {names EN "String Length" status released numericLength 2 restrictable intervals 0 - 99 }
+characteristic CONVERTED_NUMC {names EN "Numeric Parameter" status released textLength 30 }
+
+/*
+
+Example Rule:
+
+rule CONVERT_BOM_QTY_2_STRING {
+  names EN " Convert BOM Quantity 2 String"
+  objects:
+      ?CHILD is_a (300) SSC_CHILD
+  condition:
+      ?CHILD.BOM_POSITION_QUANTITY > 0.0
+  body:
+    then do:
+      pfunction CONVERT_NUMERIC_2_NUMC (
+       BOM_POSITION_QUANTITY = ?CHILD.BOM_POSITION_QUANTITY,
+       BOM_POSITION_QUANTITY_NUMCHAR = ?CHILD.BOM_POSITION_QUANTITY_NUMCHAR //NUMC or s/b NUMCHAR on left-hand side?
+     )
+}
+
+*/

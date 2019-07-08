@@ -1,0 +1,38 @@
+/**
+ * Specialize the instance to type based on a cstic value.
+ * This eliminates the need for model-specific constraints to specialize materials.
+ * By eliminating those constraints we minimize the load on the Pattern-maching System.
+ */
+function SPECIALIZE_BY_VALUE {
+	characteristics
+	SPECIALIZATION_INSTANCE primary,
+	SPECIALIZATION_VALUE primary,
+	SPECIALIZATION_TYPE primary,
+	SPECIALIZED_TO_MATERIAL_CSTIC primary,
+	SPECIALIZED_TO_MATERIAL_VALUE primary
+}
+characteristic SPECIALIZATION_INSTANCE {names EN "Specialization Instance" classType SSC_INST} // ADT; reference to SSC_Classes project
+characteristic SPECIALIZATION_VALUE {names EN "Specialization Value" textLength 30}
+characteristic SPECIALIZATION_TYPE {names EN "Specialization Type" textLength 30}
+characteristic SPECIALIZED_TO_MATERIAL_CSTIC {names EN "Specialized to Mtrl Cstic" textLength 30}
+characteristic SPECIALIZED_TO_MATERIAL_VALUE {names EN "Specialized to Mtrl Value" textLength 30}
+
+// example call:
+/*
+rule SPECIALIZE_COMPONENT {
+	status released names EN "Specialize Component"
+	objects:
+		?COMP is_a (300)COMPONENT
+	body:
+	then do:
+		pfunction SPECIALIZE_BY_VALUE (
+			SPECIALIZATION_INSTANCE = ?COMP,
+			SPECIALIZATION_VALUE = ?COMP.COMP_MODEL,
+			SPECIALIZATION_TYPE = 'MARA'
+    	)
+}
+ruleNet PFUNCTION_CALLS {
+	rules
+	SPECIALIZE_COMPONENT
+}
+*/

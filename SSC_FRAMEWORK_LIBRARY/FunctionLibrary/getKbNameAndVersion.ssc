@@ -1,0 +1,10 @@
+
+function GET_KB_NAME_AND_VERSION {
+	characteristics
+	UPDATE_INSTANCE primary,
+	KB_NAME_CSTIC primary,
+	KB_VERSION_CSTIC primary
+}
+characteristic UPDATE_INSTANCE {names EN "Update Instance" classType SSC_INST}
+characteristic KB_NAME_CSTIC {names EN "KB Name Cstic" textLength 30}
+characteristic KB_VERSION_CSTIC {names EN "KB Version Cstic" textLength 30}

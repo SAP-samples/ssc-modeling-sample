@@ -1,0 +1,117 @@
+//////////// generic class for table lookups
+class GENERIC_TAB_LOOKUP {}
+
+//////////// generic cstics for queries
+characteristic TABLE_NAME{name "Variant table name" textLength 18}
+
+characteristic TABLE_INPUT_CSTIC_NAME_1{name "Table input cstic name 1" textLength 30}
+characteristic TABLE_INPUT_CSTIC_NAME_2{name "Table input cstic 2 name" textLength 30}
+characteristic TABLE_INPUT_CSTIC_NAME_3{name "Table input cstic 3 name" textLength 30}
+characteristic TABLE_INPUT_CSTIC_NAME_4{name "Table input cstic 4 name" textLength 30}
+characteristic TABLE_INPUT_CSTIC_NAME_5{name "Table input cstic 5 name" textLength 30}
+
+characteristic TABLE_INPUT_CSTIC_VAL_S_1{name "Table input cstic S val 1" textLength 30}
+characteristic TABLE_INPUT_CSTIC_VAL_S_2{name "Table input cstic S val 2" textLength 30}
+characteristic TABLE_INPUT_CSTIC_VAL_S_3{name "Table input cstic S val 3" textLength 30}
+characteristic TABLE_INPUT_CSTIC_VAL_S_4{name "Table input cstic S val 4" textLength 30}
+characteristic TABLE_INPUT_CSTIC_VAL_S_5{name "Table input cstic S val 5" textLength 30}
+
+characteristic TABLE_INPUT_CSTIC_VAL_F_1{name "Table input cstic F val 1" numericLength 10}
+characteristic TABLE_INPUT_CSTIC_VAL_F_2{name "Table input cstic F val 2" numericLength 10}
+characteristic TABLE_INPUT_CSTIC_VAL_F_3{name "Table input cstic F val 3" numericLength 10}
+characteristic TABLE_INPUT_CSTIC_VAL_F_4{name "Table input cstic F val 4" numericLength 10}
+characteristic TABLE_INPUT_CSTIC_VAL_F_5{name "Table input cstic F val 5" numericLength 10}
+
+characteristic TABLE_OUTPUT_CSTIC_NAME{name "Table output cstic name" textLength 30 multiValue}
+characteristic TABLE_LOOKUP_TYPE{name "Lookup type: MV or RD" textLength 30 values 'MULTIPLE_VALUE','DOMAIN_RESTRICTION'}
+
+characteristic OUTPUT_INSTANCE{name "Output instance" classType GENERIC_TAB_LOOKUP}
+characteristic OUTPUT_INSTANCE_CSTIC_NAME{name "output instance cstic name" textLength 30 multiValue}
+// VT functions
+function VARIANT_TABLE_LOOKUP {
+	characteristics
+	OUTPUT_INSTANCE primary,
+	OUTPUT_INSTANCE_CSTIC_NAME primary,
+	TABLE_NAME primary,
+	TABLE_OUTPUT_CSTIC_NAME primary,
+	TABLE_LOOKUP_TYPE primary,
+	TABLE_INPUT_CSTIC_NAME_1 primary,
+	TABLE_INPUT_CSTIC_NAME_2 primary,
+	TABLE_INPUT_CSTIC_NAME_3 primary,
+	TABLE_INPUT_CSTIC_NAME_4 primary,
+	TABLE_INPUT_CSTIC_NAME_5 primary,
+	TABLE_INPUT_CSTIC_VAL_S_1 primary,
+	TABLE_INPUT_CSTIC_VAL_S_2 primary,
+	TABLE_INPUT_CSTIC_VAL_S_3 primary,
+	TABLE_INPUT_CSTIC_VAL_S_4 primary,
+	TABLE_INPUT_CSTIC_VAL_S_5 primary,
+	TABLE_INPUT_CSTIC_VAL_F_1 primary,
+	TABLE_INPUT_CSTIC_VAL_F_2 primary,
+	TABLE_INPUT_CSTIC_VAL_F_3 primary,
+	TABLE_INPUT_CSTIC_VAL_F_4 primary,
+	TABLE_INPUT_CSTIC_VAL_F_5 primary
+}
+function VARIANT_TABLE_ROW_COUNT {characteristics
+	OUTPUT_INSTANCE primary,
+	OUTPUT_INSTANCE_CSTIC_NAME primary,
+	TABLE_NAME primary,
+	TABLE_OUTPUT_CSTIC_NAME primary,
+	TABLE_INPUT_CSTIC_NAME_1 primary,
+	TABLE_INPUT_CSTIC_NAME_2 primary,
+	TABLE_INPUT_CSTIC_NAME_3 primary,
+	TABLE_INPUT_CSTIC_NAME_4 primary,
+	TABLE_INPUT_CSTIC_NAME_5 primary,
+	TABLE_INPUT_CSTIC_VAL_S_1 primary,
+	TABLE_INPUT_CSTIC_VAL_S_2 primary,
+	TABLE_INPUT_CSTIC_VAL_S_3 primary,
+	TABLE_INPUT_CSTIC_VAL_S_4 primary,
+	TABLE_INPUT_CSTIC_VAL_S_5 primary,
+	TABLE_INPUT_CSTIC_VAL_F_1 primary,
+	TABLE_INPUT_CSTIC_VAL_F_2 primary,
+	TABLE_INPUT_CSTIC_VAL_F_3 primary,
+	TABLE_INPUT_CSTIC_VAL_F_4 primary,
+	TABLE_INPUT_CSTIC_VAL_F_5 primary
+}
+// DB functions
+function DATABASE_TABLE_LOOKUP {characteristics
+	OUTPUT_INSTANCE primary,
+	OUTPUT_INSTANCE_CSTIC_NAME primary,
+	TABLE_NAME primary,
+	TABLE_OUTPUT_CSTIC_NAME primary,
+	TABLE_INPUT_CSTIC_NAME_1 primary,
+	TABLE_INPUT_CSTIC_NAME_2 primary,
+	TABLE_INPUT_CSTIC_NAME_3 primary,
+	TABLE_INPUT_CSTIC_NAME_4 primary,
+	TABLE_INPUT_CSTIC_NAME_5 primary,
+	TABLE_INPUT_CSTIC_VAL_S_1 primary,
+	TABLE_INPUT_CSTIC_VAL_S_2 primary,
+	TABLE_INPUT_CSTIC_VAL_S_3 primary,
+	TABLE_INPUT_CSTIC_VAL_S_4 primary,
+	TABLE_INPUT_CSTIC_VAL_S_5 primary,
+	TABLE_INPUT_CSTIC_VAL_F_1 primary,
+	TABLE_INPUT_CSTIC_VAL_F_2 primary,
+	TABLE_INPUT_CSTIC_VAL_F_3 primary,
+	TABLE_INPUT_CSTIC_VAL_F_4 primary,
+	TABLE_INPUT_CSTIC_VAL_F_5 primary
+}
+function DATABASE_TABLE_ROW_COUNT {characteristics
+	OUTPUT_INSTANCE primary,
+	OUTPUT_INSTANCE_CSTIC_NAME primary,
+	TABLE_NAME primary,
+	TABLE_OUTPUT_CSTIC_NAME primary,
+	TABLE_INPUT_CSTIC_NAME_1 primary,
+	TABLE_INPUT_CSTIC_NAME_2 primary,
+	TABLE_INPUT_CSTIC_NAME_3 primary,
+	TABLE_INPUT_CSTIC_NAME_4 primary,
+	TABLE_INPUT_CSTIC_NAME_5 primary,
+	TABLE_INPUT_CSTIC_VAL_S_1 primary,
+	TABLE_INPUT_CSTIC_VAL_S_2 primary,
+	TABLE_INPUT_CSTIC_VAL_S_3 primary,
+	TABLE_INPUT_CSTIC_VAL_S_4 primary,
+	TABLE_INPUT_CSTIC_VAL_S_5 primary,
+	TABLE_INPUT_CSTIC_VAL_F_1 primary,
+	TABLE_INPUT_CSTIC_VAL_F_2 primary,
+	TABLE_INPUT_CSTIC_VAL_F_3 primary,
+	TABLE_INPUT_CSTIC_VAL_F_4 primary,
+	TABLE_INPUT_CSTIC_VAL_F_5 primary
+}
