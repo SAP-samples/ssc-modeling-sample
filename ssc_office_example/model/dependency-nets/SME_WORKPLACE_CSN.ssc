@@ -1,0 +1,72 @@
+constraintNet SME_WORKPLACE_CSN {
+	name 'SME_WORKPLACE_CSN'
+	constraints
+		SME_WORKPLACE_QUANTITY_CS,
+		SME_CREATE_COMPUTER_CS,
+		SME_DYN_NO_INPUT_CS,
+		SME_DYN_INVISIBLE_CS
+}
+constraint SME_CREATE_COMPUTER_CS {
+	name 'SME_CREATE_COMPUTER_CS'
+	objects
+		?W is_object (material)(300)(nr=SME_WORKPLACE)
+
+	condition
+		?W.SME_WORKPLACE_TYPE_NS specified
+
+	restrictions
+		has_part
+		(
+			?W,
+			pos_type=(300)SME_COMPUTER, with
+					SSC_INSTANCE_NUMBER = 1;
+					IS_PART_OF_SD_HARD = ?W;
+					BOM_POSITION_NUMBER = '10'
+		)
+}
+constraint SME_DYN_INVISIBLE_CS {
+	objects
+		?W is_a (300)SME_WORKPLACE
+
+	condition
+		?W.SME_DYN_INVISIBLE_NS = 'YES'
+
+	restrictions
+		?W.invisible SME_WORKPLACE_TYPE_NS
+
+	inferences
+		?W.invisible SME_WORKPLACE_TYPE_NS
+}
+constraint SME_DYN_NO_INPUT_CS {
+	objects
+		?W is_a (300)SME_WORKPLACE
+
+	condition
+		?W.SME_DYN_NO_INPUT_NS = 'YES'
+
+	restrictions
+		?W.no_input SME_WORKPLACE_TYPE_NS
+
+	inferences
+		?W.no_input SME_WORKPLACE_TYPE_NS
+}
+constraint SME_LINK_COMPUTERS_CS {
+	name 'SME_LINK_COMPUTERS_CS'
+	objects
+		?W is_a (300)SME_WORKPLACE,
+		?C is_a (300)SME_COMPUTER
+
+	condition
+		part_of(?C, ?W)
+
+	restrictions
+		?W.HAS_PART_SD_HARD = ?C,
+		?C.IS_PART_OF_SD_HARD = ?W
+}
+constraint SME_WORKPLACE_QUANTITY_CS {
+	objects:
+		?W is_a (300)SME_WORKPLACE
+
+	restrictions:
+		?W.SME_COMPONENT_QUANTITY = ?W.SME_QUANTITY
+}

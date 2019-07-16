@@ -1,0 +1,38 @@
+cstic HAS_ITEM_SV {
+	name "serves"
+	status released
+	classType SSC_CHILD
+	multiValue
+}
+cstic IS_ITEM_OF_SV {
+	name "has service"
+	status released
+	classType SME_SERVICES
+}
+cstic SSC_CHILD {
+	name "has service"
+	status released
+	classType SME_SERVICES
+}
+characteristic SME_COMPUTER_A {
+	name 'Computer'
+	classType SME_COMPUTER
+}
+characteristic SME_OFFICE_A {
+	name 'Office'
+	classType SME_OFFICE
+}
+characteristic SME_SYNCHRONIZE {
+	name "synchronize"
+	classType SME_ANY
+	multiValue
+}
+characteristic SME_WORKPLACE_A {
+	name 'Workplace'
+	classType SME_WORKPLACE
+}
+characteristic SME_WORKPLACES_MA {
+	name 'Workplaces'
+	classType SME_WORKPLACE
+	multiValue
+}

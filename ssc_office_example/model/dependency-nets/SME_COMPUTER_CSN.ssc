@@ -1,0 +1,257 @@
+constraintNet SME_COMPUTER_CSN {
+	name 'SME_COMPUTER_CSN'
+	constraints
+		SME_SPECIALIZE_DESKTOP_CS,
+		SME_SPECIALIZE_LAPTOP_CS,
+		SME_COMPUTER_INT_DEPS_CS,
+		SME_COMPUTER_QUANTITY_CS,
+		SME_PROCESSOR_IN_LAPTOP_CS,
+		SME_PROCESSOR_SURCHARGE_CS,
+		SME_LINK_PROC_TO_OFFICE_CS,
+		SME_MEMORY_IN_LAPTOP_CS,
+		SME_LINK_MEM_TO_OFFICE_CS,
+		SME_VIDEO_CARD_IN_LAPTOP_CS,
+		SME_VIDEO_CARD_SURCHARGE_CS
+}
+constraint SME_SPECIALIZE_DESKTOP_CS {
+	name 'SME_SPECIALIZE_DESKTOP_CS'
+	objects
+		?C is_a (300)SME_COMPUTER
+
+	condition
+		?C.SME_COMPUTER_TYPE_S in ['DESKTOP','WORKSTATION']
+
+	restrictions
+		type_of(?C, (material)(300)(nr=SME_DESKTOP)),
+		?C.BOM_POSITION_OBJECT_TYPE = 'MARA',
+		?C.BOM_POSITION_CLASS_TYPE = '300',
+		?C.BOM_POSITION_OBJECT_KEY = 'SME_DESKTOP'
+}
+
+constraint SME_SPECIALIZE_LAPTOP_CS {
+	name 'SME_SPECIALIZE_LAPTOP_CS'
+	objects
+		?C is_a (300)SME_COMPUTER
+
+	condition
+		?C.SME_COMPUTER_TYPE_S = 'LAPTOP'
+
+	restrictions
+		type_of(?C, (material)(300)(nr=SME_LAPTOP)),
+		?C.BOM_POSITION_OBJECT_TYPE = 'MARA',
+		?C.BOM_POSITION_CLASS_TYPE = '300',
+		?C.BOM_POSITION_OBJECT_KEY = 'SME_LAPTOP'
+}
+constraint SME_COMPUTER_INT_DEPS_CS {
+	name 'SME_COMPUTER_INT_DEPS_CS'
+	objects
+		?C is_a (300)SME_COMPUTER,
+		?W is_a (300)SME_WORKPLACE
+
+	condition
+		part_of(?C, ?W)
+
+	restrictions
+		// restrict type of computer
+		?C.domain SME_COMPUTER_TYPE_S in ['DESKTOP','LAPTOP']
+			if ?W.SME_WORKPLACE_TYPE_NS = 'OFFICE',
+		?C.domain SME_COMPUTER_TYPE_S in ['WORKSTATION']
+			if ?W.SME_WORKPLACE_TYPE_NS = 'CAD',
+		// prepapre creation of parts for memory
+		table SME_MEMORY_D
+		(
+			SME_MEMORY_S = ?C.SME_MEMORY_S,
+			SME_MEMORY_SIZE_F = ?C.domain SME_MEMORY_SIZE_F,
+			SME_MEMORY_SPEED_S = ?C.domain SME_MEMORY_SPEED_S
+		)
+
+	inferences
+		?C.domain SME_COMPUTER_TYPE_S,
+		?C.domain SME_MEMORY_SIZE_F,
+		?C.domain SME_MEMORY_SPEED_S
+}
+constraint SME_COMPUTER_QUANTITY_CS {
+	objects:
+		?C is_a (300)SME_COMPUTER
+
+	restrictions:
+		?C.SME_COMPONENT_QUANTITY = ?C.SME_QUANTITY
+}
+constraint SME_LINK_MEM_TO_COMPUTER_CS {
+	objects:
+		?C is_a (300)SME_COMPUTER,
+		?M is_object (material)(300)(nr=SME_MEMORY)
+
+	condition:
+		part_of(?M,?C)
+
+	restrictions:
+		?C.HAS_PART_SD_HARD = ?M
+}
+constraint SME_LINK_MEM_TO_OFFICE_CS {
+	objects:
+		?O is_a (300)SME_OFFICE,
+		?M is_object (material)(300)(nr=SME_MEMORY)
+
+	condition:
+		?M.SME_IS_A <> 'PART'
+
+	restrictions:
+		?O.HAS_PART_SD_SOFT = ?M
+}
+constraint SME_LINK_PROC_TO_COMPUTER_CS {
+	objects:
+		?C is_a (300)SME_COMPUTER,
+		?P is_object (material)(300)(nr=SME_PROCESSOR)
+
+	condition:
+		part_of(?P,?C)
+
+	restrictions:
+		?C.HAS_PART_SD_HARD = ?P
+}
+constraint SME_LINK_PROC_TO_OFFICE_CS {
+	objects:
+		?O is_a (300)SME_OFFICE,
+		?P is_object (material)(300)(nr=SME_PROCESSOR)
+
+	condition:
+		?P.SME_IS_A <> 'PART'
+
+	restrictions:
+		?O.HAS_PART_SD_SOFT = ?P
+}
+constraint SME_MEMORY_IN_LAPTOP_CS {
+	name 'SME_MEMORY_IN_LAPTOP_CS'
+	objects
+		?L is_object (material)(300)(nr=SME_LAPTOP)
+
+	restrictions
+		has_part
+		(
+			?L,
+			pos_type = (material)(300)(nr=SME_MEMORY),
+			with
+				SME_IS_A = 'PART';
+				SME_INSTANCE_NF = 0;
+				SME_MEMORY_SPEED_S = ?L.SME_MEMORY_SPEED_S;
+				SSC_INSTANCE_NUMBER = 1;
+				IS_PART_OF_SD_HARD = ?L;
+				BOM_POSITION_NUMBER = '20';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MEMORY'
+		) if ?L.SME_MEMORY_SIZE_F > 0,
+		has_part
+		(
+			?L,
+			pos_type = (material)(300)(nr=SME_MEMORY),
+			with
+				SME_IS_A = 'PART';
+				SME_INSTANCE_NF = 1;
+				SME_MEMORY_SPEED_S = ?L.SME_MEMORY_SPEED_S;
+				SSC_INSTANCE_NUMBER = 2;
+				IS_PART_OF_SD_HARD = ?L;
+				BOM_POSITION_NUMBER = '21';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MEMORY'
+		) if ?L.SME_MEMORY_SIZE_F > 1,
+		has_part
+		(
+			?L,
+			pos_type = (material)(300)(nr=SME_MEMORY),
+			with
+				SME_IS_A = 'PART';
+				SME_INSTANCE_NF = 2;
+				SME_MEMORY_SPEED_S = ?L.SME_MEMORY_SPEED_S;
+				SSC_INSTANCE_NUMBER = 3;
+				IS_PART_OF_SD_HARD = ?L;
+				BOM_POSITION_NUMBER = '22';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MEMORY'
+		) if ?L.SME_MEMORY_SIZE_F > 2,
+		has_part
+		(
+			?L,
+			pos_type = (material)(300)(nr=SME_MEMORY),
+			with
+				SME_IS_A = 'PART';
+				SME_INSTANCE_NF = 3;
+				SME_MEMORY_SPEED_S = ?L.SME_MEMORY_SPEED_S;
+				SSC_INSTANCE_NUMBER = 4;
+				IS_PART_OF_SD_HARD = ?L;
+				BOM_POSITION_NUMBER = '23';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MEMORY'
+		) if ?L.SME_MEMORY_SIZE_F > 3	
+}
+constraint SME_PROCESSOR_IN_LAPTOP_CS {
+	name 'SME_PROCESSOR_IN_LAPTOP_CS'
+	objects
+		?L is_object (material)(300)(nr=SME_LAPTOP)
+
+	condition
+
+	restrictions
+		has_part
+		(
+			?L,
+			pos_type = (material)(300)(nr=SME_PROCESSOR),
+			with
+				SME_IS_A = 'PART';
+				SME_PROCESSOR_S = ?L.SME_PROCESSOR_S;
+				SSC_INSTANCE_NUMBER = 1;
+				IS_PART_OF_SD_HARD = ?L;
+				BOM_POSITION_NUMBER = '10';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_PROCESSOR'
+		)
+}
+constraint SME_PROCESSOR_SURCHARGE_CS {
+	objects:
+		?C is_a (300)SME_COMPUTER
+
+	restrictions:
+		?C.SME_SURCHARGE = 'MAINBOARD_DUAL'
+			if ?C.SME_PROCESSOR_S in
+			['DUAL_2_4','DUAL_2_8','DUAL_3_0','DUAL_3_6'],
+		?C.SME_SURCHARGE = 'MAINBOARD_QUAD'
+			if ?C.SME_PROCESSOR_S in ['QUAD_2_8','QUAD_3_1','QUAD_3_4']
+}
+constraint SME_VIDEO_CARD_IN_LAPTOP_CS {
+	name 'SME_VIDEO_CARD_IN_LAPTOP_CS'
+	objects
+		?L is_object (material)(300)(nr=SME_LAPTOP)
+
+	condition
+		?L.SME_VIDEO_CARD_S <> 'IGP'
+
+	restrictions
+		has_part
+		(
+			?L,
+			pos_type = (material)(300)(nr=SME_VIDEO_CARD),
+			with
+				SME_VIDEO_CARD_S = ?L.SME_VIDEO_CARD_S;
+				SSC_INSTANCE_NUMBER = 1;
+				IS_PART_OF_SD_HARD = ?L;
+				BOM_POSITION_NUMBER = '30';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_VIDEO_CARD'
+		)
+}
+constraint SME_VIDEO_CARD_SURCHARGE_CS {
+	objects:
+		?C is_a (300)SME_COMPUTER
+
+	restrictions:
+		?C.SME_SURCHARGE = 'LOW_END_CARD'
+			if ?C.SME_VIDEO_CARD_S = 'LOW_END',
+		?C.SME_SURCHARGE = 'HIGH_END_CARD'
+			if ?C.SME_VIDEO_CARD_S = 'HIGH_END'
+}

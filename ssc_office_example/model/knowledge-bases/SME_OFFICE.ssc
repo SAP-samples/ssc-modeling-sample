@@ -1,0 +1,8 @@
+knowledgeBase SME_OFFICE {
+	version "0.0.1.0"	// RTV with PRS support
+	validFrom 2017-02-12
+	tasks
+		SME_OFFICE_TSK
+	profiles
+		name 'SME_OFFICE_PRF' material SME_OFFICE
+}

@@ -1,0 +1,19 @@
+bom SME_OFFICE {
+	10	material	SME_WORKPLACE	min	0	max	9999	salesRelevant
+}
+bom SME_WORKPLACE {
+	10	class		SME_COMPUTER	min	0	max	9999	salesRelevant,
+	20	material	SME_DESKTOP		min	0	max	9999	salesRelevant,
+	30	material	SME_LAPTOP		min	0	max	9999	salesRelevant
+}
+bom SME_DESKTOP {
+	10	material	SME_PROCESSOR	min	0	max	1	salesRelevant,
+	20	material	SME_MEMORY		min	0	max	4	salesRelevant,
+	30	material	SME_VIDEO_CARD	min	0	max	1	salesRelevant,
+	40	material	SME_MONITOR		min	0	max	2	salesRelevant
+}
+bom SME_LAPTOP {
+	10	material	SME_PROCESSOR	min	0	max	1	salesRelevant,
+	20	material	SME_MEMORY		min	0	max	4	salesRelevant,
+	30	material	SME_VIDEO_CARD	min	0	max	1	salesRelevant
+}

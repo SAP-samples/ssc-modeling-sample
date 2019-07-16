@@ -1,0 +1,41 @@
+variantTable SME_MEMORY_D {
+	name 'SME_MEMORY_D'
+	characteristics
+		SME_MEMORY_S primary,
+		SME_MEMORY_SIZE_F,
+		SME_MEMORY_SPEED_S
+	file 'SME_MEMORY_D.vtable'
+}
+variantTable SME_MEMORY_PN {
+	name 'SME_MEMORY_PN'
+	characteristics
+		SME_MEMORY_SPEED_S primary,
+		SME_PART_NUMBER_S
+	rows
+		"1333", "MEM1";
+		"1600", "MEM2";
+		"2000", "MEM3"
+}
+variantTable SME_PROCESSOR_PN {
+	name 'SME_PROCESSOR_PN'
+	characteristics
+		SME_PROCESSOR_S primary,
+		SME_PART_NUMBER_S
+	rows
+		"DUAL_2_4", "PRC1";
+		"DUAL_2_8", "PRC2";
+		"DUAL_3_0", "PRC3";
+		"DUAL_3_6", "PRC4";
+		"QUAD_2_8", "PRC5";
+		"QUAD_3_1", "PRC6";
+		"QUAD_3_4", "PRC7"
+}
+variantTable SME_VIDEO_CARD_PN {
+	name 'SME_VIDEO_CARD_PN'
+	characteristics
+		SME_VIDEO_CARD_S primary,
+		SME_PART_NUMBER_S
+	rows
+		"LOW_END", "VID1";
+		"HIGH_END", "VID2"
+}

@@ -1,0 +1,49 @@
+material SME_DESKTOP {
+	name 'Desktop PC'
+	classes
+		SME_DESKTOP
+	boms
+		SME_DESKTOP
+}
+material SME_INTERNET_CONN {
+	name "Internet connection"
+	classes
+		SME_INTERNET_CONN
+}
+material SME_LAPTOP {
+	name 'Laptop'
+	classes
+		SME_LAPTOP
+	boms
+		SME_LAPTOP
+}
+material SME_MEMORY {
+	classes
+		SME_MEMORY
+}
+material SME_MONITOR {
+	classes
+		SME_MONITOR
+}
+material SME_OFFICE {
+	name 'Office'
+	classes
+		SME_OFFICE
+	boms
+		SME_OFFICE
+}
+material SME_PROCESSOR {
+	classes
+		SME_PROCESSOR
+}
+material SME_VIDEO_CARD {
+	classes
+		SME_VIDEO_CARD
+}
+material SME_WORKPLACE {
+	name 'Workplace'
+	classes
+		SME_WORKPLACE
+	boms
+		SME_WORKPLACE
+}

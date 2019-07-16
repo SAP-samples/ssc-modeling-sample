@@ -1,0 +1,202 @@
+constraintNet SME_OFFICE_CSN {
+	name 'SME_OFFICE_CSN'
+	constraints
+		SME_OFFICE_SET_PRS_RTV_CS,
+		SME_CREATE_WORKPLACES_CS,
+		SME_CREATE_NP_INST_CS,
+		SME_REFERENCE_CLASSES_CS
+}
+
+
+constraint SME_OFFICE_SET_PRS_RTV_CS {
+	objects:
+		?O is_a (300)SME_OFFICE
+	restrictions:
+		?O.ECC_KB_NAME = 'KB_PRS_SME_OFFICE',
+		?O.ECC_KB_VERSION = '1.0'
+}
+
+constraint SME_CREATE_NP_INST_CS {
+	status released
+	objects
+		?O is_a (300)SME_OFFICE
+
+	restrictions
+		find_or_create
+		(
+			(300)SME_NP_INST_1
+		) if ?O.SME_CREATE_NP_INST = 'SME_NP_INST_1',
+		find_or_create
+		(
+			(300)SME_NP_INST_2
+		) if ?O.SME_CREATE_NP_INST = 'SME_NP_INST_2',
+		find_or_create
+		(
+			(300)SME_NP_INST_3
+		) if ?O.SME_CREATE_NP_INST = 'SME_NP_INST_3',
+		find_or_create
+		(
+			(300)SME_NP_INST_4
+		) if ?O.SME_CREATE_NP_INST = 'SME_NP_INST_4',
+		find_or_create
+		(
+			(300)SME_NP_INST_5
+		) if ?O.SME_CREATE_NP_INST = 'SME_NP_INST_5'
+}
+constraint SME_CREATE_WORKPLACES_CS {
+	name 'SME_CREATE_WORKPLACES_CS'
+	objects
+		?O is_object (material)(300)(nr=SME_OFFICE)
+
+	condition
+
+	restrictions
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 1;
+						SSC_INSTANCE_NUMBER = 1;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '10';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF > 0,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 2;
+						SSC_INSTANCE_NUMBER = 2;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '20';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 2,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 3;
+						SSC_INSTANCE_NUMBER = 3;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '30';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 3,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 4;
+						SSC_INSTANCE_NUMBER = 4;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '40';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 4,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 5;
+						SSC_INSTANCE_NUMBER = 5;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '50';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 5,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 6;
+						SSC_INSTANCE_NUMBER = 6;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '60';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 6,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 7;
+						SSC_INSTANCE_NUMBER = 7;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '70';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 7,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 8;
+						SSC_INSTANCE_NUMBER = 8;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '80';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 8,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 9;
+						SSC_INSTANCE_NUMBER = 9;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '90';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 9,
+
+		has_part
+		(
+			?O,
+			pos_type=(material)(300)(nr=SME_WORKPLACE),
+				with	SME_INSTANCE_NF = 10;
+						SSC_INSTANCE_NUMBER = 10;
+						IS_PART_OF_SD_SOFT = ?O;
+						BOM_POSITION_NUMBER = '100';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_WORKPLACE'
+		) if ?O.SME_NO_WORKPLACES_NF >= 10
+
+}
+constraint SME_LINK_WORKPLACES_CS {
+	name 'SME_LINK_WORKPLACES_CS'
+	objects
+		?O is_a (300)SME_OFFICE,
+		?W is_a (300)SME_WORKPLACE
+
+	restrictions
+		?O.HAS_PART_SD_SOFT = ?W,
+		?W.IS_PART_OF_SD_SOFT = ?O
+}
+constraint SME_REFERENCE_CLASSES_CS {
+	name "SME_REFERENCE_CLASSES_CS"
+	objects
+		?M is_a (300)MCI_ROOT_CLASS
+
+	restrictions
+		?M.invisible SME_SYNCHRONIZE
+}

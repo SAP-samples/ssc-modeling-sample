@@ -1,0 +1,54 @@
+class SME_ADMINISTRATION extends SME_SERVICES {
+	name "Administration"
+	status released
+}
+class SME_COMPUTER extends SSC_PARENT, SSC_CHILD {
+	name 'Computer'
+	characteristics
+		SME_QUANTITY defaultValues (1),
+		SME_COMPONENT_QUANTITY noinput invisible,
+		SME_COMPUTER_TYPE_S required,
+		SME_PROCESSOR_S required,
+		SME_MEMORY_S required,
+		SME_MEMORY_SIZE_F invisible required,
+		SME_MEMORY_SPEED_S invisible required,
+		SME_VIDEO_CARD_S required,
+		SME_SURCHARGE,
+		IS_ITEM_OF_SV
+}
+class SME_DESKTOP extends SME_COMPUTER {
+	name 'Desktop PC'
+	characteristics
+		SME_NO_MONITORS_NF required
+}
+class SME_INTERNET_CONN extends SME_SERVICES {
+	name "Internet connection"
+	characteristics
+		SME_CONNECTION_SPEED_S required
+}
+class SME_OFFICE extends SSC_KB_ROOT, SSC_PARENT { 
+	name 'Office'
+	characteristics
+		SME_DATE,
+		SME_NO_WORKPLACES_NF required,
+		SME_CREATE_NP_INST,
+		SME_SURCHARGE
+}
+class SME_SERVICES extends SME_ANY {
+	name "Services"
+	status released
+	characteristics
+		HAS_ITEM_SV invisible,
+		SME_SURCHARGE 
+}
+class SME_WORKPLACE extends SSC_PARENT, SSC_CHILD {
+	name 'Workplace'
+	characteristics
+		SME_INSTANCE_NF invisible,
+		SME_QUANTITY defaultValues (1),
+		SME_COMPONENT_QUANTITY noinput invisible,
+		SME_WORKPLACE_TYPE_NS required,
+		SME_DYN_NO_INPUT_NS,
+		SME_DYN_INVISIBLE_NS,
+		SME_SURCHARGE
+}

@@ -1,0 +1,8 @@
+characteristic SME_DATE{
+  name "date"
+  date
+  values 
+    2011-12-31,
+    2012-06-30,
+    2012-12-31,
+}

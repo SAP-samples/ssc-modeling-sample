@@ -1,0 +1,61 @@
+class SME_MEMORY extends SSC_CHILD, SME_PART {
+	name "Memory"
+	characteristics
+		SME_INSTANCE_NF invisible,
+		SME_MEMORY_SPEED_S required,
+		SME_PART_NUMBER_S required
+}
+class SME_MONITOR extends SSC_CHILD, SME_PART {
+	name 'Monitor'
+	characteristics
+		SME_INSTANCE_NF invisible,
+		SME_PART_NUMBER_S required
+}
+class SME_PROCESSOR extends SSC_CHILD, SME_PART {
+	name 'Processor'
+	characteristics
+		SME_PROCESSOR_S required,
+		SME_PART_NUMBER_S required
+}
+class SME_VIDEO_CARD extends SSC_CHILD, SME_PART {
+	name 'Video card'
+	characteristics
+		SME_VIDEO_CARD_S required,
+		SME_PART_NUMBER_S required
+}
+class SME_LAPTOP extends SME_COMPUTER {
+	name 'Laptop'
+}
+class SME_NP_INST_1 extends SSC_CHILD {
+	name "non-part instance 1"
+	status released
+}
+class SME_NP_INST_2 extends SSC_CHILD {
+	name "non-part instance 2"
+	status released
+}
+class SME_NP_INST_3 extends SSC_CHILD {
+	name "non-part instance 3"
+	status released
+}
+class SME_NP_INST_4 extends SSC_CHILD {
+	name "non-part instance 4"
+	status released
+}
+class SME_NP_INST_5 extends SSC_CHILD {
+	name "non-part instance 5"
+	status released
+}
+class SME_PART extends SME_ANY {
+	name 'Part'
+	characteristics
+		SME_IS_A invisible defaultValues ("NON_PART")
+} 
+class SME_ANY {
+	name 'Any'
+}
+class MCI_ROOT_CLASS extends SME_ANY {
+	name "MCI"
+	characteristics
+		SME_SYNCHRONIZE
+}

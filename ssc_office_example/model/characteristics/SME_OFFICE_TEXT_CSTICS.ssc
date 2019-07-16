@@ -1,0 +1,111 @@
+characteristic SME_COMPUTER_TYPE_S {
+	name 'Type'
+	textLength 16
+	restrictable
+	values 
+		'DESKTOP'		name 'Dektop PC',
+		'LAPTOP'		name 'Laptop',
+		'WORKSTATION'	name 'Workstation'
+}
+characteristic SME_CONNECTION_SPEED_S {
+	name "Connection speed"
+	textLength 30 restrictable
+	values
+		"CUSTOMER" name "Customer-specific" vcond 'NET_0',
+		"6" name "6Mbit/s" vcond 'NET_6',
+		"32" name "32Mbit/s" vcond 'NET_32',
+		"100" name "100Mbit/s" vcond 'NET_100'
+}
+cstic SME_CREATE_NP_INST {
+	name "create NP_INST"
+	textLength 30
+	multiValue
+	values
+		"SME_NP_INST_1",
+		"SME_NP_INST_2",
+		"SME_NP_INST_3",
+		"SME_NP_INST_4",
+		"SME_NP_INST_5",
+}
+characteristic SME_DYN_INVISIBLE_NS {
+	name "hide type"
+	textLength 3
+	values
+		'YES' name 'yes',
+		'NO' name 'no'
+}
+characteristic SME_DYN_NO_INPUT_NS {
+	name "lock type"
+	textLength 3
+	values
+		'YES' name 'yes',
+		'NO' name 'no'
+}
+characteristic SME_IS_A {
+	name "is a"
+	textLength 30
+	values
+		"PART" name "part",
+		"NON_PART" name "non-part"
+}
+characteristic SME_PART_NUMBER_S {
+	name 'Part number'
+	textLength 30
+}
+characteristic SME_PROCESSOR_S {
+	name 'Processor'
+	textLength 12
+	restrictable
+	values 
+		'DUAL_2_4' name '2 x 2.4GHz',
+		'DUAL_2_8' name '2 x 2.8GHz',
+		'DUAL_3_0' name '2 x 3.0GHz',
+		'DUAL_3_6' name '2 x 3.6GHz',
+		'QUAD_2_8' name '4 x 2.8GHz',
+		'QUAD_3_1' name '4 x 3.1GHz',
+		'QUAD_3_4' name '4 x 3.4GHz'
+}
+characteristic SME_SURCHARGE {
+	name "Variant condition"
+	textLength 26
+	caseSensitive
+	multiValue
+	reference table 'SDCOM' field 'VKOND'
+}
+characteristic SME_VIDEO_CARD_S {
+	name 'Video card'
+	textLength 10
+	restrictable
+	values
+		'IGP'		name 'IGP (no dedicated)',
+		'LOW_END'	name 'Low end',
+		'HIGH_END'	name 'High end'
+}
+characteristic SME_WORKPLACE_TYPE_NS {
+	name 'Type'
+	textLength 30
+	values 
+		'CAD'		name 'CAD',
+		'OFFICE'	name 'Office'
+}
+characteristic SME_MEMORY_S {
+	name 'Memory'
+	textLength 30
+	restrictable
+	values 
+		'1_1333' name '1GB (1333MHz)' vcond 'MEM_1_1333',
+		'2_1333' name '2GB (1333MHz)' vcond 'MEM_2_1333',
+		'2_1600' name '2GB (1600MHz)' vcond 'MEM_2_1600',
+		'2_2000' name '2GB (2000MHz)' vcond 'MEM_2_2000',
+		'4_1600' name '4GB (1600MHz)' vcond 'MEM_4_1600',
+		'4_2000' name '4GB (2000MHz)' vcond 'MEM_4_2000'
+}
+characteristic SME_MEMORY_SPEED_S {
+	name 'Memory'
+	textLength 4
+	restrictable
+	values 
+		"1333" name '1333MHz',
+		"1600" name '1600MHz',
+		"2000" name '2000MHz'
+}

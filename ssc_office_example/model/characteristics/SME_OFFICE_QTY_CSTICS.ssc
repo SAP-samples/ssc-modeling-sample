@@ -1,0 +1,37 @@
+characteristic SME_COMPONENT_QUANTITY {
+	name 'Component quantity'
+	numericLength 13 decimalPlaces 3
+	negativeValues
+	reference table 'STPO' field 'MENGE'
+}
+characteristic SME_INSTANCE_NF {
+	name 'Instance'
+	numericLength 2 decimalPlaces 0
+}
+characteristic SME_MEMORY_SIZE_F {
+	name 'Memory size'
+	numericLength 15 decimalPlaces 0
+	restrictable
+}
+cstic SME_NO_ITEMS_NF {
+	name 'Number of items'
+	numericLength 15 decimalPlaces 0
+}
+characteristic SME_NO_MONITORS_NF {
+	name 'Number of monitors'
+	numericLength 1 decimalPlaces 0
+	values
+		1,
+		2
+}
+characteristic SME_NO_WORKPLACES_NF {
+	name 'Number of workplaces'
+	numericLength 15 decimalPlaces 0
+	intervals >=1
+}
+characteristic SME_QUANTITY {
+	name 'Quantity'
+	numericLength 10 decimalPlaces 0
+	intervals
+		>= 1
+}

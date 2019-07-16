@@ -1,0 +1,167 @@
+constraintNet SME_DESKTOP_CSN {
+	name 'SME_DESKTOP_CSN'
+	constraints
+		SME_PROCESSOR_IN_DESKTOP_CS,
+		SME_MEMORY_IN_DESKTOP_CS,
+		SME_VIDEO_CARD_IN_DESKTOP_CS,
+		SME_MONITOR_IN_DESKTOP_CS,
+		SME_MONITOR_SURCHARGE_CS
+}
+constraint SME_MONITOR_IN_DESKTOP_CS {
+	name 'SME_MONITOR_IN_DESKTOP_CS'
+	objects
+		?D is_object (material)(300)(nr=SME_DESKTOP)
+
+	condition
+
+	restrictions
+		has_part
+		(
+			?D,
+			pos_type = (material)(300)(nr=SME_MONITOR),
+			with
+				SME_INSTANCE_NF = 0;
+				SSC_INSTANCE_NUMBER = 1;
+				IS_PART_OF_SD_HARD = ?D;
+				BOM_POSITION_NUMBER = '40';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MONITOR'
+		) if ?D.SME_NO_MONITORS_NF > 0,
+		has_part
+		(
+			?D,
+			pos_type = (material)(300)(nr=SME_MONITOR),
+			with
+				SME_INSTANCE_NF = 1;
+				SSC_INSTANCE_NUMBER = 2;
+				IS_PART_OF_SD_HARD = ?D;
+				BOM_POSITION_NUMBER = '41';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MONITOR'
+		) if ?D.SME_NO_MONITORS_NF > 1
+}
+constraint SME_MEMORY_IN_DESKTOP_CS {
+	name 'SME_MEMORY_IN_DESKTOP_CS'
+	objects
+		?D is_object (material)(300)(nr=SME_DESKTOP)
+
+	condition
+
+	restrictions
+		has_part
+		(
+			?D,
+			pos_type = (material)(300)(nr=SME_MEMORY),
+			with
+				SME_IS_A = 'PART';
+				SME_INSTANCE_NF = 0;
+				SME_MEMORY_SPEED_S = ?D.SME_MEMORY_SPEED_S;
+				SSC_INSTANCE_NUMBER = 1;
+				IS_PART_OF_SD_HARD = ?D;
+				BOM_POSITION_NUMBER = '20';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MEMORY'
+		) if ?D.SME_MEMORY_SIZE_F > 0,
+		has_part
+		(
+			?D,
+			pos_type = (material)(300)(nr=SME_MEMORY),
+			with
+				SME_IS_A = 'PART';
+				SME_INSTANCE_NF = 1;
+				SME_MEMORY_SPEED_S = ?D.SME_MEMORY_SPEED_S;
+				SSC_INSTANCE_NUMBER = 2;
+				IS_PART_OF_SD_HARD = ?D;
+				BOM_POSITION_NUMBER = '21';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MEMORY'
+		) if ?D.SME_MEMORY_SIZE_F > 1,
+		has_part
+		(
+			?D,
+			pos_type = (material)(300)(nr=SME_MEMORY),
+			with
+				SME_IS_A = 'PART';
+				SME_INSTANCE_NF = 2;
+				SME_MEMORY_SPEED_S = ?D.SME_MEMORY_SPEED_S;
+				SSC_INSTANCE_NUMBER = 3;
+				IS_PART_OF_SD_HARD = ?D;
+				BOM_POSITION_NUMBER = '22';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MEMORY'
+		) if ?D.SME_MEMORY_SIZE_F > 2,
+		has_part
+		(
+			?D,
+			pos_type = (material)(300)(nr=SME_MEMORY),
+			with
+				SME_IS_A = 'PART';
+				SME_INSTANCE_NF = 3;
+				SME_MEMORY_SPEED_S = ?D.SME_MEMORY_SPEED_S;
+				SSC_INSTANCE_NUMBER = 4;
+				IS_PART_OF_SD_HARD = ?D;
+				BOM_POSITION_NUMBER = '23';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_MEMORY'
+		) if ?D.SME_MEMORY_SIZE_F > 3
+}
+constraint SME_MONITOR_SURCHARGE_CS {
+	objects:
+		?D is_a (300)SME_DESKTOP
+
+	restrictions:
+		?D.SME_SURCHARGE = '1_MONITOR' if ?D.SME_NO_MONITORS_NF = 1,
+		?D.SME_SURCHARGE = '2_MONITORS' if ?D.SME_NO_MONITORS_NF = 2
+}
+constraint SME_PROCESSOR_IN_DESKTOP_CS {
+	name 'SME_PROCESSOR_IN_DESKTOP_CS'
+	objects
+		?D is_object (material)(300)(nr=SME_DESKTOP)
+
+	condition
+
+	restrictions
+		has_part
+		(
+			?D,
+			pos_type = (material)(300)(nr=SME_PROCESSOR),
+			with
+				SME_IS_A = 'PART';
+				SME_PROCESSOR_S = ?D.SME_PROCESSOR_S;
+						SSC_INSTANCE_NUMBER = 1;
+						IS_PART_OF_SD_HARD = ?D;
+						BOM_POSITION_NUMBER = '10';
+						BOM_POSITION_OBJECT_TYPE = 'MARA';
+						BOM_POSITION_CLASS_TYPE = '300';
+						BOM_POSITION_OBJECT_KEY = 'SME_PROCESSOR'
+		)
+}
+constraint SME_VIDEO_CARD_IN_DESKTOP_CS {
+	name 'SME_VIDEO_CARD_IN_DESKTOP_CS'
+	objects
+		?D is_object (material)(300)(nr=SME_DESKTOP)
+
+	condition
+		?D.SME_VIDEO_CARD_S <> 'IGP'
+
+	restrictions
+		has_part
+		(
+			?D,
+			pos_type = (material)(300)(nr=SME_VIDEO_CARD),
+			with
+				SME_VIDEO_CARD_S = ?D.SME_VIDEO_CARD_S;
+				SSC_INSTANCE_NUMBER = 1;
+				IS_PART_OF_SD_HARD = ?D;
+				BOM_POSITION_NUMBER = '30';
+				BOM_POSITION_OBJECT_TYPE = 'MARA';
+				BOM_POSITION_CLASS_TYPE = '300';
+				BOM_POSITION_OBJECT_KEY = 'SME_VIDEO_CARD'
+		)
+}

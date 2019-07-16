@@ -1,0 +1,69 @@
+constraintNet SME_PART_NUMBER_CSN {
+	name 'SME_PART_NUMBER_CSN'
+	constraints
+		SME_PROCESSOR_PN,
+		SME_MEMORY_PN,
+		SME_VIDEO_CARD_PN,
+		SME_MONITOR_PN
+}
+constraint SME_MEMORY_PN {
+	name 'SME_MEMORY_PN'
+	objects
+		?P is_a (300)SME_MEMORY
+
+	condition
+
+	restrictions
+		table SME_MEMORY_PN
+		(
+			SME_MEMORY_SPEED_S = ?P.SME_MEMORY_SPEED_S,
+			SME_PART_NUMBER_S = ?P.SME_PART_NUMBER_S
+		)
+
+	inferences
+		?P.SME_PART_NUMBER_S
+}
+constraint SME_MONITOR_PN {
+	name 'SME_MONITOR_PN'
+	objects
+		?P is_a (300)SME_MONITOR
+
+	condition
+
+	restrictions
+		?P.SME_PART_NUMBER_S = 'MON1'
+}
+constraint SME_PROCESSOR_PN {
+	name 'SME_PROCESSOR_PN'
+	objects
+		?P is_a (300)SME_PROCESSOR
+
+	condition
+
+	restrictions
+		table SME_PROCESSOR_PN
+		(
+			SME_PROCESSOR_S = ?P.SME_PROCESSOR_S,
+			SME_PART_NUMBER_S = ?P.SME_PART_NUMBER_S
+		)
+
+	inferences
+		?P.SME_PART_NUMBER_S
+}
+constraint SME_VIDEO_CARD_PN {
+	name 'SME_VIDEO_CARD_PN'
+	objects
+		?P is_a (300)SME_VIDEO_CARD
+
+	condition
+
+	restrictions
+		table SME_VIDEO_CARD_PN
+		(
+			SME_VIDEO_CARD_S = ?P.SME_VIDEO_CARD_S,
+			SME_PART_NUMBER_S = ?P.SME_PART_NUMBER_S
+		)
+
+	inferences
+		?P.SME_PART_NUMBER_S
+}
