@@ -1,0 +1,23 @@
+class SYNCHRONIZER extends SSC_INST {names EN "Synchronizer Base Class"
+	characteristics
+	SYNCHRONIZER_NAME invisible
+}
+
+characteristic SYNCHRONIZER_NAME {names EN "Synchronizer Name" textLength 30}
+
+rule SPECIALIZE_SYNCHRONIZER {names EN "Specialize Synchronizer"
+	objects:
+	?SYNC is_a (300)SYNCHRONIZER
+	body:
+	then do:
+	pfunction SPECIALIZE_BY_VALUE (
+	SPECIALIZATION_INSTANCE = ?SYNC,
+	SPECIALIZATION_VALUE = ?SYNC.SYNCHRONIZER_NAME,
+	SPECIALIZATION_TYPE = 'MARA' 
+	)	
+}
+
+ruleNet SYNCHRONIZER_RNET {names EN "Base Synchronizer Rules"
+	rules
+	SPECIALIZE_SYNCHRONIZER
+}

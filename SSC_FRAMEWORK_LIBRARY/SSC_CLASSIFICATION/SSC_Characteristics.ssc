@@ -1,0 +1,201 @@
+characteristic SSC_MATERIAL_ID {
+	name "Material Number" 
+	textLength 18 
+	reference table 'MARA' field 'MATNR'
+}
+characteristic SSC_INSTANCE_NUMBER {
+	name "Instance Number" 
+	numericLength 6
+}
+characteristic SSC_DISPLAY_NAME {
+	name "UI Display name"    
+	textLength 50
+}
+characteristic SSC_ITEM_QUANTITY_ACTUAL {
+	names EN 'Item quantity actual', DE 'Komponentenmenge' 
+	numericLength 13 decimalPlaces 3 
+	negativeValues
+}
+characteristic IS_PART_OF_SD_HARD {
+	name "Is SD Component of (Hard):" 
+	classType SSC_PARENT
+}
+characteristic IS_PART_OF_SD_SOFT {
+	name "Is SD Component of (Soft):" 
+	classType SSC_PARENT
+}
+characteristic IS_PART_OF_PP {
+	name "Is PP Component of:" 
+	classType SSC_PARENT
+}
+characteristic BOM_POSITION_NUMBER {
+	name "Part_of item number" 
+	textLength 4 
+	reference table 'CUXE1CUPRT' field 'PART_OF_NO'
+}
+characteristic BOM_POSITION_CLASS_TYPE {
+	name "Class Type" 
+	textLength 3 
+	reference table 'CUXE1CUPRT' field 'CLASS_TYPE'
+}
+characteristic BOM_POSITION_OBJECT_KEY {
+	name "Object key" 
+	textLength 30 reference table 'CUXE1CUPRT' field 'OBJ_KEY'
+}
+characteristic BOM_POSITION_OBJECT_TYPE {
+	name "Object type" 
+	textLength 10 reference table 'CUXE1CUPRT' field 'OBJ_TYPE'
+}
+characteristic BOM_POSITION_QUANTITY {
+	names EN 'Component quantity', DE 'Komponentenmenge' 
+	numericLength 13 decimalPlaces 3 
+	negativeValues 
+	reference table 'STPO' field 'MENGE'
+}
+characteristic BOM_POSITION_QUANTITY_ORDERED {
+	names EN "Actually Specified Conmponent Qty" 
+	numericLength 13 decimalPlaces 3 
+	negativeValues
+}
+characteristic BOM_POSITION_QUANTITY_NUMCHAR {
+	names EN 'Component Quantity Numchar' 
+	textLength 6
+}
+characteristic BOM_POSITION_QUANTITY_DISPLAY {
+	names EN 'Component Quantity for display' 
+	numericLength 6
+}
+characteristic BOM_POSITION_QUANTITY_IS_FIXED {
+	names EN "Is fixed quantity BOM item" 
+	textLength 3 
+	values 'YES','NO'
+}
+characteristic HAS_PART_SD_HARD {
+	name "Has SD Component (Hard):" 
+	classType SSC_CHILD 
+	multiValue
+}
+characteristic HAS_PART_SD_SOFT {
+	name "Has SD Component (Soft):" 
+	classType SSC_CHILD 
+	multiValue
+}
+characteristic HAS_PART_PP {
+	name "Has PP Component:" 
+	classType SSC_CHILD 
+	multiValue
+}
+characteristic BOM_POSITION_DETAILS_MV {
+	names EN "BOM Position Details" 
+	textLength 30 
+	multiValue
+}
+characteristic BOM_FIXED_QTY_DETAILS_MV {
+	names EN "BOM Position Fixed Qty Details" 
+	textLength 30 
+	multiValue
+}
+characteristic SSC_CLASS {
+	name "SSC Class" 
+	textLength 18
+}
+characteristic ECC_KB_NAME {
+	name "Knowledge-Base Object" 
+	textLength 30 
+	reference table 'SCEKB'  field 'KBOBJNAME'
+}
+characteristic ECC_KB_VERSION {
+	name "Runtime Version of SCE Knowledge base" 
+	textLength 30 
+	reference table 'SCEKB' field 'VERSION'
+}
+characteristic NON_CONFIGURABLE_TYPES_IN_ECC {
+	names EN "Non-configurable Types in ECC" 
+	textLength 30 
+	multiValue
+}
+characteristic SDCOM_VKOND {
+	names
+		EN 'Variant condition',
+		DE 'Variantenkondition'
+	textLength 26
+	caseSensitive
+	multiValue
+	reference table 'SDCOM' field 'VKOND'
+}
+
+characteristic STPO_MENGE {
+	names
+		EN 'Component quantity',
+		DE 'Komponentenmenge'
+	numericLength 13 decimalPlaces 3
+	negativeValues
+	reference table 'STPO' field 'MENGE'
+}
+
+characteristic VBAP_NTGEW {
+	names
+		EN 'Net Weight of the Item',
+		DE 'Nettogewicht der Position'
+	numericLength 15 decimalPlaces 3
+	reference table 'VBAP' field 'NTGEW'
+}
+
+characteristic VBAP_VOLUM {
+	names
+		EN 'Volume of the itemnames',
+		DE 'Volumen der Position'
+	numericLength 15 decimalPlaces 3
+	reference table 'VBAP' field 'VOLUM'
+}
+
+characteristic VCSD_UPDATE_NTGEW {
+	names
+		EN 'Net Weight of the Item',
+		DE 'Nettogewicht der Position'
+	numericLength 15 decimalPlaces 3
+	reference table 'VCSD_UPDATE' field 'NTGEW'
+}
+
+characteristic VCSD_UPDATE_VOLUM {
+	names
+		EN 'Volume of the itemnames',
+		DE 'Volumen der Position'
+	numericLength 15 decimalPlaces 3
+	reference table 'VCSD_UPDATE' field 'VOLUM'
+}
+characteristic BOM_PARENT_INSTANCE {
+	name "BOM_PARENT_INSTANCE"
+	classType SSC_PARENT
+}
+//Generic Cstics for Creating new Part Instances; these identify the names of the Characteristics that will be set on the Instantiated Part Instance
+characteristic IDENTIFYING_CSTIC_NAME_1 {name "Identifying Cstic Name 1" textLength 30}
+characteristic IDENTIFYING_CSTIC_NAME_2 {name "Identifying Cstic Name 2" textLength 30} 
+characteristic IDENTIFYING_CSTIC_NAME_3 {name "Identifying Cstic Name 3" textLength 30}
+characteristic IDENTIFYING_CSTIC_NAME_4 {name "Identifying Cstic Name 4" textLength 30}
+characteristic IDENTIFYING_CSTIC_NAME_5 {name "Identifying Cstic Name 5" textLength 30}
+
+//Generic Cstics for Creating new Part Instances; these receive the Text Values that will be assigned to the Characteistics of the same "number" above
+characteristic IDENTIFYING_CSTIC_VAL_S_1 {name "Identifying Cstic S Value 1" textLength 30}
+characteristic IDENTIFYING_CSTIC_VAL_S_2 {name "Identifying Cstic S Value 2" textLength 30}
+characteristic IDENTIFYING_CSTIC_VAL_S_3 {name "Identifying Cstic S Value 3" textLength 30}
+characteristic IDENTIFYING_CSTIC_VAL_S_4 {name "Identifying Cstic S Value 4" textLength 30}
+characteristic IDENTIFYING_CSTIC_VAL_S_5 {name "Identifying Cstic S Value 5" textLength 30}
+
+//Generic Cstics for Creating new Part Instances; these receive the Numeric Values that will be assigned to the Characterstics of the same "number" above
+characteristic IDENTIFYING_CSTIC_VAL_F_1 {name "Identifying Cstic F Value 1" numericLength 10}
+characteristic IDENTIFYING_CSTIC_VAL_F_2 {name "Identifying Cstic F Value 2" numericLength 10}
+characteristic IDENTIFYING_CSTIC_VAL_F_3 {name "Identifying Cstic F Value 3" numericLength 10}
+characteristic IDENTIFYING_CSTIC_VAL_F_4 {name "Identifying Cstic F Value 4" numericLength 10}
+characteristic IDENTIFYING_CSTIC_VAL_F_5 {name "Identifying Cstic F Value 5" numericLength 10}
+
+//Generic Cstics for Creating new Part Instances; these receive the Instance Values that will be assigned to the Characterstics of the same "number" above
+characteristic IDENTIFYING_CSTIC_VAL_A_1 {name "Identifying Cstic A Value 1" classType SSC_INST}
+characteristic IDENTIFYING_CSTIC_VAL_A_2 {name "Identifying Cstic A Value 2" classType SSC_INST}
+characteristic IDENTIFYING_CSTIC_VAL_A_3 {name "Identifying Cstic A Value 3" classType SSC_INST}
+characteristic IDENTIFYING_CSTIC_VAL_A_4 {name "Identifying Cstic A Value 4" classType SSC_INST}
+characteristic IDENTIFYING_CSTIC_VAL_A_5 {name "Identifying Cstic A Value 5" classType SSC_INST}
+
+//Generic Cstics for setting newly created Part Instances as Values of a Referencing (ADT) Characteristic on an Objects section Instance
+characteristic REFERENCING_INSTANCE {name "Referencing Instance" classType SSC_INST}
+characteristic REFERENCING_CSTIC_NAME {name "Referencing Cstic Name" textLength 30}

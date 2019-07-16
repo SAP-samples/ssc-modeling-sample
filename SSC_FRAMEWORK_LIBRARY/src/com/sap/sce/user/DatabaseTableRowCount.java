@@ -19,18 +19,17 @@ import com.sap.sxe.db.sys_query_pair;
 import com.sap.sxe.db.table;
 import com.sap.sxe.db.tables;
 import com.sap.sxe.db.type_info;
-import com.sap.sxe.sys.exc.exc_database_error;
 import com.sap.sxe.tms.imp.tmsc_trigger;
 import com.sap.sxe.tms.imp.tmse_jtype;
 import com.sap.sxe.util.bdt_type;
-import com.sap.sxe.util.bdt_value;
 import com.sap.sxe.util.binding;
+import com.sap.sxe.util.cstic_value;
 import com.sap.sxe.util.float_value;
 import com.sap.sxe.util.symbol_value;
 import com.sap.sxe.util.imp.float_value_imp;
 import com.sap.sxe.util.imp.symbol_value_imp;
 
-public class DATABASE_TABLE_LOOKUP implements sce_user_fn{
+public class DatabaseTableRowCount implements sce_user_fn{
 	private static final long serialVersionUID = 1;
 	private static String tableNameCsticName      = "TABLE_NAME";
 	private static String tableInputCsticNameBase = "TABLE_INPUT_CSTIC_NAME";
@@ -54,8 +53,7 @@ public class DATABASE_TABLE_LOOKUP implements sce_user_fn{
 		res result =  queryNormalTable(args, kb, tableNameCsticName);
 		if (result == null)  return true;
 
-		setOutputValues(args,result,outputInst,userOwner,trigger,jtype);
-		return true;
+		setRowCount (args,result,outputInst,userOwner,trigger,jtype);		return true;
 	}
 	///////////// query the table
 	res queryNormalTable(fn_args args, kb kb, String tableNameCsticName) {
@@ -157,30 +155,17 @@ public class DATABASE_TABLE_LOOKUP implements sce_user_fn{
 
 	String formNameCsticName (int index) {  return String.format("%s_%d", tableInputCsticNameBase, index); }
 	String formValCsticName (String type, int index) {   return String.format("%s_%s_%d",  tableInputCsticValBase, type, index); }
-	///////////   output the results to the output cstic
-	void setOutputValues (
+	//////////// get and output the row count
+	void setRowCount (
 			fn_args args,res result,ddbc_inst outputInst,
 			explc_owner userOwner,tmsc_trigger trigger,int jtype) {
-		if (result.db_eof_p())    return;
-		kb_cstic outputCstic = getOutputCstic(args, outputInst);
-		if (outputCstic == null)    return;
-		bdt_type descriptor = null;
-		try { // not handling non-bdt cstics. Should we try to interpret numbers or strings as ADT IDs?
-			descriptor = (bdt_type)outputCstic.kb_get_type_descriptor();
-			try { // if we get an exception, jump out and give up.
-				do {
-					bdt_value rowVal = getOutputValue(result,descriptor);
-					// How should we respond to null: continue, break, or throw exception?
-					if (rowVal == null)   continue; // decided on continue
-					outputInst.ddb_set_val(outputCstic,rowVal,userOwner,trigger,jtype);
-				} while (result.db_next_row_p());
-			}
-			catch (IllegalArgumentException iaExc) {}
-			catch (exc_database_error excDB) {}
-		}
-		catch (ClassCastException ccExc) { } 
-	}
+		kb_cstic rowCountCstic = getOutputCstic(args, outputInst);
+		if (rowCountCstic == null)     return;
 
+		cstic_value rowCountVal = getCsticValueFromValAndType(getRowCount(result), rowCountCstic);
+		outputInst.ddb_set_val(rowCountCstic,rowCountVal,userOwner,trigger,jtype);
+	}
+	
 	kb_cstic getOutputCstic(fn_args args, ddbc_inst outputInst) {
 		oo_class instType = (oo_class)outputInst.ddb_get_inst_type();
 		if (instType == null) return null;
@@ -189,41 +174,34 @@ public class DATABASE_TABLE_LOOKUP implements sce_user_fn{
 		if (outputCsticName == null)   return null;
 		return instType.kb_has_cstic_p(outputCsticName);
 	}
-	
+
 	String getOutputCsticName (fn_args args) {
 		return getStringFromArgs(args, outputCsticCsticName);
 	}
-
-	// assumption: we are projecting exactly one column, so the column number is always 0.
-	bdt_value getOutputValue(res result,bdt_type descriptor) {
-		int colType = result.db_get_col_type(0);
-		int descriptorTypeCode = descriptor.get_type_code();
-		switch (descriptorTypeCode) {
-		case bdt_type.C_FLOAT_TYPE_DESCRIPTOR:
-		case bdt_type.C_INTEGER_TYPE_DESCRIPTOR:
-			switch (colType) {
-			case res.C_FLOAT_TYPE:
-			case res.C_INTEGER_TYPE:
-				return  descriptor.bdt_value_from_db(result, 0);
-			case res.C_NCHAR_TYPE:
-			case res.C_VARCHAR_TYPE:
-			case res.C_NVARCHAR_TYPE:
-				return float_value_imp.get_float_value(result.db_get_row_element_string(0));
-			}
-		case bdt_type.C_STRING_TYPE_DESCRIPTOR:
-			return symbol_value_imp.get_symbol_value(result.db_get_row_element_as_string(0));
-		}
-		return  descriptor.bdt_value_from_db(result, 0);
+	
+	int getRowCount(res result) {
+			if (result.db_eof_p())
+				return 0;
+			int rowCount = 0;
+			do {  rowCount++; }  while (result.db_next_row_p());
+			return rowCount;
 	}
 	
-	//////////////  utils for getting bindings
-	float_value getFloatValue (int intVal) {
-		return float_value_imp.get_float_value(new Double(intVal));
+	// We have been passed an int or a float value.
+	// We will return the appropriate cstic_value for that input
+	cstic_value getCsticValueFromValAndType(double value, kb_cstic cstic) {
+		try {
+			switch (((bdt_type)cstic.kb_get_type_descriptor()).get_type_code()) {
+				case bdt_type.C_FLOAT_TYPE_DESCRIPTOR:
+				case bdt_type.C_INTEGER_TYPE_DESCRIPTOR:
+					return  float_value_imp.get_float_value(value);
+				case bdt_type.C_STRING_TYPE_DESCRIPTOR:
+					return symbol_value_imp.get_symbol_value(Double.toString(value));
+				default: return null;
+			}
+		}
+		catch (ClassCastException ccExc){ return null; }
 	}
-	float_value getFloatValueDouble (Double doubleVal) {
-		return float_value_imp.get_float_value(doubleVal);
-	}
-
 	//////////////  Utils for accessing the args
 	//returns a symbol_value or a float_value. We don't care which.
 	binding getBindingFromArgs (fn_args args, String csticName) {

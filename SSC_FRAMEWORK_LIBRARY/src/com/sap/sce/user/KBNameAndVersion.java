@@ -9,7 +9,7 @@ import com.sap.sxe.tms.imp.tmsc_trigger;
 import com.sap.sxe.tms.imp.tmse_jtype;
 import com.sap.sxe.util.imp.symbol_value_imp;
 
-public class GET_KB_NAME_AND_VERSION implements sce_user_fn {
+public class KBNameAndVersion implements sce_user_fn {
 	
 	static final long serialVersionUID = 0;
 	

@@ -1,0 +1,8 @@
+class KBO_GLOBALS extends SYNCHRONIZER {names EN "KBO Globals"
+	characteristics
+	KBO_GLOBAL_CSTIC_1
+}
+
+characteristic KBO_GLOBAL_CSTIC_1 {names EN "KBO Global Characteristic 1" textLength 20}
+
+material KBO_GLOBALS {names EN "KBO Globals" classes KBO_GLOBALS}

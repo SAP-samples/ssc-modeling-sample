@@ -37,38 +37,3 @@ function HAS_PART {
 	REFERENCING_CSTIC_NAME primary //For identifying the name of the ADT to be set to the newly created Part Instance
 }
 
-characteristic BOM_PARENT_INSTANCE {
-	name "BOM_PARENT_INSTANCE"
-	classType SSC_PARENT
-}
-//Generic Cstics for Creating new Part Instances; these identify the names of the Characteristics that will be set on the Instantiated Part Instance
-characteristic IDENTIFYING_CSTIC_NAME_1 {name "Identifying Cstic Name 1" textLength 30}
-characteristic IDENTIFYING_CSTIC_NAME_2 {name "Identifying Cstic Name 2" textLength 30}
-characteristic IDENTIFYING_CSTIC_NAME_3 {name "Identifying Cstic Name 3" textLength 30}
-characteristic IDENTIFYING_CSTIC_NAME_4 {name "Identifying Cstic Name 4" textLength 30}
-characteristic IDENTIFYING_CSTIC_NAME_5 {name "Identifying Cstic Name 5" textLength 30}
-
-//Generic Cstics for Creating new Part Instances; these receive the Text Values that will be assigned to the Characteistics of the same "number" above
-characteristic IDENTIFYING_CSTIC_VAL_S_1 {name "Identifying Cstic S Value 1" textLength 30}
-characteristic IDENTIFYING_CSTIC_VAL_S_2 {name "Identifying Cstic S Value 2" textLength 30}
-characteristic IDENTIFYING_CSTIC_VAL_S_3 {name "Identifying Cstic S Value 3" textLength 30}
-characteristic IDENTIFYING_CSTIC_VAL_S_4 {name "Identifying Cstic S Value 4" textLength 30}
-characteristic IDENTIFYING_CSTIC_VAL_S_5 {name "Identifying Cstic S Value 5" textLength 30}
-
-//Generic Cstics for Creating new Part Instances; these receive the Numeric Values that will be assigned to the Characterstics of the same "number" above
-characteristic IDENTIFYING_CSTIC_VAL_F_1 {name "Identifying Cstic F Value 1" numericLength 10}
-characteristic IDENTIFYING_CSTIC_VAL_F_2 {name "Identifying Cstic F Value 2" numericLength 10}
-characteristic IDENTIFYING_CSTIC_VAL_F_3 {name "Identifying Cstic F Value 3" numericLength 10}
-characteristic IDENTIFYING_CSTIC_VAL_F_4 {name "Identifying Cstic F Value 4" numericLength 10}
-characteristic IDENTIFYING_CSTIC_VAL_F_5 {name "Identifying Cstic F Value 5" numericLength 10}
-
-//Generic Cstics for Creating new Part Instances; these receive the Instance Values that will be assigned to the Characterstics of the same "number" above
-characteristic IDENTIFYING_CSTIC_VAL_A_1 {name "Identifying Cstic A Value 1" classType SSC_INST}
-characteristic IDENTIFYING_CSTIC_VAL_A_2 {name "Identifying Cstic A Value 2" classType SSC_INST}
-characteristic IDENTIFYING_CSTIC_VAL_A_3 {name "Identifying Cstic A Value 3" classType SSC_INST}
-characteristic IDENTIFYING_CSTIC_VAL_A_4 {name "Identifying Cstic A Value 4" classType SSC_INST}
-characteristic IDENTIFYING_CSTIC_VAL_A_5 {name "Identifying Cstic A Value 5" classType SSC_INST}
-
-//Generic Cstics for setting newly created Part Instances as Values of a Referencing (ADT) Characteristic on an Objects section Instance
-characteristic REFERENCING_INSTANCE {name "Referencing Instance" classType SSC_INST}
-characteristic REFERENCING_CSTIC_NAME {name "Referencing Cstic Name" textLength 30}

@@ -17,7 +17,7 @@ import com.sap.sxe.util.imp.float_value_imp;
 import com.sap.sxe.util.imp.symbol_value_imp;
 
 
-public class HAS_PART implements sce_user_fn {
+public class HasPartHelper implements sce_user_fn {
 	
 	static final long serialVersionUID = 0;
 	private static int C_CLASS_TYPE_DESCRIPTOR = 0;
