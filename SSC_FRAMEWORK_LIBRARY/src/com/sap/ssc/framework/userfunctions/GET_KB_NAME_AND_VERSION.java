@@ -1,15 +1,18 @@
-package com.sap.sce.user;
+package com.sap.ssc.framework.userfunctions;
 
 import com.sap.sce.engine.cfg.cfg_imp;
 import com.sap.sce.engine.ddb.ddbc_inst;
 import com.sap.sce.engine.expl.explc_owner;
 import com.sap.sce.kbrt.kb;
 import com.sap.sce.kbrt.kb_cstic;
+import com.sap.sce.user.fn_args;
+import com.sap.sce.user.fn_args_deluxe;
+import com.sap.sce.user.sce_user_fn;
 import com.sap.sxe.tms.imp.tmsc_trigger;
 import com.sap.sxe.tms.imp.tmse_jtype;
 import com.sap.sxe.util.imp.symbol_value_imp;
 
-public class KBNameAndVersion implements sce_user_fn {
+public class GET_KB_NAME_AND_VERSION implements sce_user_fn {
 	
 	static final long serialVersionUID = 0;
 	

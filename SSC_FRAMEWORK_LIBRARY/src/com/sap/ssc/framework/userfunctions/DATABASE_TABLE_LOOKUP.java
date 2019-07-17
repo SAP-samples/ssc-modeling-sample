@@ -1,5 +1,5 @@
 
-package com.sap.sce.user;
+package com.sap.ssc.framework.userfunctions;
 
 import java.util.Vector;
 import com.sap.sce.engine.cfg.cfg_imp;
@@ -9,6 +9,9 @@ import com.sap.sce.kbrt.kb;
 import com.sap.sce.kbrt.kb_class_query;
 import com.sap.sce.kbrt.kb_cstic;
 import com.sap.sce.kbrt.oo_class;
+import com.sap.sce.user.fn_args;
+import com.sap.sce.user.fn_args_deluxe;
+import com.sap.sce.user.sce_user_fn;
 import com.sap.sxe.db.column;
 import com.sap.sxe.db.columns;
 import com.sap.sxe.db.conn;
@@ -30,7 +33,7 @@ import com.sap.sxe.util.symbol_value;
 import com.sap.sxe.util.imp.float_value_imp;
 import com.sap.sxe.util.imp.symbol_value_imp;
 
-public class DatabaseTableLookup implements sce_user_fn{
+public class DATABASE_TABLE_LOOKUP implements sce_user_fn{
 	private static final long serialVersionUID = 1;
 	private static String tableNameCsticName      = "TABLE_NAME";
 	private static String tableInputCsticNameBase = "TABLE_INPUT_CSTIC_NAME";

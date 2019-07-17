@@ -1,8 +1,7 @@
 
-package com.sap.sce.user;
-//import com.sap.sce.engine.ddb_inst;
-import java.util.Vector;
+package com.sap.ssc.framework.userfunctions;
 
+import java.util.Vector;
 import com.sap.sce.engine.cfg.cfg_imp;
 import com.sap.sce.engine.ddb.ddbc_inst;
 import com.sap.sce.engine.expl.explc_owner;
@@ -14,47 +13,40 @@ import com.sap.sce.kbrt.kb_query_table_result;
 import com.sap.sce.kbrt.kb_table;
 import com.sap.sce.kbrt.oo_class;
 import com.sap.sce.kbrt.imp.kb_cstic_seq_imp;
+//import com.sap.sce.kbrt.imp.kb_imp;
 import com.sap.sce.kbrt.imp.kb_table_access_imp;
 import com.sap.sce.kbrt.imp.kb_table_imp;
+import com.sap.sce.user.fn_args;
+import com.sap.sce.user.fn_args_deluxe;
+import com.sap.sce.user.sce_user_fn;
 import com.sap.sxe.db.res;
 import com.sap.sxe.tms.imp.tmsc_trigger;
 import com.sap.sxe.tms.imp.tmse_jtype;
 import com.sap.sxe.util.bdt_type;
-import com.sap.sxe.util.bdt_value;
 import com.sap.sxe.util.binding;
 import com.sap.sxe.util.cstic_type_descriptor;
 import com.sap.sxe.util.cstic_value;
-import com.sap.sxe.util.domain;
 import com.sap.sxe.util.float_value;
-import com.sap.sxe.util.numeric_domain;
-import com.sap.sxe.util.numeric_value;
-import com.sap.sxe.util.symbol_domain;
 import com.sap.sxe.util.symbol_value;
 import com.sap.sxe.util.imp.float_value_imp;
 import com.sap.sxe.util.imp.symbol_value_imp;
 
-public class VariantTableLookUp implements sce_user_fn{
+public class VARIANT_TABLE_ROW_COUNT implements sce_user_fn{
 	private static final long serialVersionUID = 1;
 	private static String tableNameCsticName      = "TABLE_NAME";
 	private static String tableInputCsticNameBase = "TABLE_INPUT_CSTIC_NAME";
 	private static String tableInputCsticValBase  = "TABLE_INPUT_CSTIC_VAL";
 	private static String tableOutputCsticName    = "TABLE_OUTPUT_CSTIC_NAME";
-	private static String lookupTypeCsticName     = "TABLE_LOOKUP_TYPE";
-	private static String defaultLookupType       = "MULTIPLE_VALUE";
-	private static String getRowCountFlagName     = "VT_GET_ROW_COUNT";
 	private static String outputInstCsticName     = "OUTPUT_INSTANCE";
 	private static String outputCsticCsticName    = "OUTPUT_INSTANCE_CSTIC_NAME";
 	private static int noCsticTypeFound           = -999999;
 
 	// This method assumes the = operator, because that is the only thing accepted by the variant table APIs.
 	public boolean execute (fn_args args_raw, Object obj) {
-		cfg_imp cfg = (cfg_imp)obj;
-		if (cfg.cfg_get_ddb().ddbx_simulation_mode_p()) {return true;}  // just simulating. get the hell out of here.
-		
 		fn_args_deluxe args = (fn_args_deluxe)args_raw;
 		tmsc_trigger trigger = args.get_trigger();
 		int jtype = tmse_jtype.C_SPECIAL;
-
+		cfg_imp cfg = (cfg_imp)obj;
 		explc_owner userOwner = (explc_owner)cfg.tms_get_user_owner();
 		kb kb = cfg.cfg_get_kb();
 		ddbc_inst outputInst = getInstFromArgs(args,outputInstCsticName);
@@ -62,14 +54,13 @@ public class VariantTableLookUp implements sce_user_fn{
 		
 		kb_table table = getTable(args, kb, tableNameCsticName); //Get reference to the table
 		if (table == null)   return true;	
-		
-		kb_query_table_result result = getVtableResultSet(args, table);
+
+		kb_query_table_result result = getVtableResultSet(args, kb, table);
 		if (result == null)  return true;
-				
-		setOutputValues(args,result,outputInst,userOwner,trigger,jtype);
+
+		setRowCount (args,result,outputInst,userOwner,trigger,jtype);
 		return true;
 	}
-
 	/////////////   finding the table
 	kb_table getTable (fn_args args, kb kb, String tableNameCsticName) {
 		String tableName = getStringFromArgs(args, tableNameCsticName);
@@ -79,7 +70,7 @@ public class VariantTableLookUp implements sce_user_fn{
 	}
 
 	//////////// performing the lookup
-	kb_query_table_result getVtableResultSet(fn_args args, kb_table table) {
+	kb_query_table_result getVtableResultSet(fn_args args, kb kb, kb_table table) {
 		Object[] keySpec = getKeySpec(args, table);
 		kb_class_query_seq query_seq  = getQuerySeq(keySpec,table);
 		kb_cstic_seq_imp projection = getProjection(args, table);
@@ -141,57 +132,17 @@ public class VariantTableLookUp implements sce_user_fn{
 	String getProjectionFieldName (fn_args args) {
 		return getStringFromArgs(args, tableOutputCsticName);
 	}
-	
-
-	///////////////// put the output values into the output cstic
-
-	void setOutputValues (
-			fn_args args,kb_query_table_result result,ddbc_inst outputInst,
+	//////////////  For getting the row count
+	void setRowCount (
+			fn_args args,Object result,ddbc_inst outputInst,
 			explc_owner userOwner,tmsc_trigger trigger,int jtype) {
-		kb_cstic outputCstic = getOutputCstic(args, outputInst);
-		if (outputCstic == null)  return;
-		if (getLookupType(args).equals("MULTIPLE_VALUE"))
-			setMultipleValues(result, outputInst, outputCstic, userOwner, trigger, jtype);
-		else
-			setDomainRestriction(result, outputInst, outputCstic, userOwner, trigger, jtype);
-	}
-	
-	// the default lookup type is MULTIPLE_VALUE, but we also support DOMAIN_RESTRICTIONS
-	private String getLookupType(fn_args args) {
-		String inputLookupType = args.get_value(lookupTypeCsticName);
-		if (inputLookupType != null)
-			return inputLookupType;
-		return defaultLookupType;
-	}
-	
-	void setMultipleValues (kb_query_table_result result, ddbc_inst outputInst,kb_cstic outputCstic,
-			explc_owner userOwner,tmsc_trigger trigger,int jtype){
-		for (int row = 0; row < result.kb_get_row_count();row++) {
-			bdt_value rowVal = result.kb_elt(row, 0);
-			outputInst.ddb_set_val(outputCstic,rowVal,userOwner,trigger,jtype);
-		}
-	}
-	
-	void setDomainRestriction (kb_query_table_result result, ddbc_inst outputInst,kb_cstic outputCstic,
-			explc_owner userOwner,tmsc_trigger trigger,int jtype){
-		domain dom = null;
-		boolean domInitialized = false;
-		for (int row = 0; row < result.kb_get_row_count();row++) {
-			bdt_value rowVal = result.kb_elt(row, 0);
-			if (!domInitialized){dom = getDom(rowVal); domInitialized = true;}
-			dom.util_push(rowVal);
-		}
-		outputInst.ddb_restrict_dom(outputCstic,dom,userOwner,trigger,jtype);
-	}
-	
-	domain getDom(bdt_value sampleValue) {
-		if (sampleValue instanceof symbol_value)
-			return new symbol_domain();
-		if (sampleValue instanceof numeric_value)
-			return new numeric_domain();
-		return null;
-	}
+		kb_cstic rowCountCstic = getOutputCstic(args, outputInst);
+		if (rowCountCstic == null)     return;
 
+		cstic_value rowCountVal = getCsticValueFromValAndType(getRowCount(result), rowCountCstic);
+		outputInst.ddb_set_val(rowCountCstic,rowCountVal,userOwner,trigger,jtype);
+	}
+	
 	kb_cstic getOutputCstic(fn_args args, ddbc_inst outputInst) {
 		oo_class instType = (oo_class)outputInst.ddb_get_inst_type();
 		if (instType == null) return null;
@@ -205,23 +156,6 @@ public class VariantTableLookUp implements sce_user_fn{
 		return getStringFromArgs(args, outputCsticCsticName);
 	}
 
-	//////////////  For getting the row count
-	void setRowCount (
-			fn_args args,Object result,ddbc_inst outputInst,
-			explc_owner userOwner,tmsc_trigger trigger,int jtype) {
-		oo_class instType = (oo_class)outputInst.ddb_get_inst_type();
-		if (instType == null) return;
-
-		String outputCsticName = getStringFromArgs(args, outputCsticCsticName);
-		if (outputCsticName == null)   return ;
-
-		kb_cstic rowCountCstic = instType.kb_has_cstic_p(outputCsticName);
-		if (rowCountCstic == null)     return;
-
-		cstic_value rowCountVal = getCsticValueFromValAndType(getRowCount(result), rowCountCstic);
-		outputInst.ddb_set_val(rowCountCstic,rowCountVal,userOwner,trigger,jtype);
-	}
-	
 	int getRowCount(Object result) {
 		if (result instanceof kb_query_table_result)
 			return ((kb_query_table_result)result).kb_get_row_count();

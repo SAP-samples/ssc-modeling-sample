@@ -1,4 +1,4 @@
-package com.sap.sce.user;
+package com.sap.ssc.framework.userfunctions;
 
 import com.sap.sce.engine.cfg.cfg_imp;
 import com.sap.sce.engine.ddb.ddbc_inst;
@@ -9,6 +9,9 @@ import com.sap.sce.kbrt.kb_class_query_seq;
 import com.sap.sce.kbrt.kb_cstic;
 import com.sap.sce.kbrt.kb_decomp_item;
 import com.sap.sce.kbrt.oo_class;
+import com.sap.sce.user.fn_args;
+import com.sap.sce.user.fn_args_deluxe;
+import com.sap.sce.user.sce_user_fn;
 import com.sap.sxe.tms.imp.tmsc_trigger;
 import com.sap.sxe.tms.imp.tmse_jtype;
 import com.sap.sxe.util.bdt_type;
@@ -17,7 +20,7 @@ import com.sap.sxe.util.imp.float_value_imp;
 import com.sap.sxe.util.imp.symbol_value_imp;
 
 
-public class HasPartHelper implements sce_user_fn {
+public class HAS_PART implements sce_user_fn {
 	
 	static final long serialVersionUID = 0;
 	private static int C_CLASS_TYPE_DESCRIPTOR = 0;
