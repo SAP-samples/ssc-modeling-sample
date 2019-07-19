@@ -1,0 +1,259 @@
+class KBO_PRODUCT extends SSC_PARENT {names EN "KBO Product"
+	characteristics
+	KBO_PRODUCT_IDENTIFIER,
+	KBO_PRODUCT_CSTIC_AGGR,
+	KBO_PRODUCT_CSTIC_4,
+	KBO_PRODUCT_CSTIC_5,
+	KBO_PRODUCT_CSTIC_6,
+	KBO_PRODUCT_CSTIC_7,
+	KBO_PRODUCT_CSTIC_8,
+	KBO_PRODUCT_CSTIC_9,
+	KBO_OTHER_PRODUCT_IDENTIFIERS invisible,
+	KBO_MAKE_COMPONENT
+}
+
+characteristic KBO_PRODUCT_IDENTIFIER {names EN "KBO Product Identifier" textLength 20 restrictable
+	values
+	"KBO_PRODUCT_A" names EN "KBO Product A",
+	"KBO_PRODUCT_B" names EN "KBO Product B",
+	"KBO_PRODUCT_C" names EN "KBO Product C",
+	"KBO_PRODUCT_D" names EN "KBO Product D"
+}
+
+characteristic KBO_PRODUCT_CSTIC_4 {names EN "KBO Product Characteristic Four" textLength 30 restrictable
+	values
+	"CSTIC_4_AAA" names EN "Product Characteristic Four Value AAA",
+	"CSTIC_4_BBB" names EN "Product Characteristic Four Value BBB",	
+	"CSTIC_4_CCC" names EN "Product Characteristic Four Value CCC",
+	"CSTIC_4_DDD" names EN "Product Characteristic Four Value DDD",
+	"CSTIC_4_EEE" names EN "Product Characteristic Four Value EEE",
+	"CSTIC_4_FFF" names EN "Product Characteristic Four Value FFF"	
+}
+
+characteristic KBO_PRODUCT_CSTIC_5 {names EN "KBO Product Characteristic Five" textLength 30 restrictable
+	values
+	"CSTIC_5_AAA" names EN "Product Characteristic Five Value AAA",
+	"CSTIC_5_BBB" names EN "Product Characteristic Five Value BBB",	
+	"CSTIC_5_CCC" names EN "Product Characteristic Five Value CCC",
+	"CSTIC_5_DDD" names EN "Product Characteristic Five Value DDD",
+	"CSTIC_5_EEE" names EN "Product Characteristic Five Value EEE",
+	"CSTIC_5_FFF" names EN "Product Characteristic Five Value FFF"
+}
+
+characteristic KBO_PRODUCT_CSTIC_6 {names EN "KBO Product Characteristic Six" textLength 30 restrictable
+	values
+	"CSTIC_6_AAA" names EN "Product Characteristic Six Value AAA",
+	"CSTIC_6_BBB" names EN "Product Characteristic Six Value BBB",	
+	"CSTIC_6_CCC" names EN "Product Characteristic Six Value CCC",
+	"CSTIC_6_DDD" names EN "Product Characteristic Six Value DDD",
+	"CSTIC_6_EEE" names EN "Product Characteristic Six Value EEE",
+	"CSTIC_6_FFF" names EN "Product Characteristic Six Value FFF"	
+}
+
+characteristic KBO_PRODUCT_CSTIC_7 {names EN "KBO Product Characteristic Seven" textLength 30 restrictable
+	values
+	"CSTIC_7_AAA" names EN "Product Characteristic Seven Value AAA",
+	"CSTIC_7_BBB" names EN "Product Characteristic Seven Value BBB",	
+	"CSTIC_7_CCC" names EN "Product Characteristic Seven Value CCC",
+	"CSTIC_7_DDD" names EN "Product Characteristic Seven Value DDD",
+	"CSTIC_7_EEE" names EN "Product Characteristic Seven Value EEE",
+	"CSTIC_7_FFF" names EN "Product Characteristic Seven Value FFF"
+	
+}
+
+characteristic KBO_PRODUCT_CSTIC_8 {names EN "KBO Product Characteristic Eight" textLength 30 restrictable
+	values
+	"CSTIC_8_AAA" names EN "Product Characteristic Eight Value AAA",
+	"CSTIC_8_BBB" names EN "Product Characteristic Eight Value BBB",	
+	"CSTIC_8_CCC" names EN "Product Characteristic Eight Value CCC",
+	"CSTIC_8_DDD" names EN "Product Characteristic Eight Value DDD",
+	"CSTIC_8_EEE" names EN "Product Characteristic Eight Value EEE",
+	"CSTIC_8_FFF" names EN "Product Characteristic Eight Value FFF"	
+}
+
+characteristic KBO_PRODUCT_CSTIC_9 {names EN "KBO Product Characteristic Nine" textLength 30 restrictable
+	values
+	"CSTIC_9_AAA" names EN "Product Characteristic Nine Value AAA",
+	"CSTIC_9_BBB" names EN "Product Characteristic Nine Value BBB",	
+	"CSTIC_9_CCC" names EN "Product Characteristic Nine Value CCC",
+	"CSTIC_9_DDD" names EN "Product Characteristic Nine Value DDD",
+	"CSTIC_9_EEE" names EN "Product Characteristic Nine Value EEE",
+	"CSTIC_9_FFF" names EN "Product Characteristic Nine Value FFF"
+	
+}
+
+characteristic KBO_PRODUCT_CSTIC_AGGR {names EN "KBO Product Characteristic Aggregator" numericLength 3 specialFunction aggregating}
+characteristic KBO_OTHER_PRODUCT_IDENTIFIERS {names EN "KBO Other Product Identifiers" textLength 20 multiValue}
+characteristic KBO_MAKE_COMPONENT {names EN "Make Product Component?" textLength 3 restrictable 
+	values "YES" names EN "Yes", "NO" names EN "No"
+}
+
+constraintNet PRODUCT_CNET {names EN "Product Constraints"
+	constraints
+	ASSIGN_PROD_MATERIAL_ID,
+	RSTR_CSTIC_7_CSTIC_4_DOM,
+	RSTR_CSTIC_8_CSTIC_5_DOM,
+	RSTR_CSTIC_9_CSTIC_6_DOM,
+	RSTR_CSTIC_9_CSTIC_8_DOM,
+	ASSIGN_SUB_PROD_DOM_TO_VAL,
+	MAKE_PRODUCT_A_COMPONENT,
+	MAKE_PRODUCT_B_COMPONENT,
+	MAKE_PRODUCT_C_COMPONENT,
+	MAKE_PRODUCT_D_COMPONENT
+}
+
+constraint ASSIGN_PROD_MATERIAL_ID {names EN "Assign Product Material ID"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT
+	restrictions:
+	?PROD.KBO_PRODUCT_IDENTIFIER = ?PROD.SSC_MATERIAL_ID
+}
+
+constraint RSTR_CSTIC_7_CSTIC_4_DOM {names EN "Synchronize Characteristic One and Four"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT
+	restrictions:
+	table CSTIC_7_CSTIC_4 (
+		KBO_PRODUCT_CSTIC_7 = ?PROD.domain KBO_PRODUCT_CSTIC_7,
+		KBO_PRODUCT_CSTIC_4 = ?PROD.domain KBO_PRODUCT_CSTIC_4		
+	)	
+	inferences:
+		?PROD.domain KBO_PRODUCT_CSTIC_7,
+		?PROD.domain KBO_PRODUCT_CSTIC_4		
+}
+
+constraint RSTR_CSTIC_8_CSTIC_5_DOM {names EN "Synchronize Characteristic One and Four"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT
+	restrictions:
+	table CSTIC_8_CSTIC_5 (
+		KBO_PRODUCT_CSTIC_8 = ?PROD.domain KBO_PRODUCT_CSTIC_8,
+		KBO_PRODUCT_CSTIC_5 = ?PROD.domain KBO_PRODUCT_CSTIC_5		
+	)	
+	inferences:
+		?PROD.domain KBO_PRODUCT_CSTIC_8,
+		?PROD.domain KBO_PRODUCT_CSTIC_5		
+}
+
+constraint RSTR_CSTIC_9_CSTIC_6_DOM {names EN "Synchronize Characteristic One and Four"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT
+	restrictions:
+	table CSTIC_9_CSTIC_6 (
+		KBO_PRODUCT_CSTIC_9 = ?PROD.domain KBO_PRODUCT_CSTIC_9,
+		KBO_PRODUCT_CSTIC_6 = ?PROD.domain KBO_PRODUCT_CSTIC_6		
+	)	
+	inferences:
+		?PROD.domain KBO_PRODUCT_CSTIC_9,
+		?PROD.domain KBO_PRODUCT_CSTIC_6		
+}
+
+constraint RSTR_CSTIC_9_CSTIC_8_DOM {names EN "Synchronize Characteristic One and Four"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT
+	restrictions:
+	table CSTIC_9_CSTIC_8 (
+		KBO_PRODUCT_CSTIC_9 = ?PROD.domain KBO_PRODUCT_CSTIC_9,
+		KBO_PRODUCT_CSTIC_8 = ?PROD.domain KBO_PRODUCT_CSTIC_8		
+	)	
+	inferences:
+		?PROD.domain KBO_PRODUCT_CSTIC_9,
+		?PROD.domain KBO_PRODUCT_CSTIC_8		
+}
+
+constraint ASSIGN_SUB_PROD_DOM_TO_VAL {names EN "Assign KBO Product Domain to Value"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT
+	restrictions:
+	?PROD.KBO_PRODUCT_CSTIC_4 = ?PROD.domain KBO_PRODUCT_CSTIC_4,	
+	?PROD.KBO_PRODUCT_CSTIC_5 = ?PROD.domain KBO_PRODUCT_CSTIC_5,	
+	?PROD.KBO_PRODUCT_CSTIC_6 = ?PROD.domain KBO_PRODUCT_CSTIC_6,
+	?PROD.KBO_PRODUCT_CSTIC_7 = ?PROD.domain KBO_PRODUCT_CSTIC_7,	
+	?PROD.KBO_PRODUCT_CSTIC_8 = ?PROD.domain KBO_PRODUCT_CSTIC_8,	
+	?PROD.KBO_PRODUCT_CSTIC_9 = ?PROD.domain KBO_PRODUCT_CSTIC_9	
+}
+
+ruleNet PRODUCT_RNET {names EN "Solution Rules"
+	rules
+	INCR_KBO_PROD_AGGR_SUB,
+	SYNCHRONIZE_PRODUCT_GLOBALS
+}
+
+rule INCR_KBO_PROD_AGGR_SUB {names EN "Increment KBO Product Aggregator"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT
+	condition:
+	?PROD.KBO_PRODUCT_CSTIC_9 specified or ?PROD.KBO_PRODUCT_CSTIC_8 specified or ?PROD.KBO_PRODUCT_CSTIC_7 specified
+	body:
+	then increment:
+	?PROD.KBO_PRODUCT_CSTIC_AGGR by 1
+}
+
+rule SYNCHRONIZE_PRODUCT_GLOBALS {names EN "Synchronize Solution Globals"
+	objects:
+	?KBO_GLOBALS is_object (material)(300)(nr=KBO_GLOBALS)
+	body:
+	then do:
+	pfunction SYNCHRONIZE_INSTANCE (
+	SYNCHRONIZED_INSTANCE = ?KBO_GLOBALS
+	)
+}
+
+class KBO_PRODUCT_A extends KBO_PRODUCT {names EN "KBO Product A"}
+material KBO_PRODUCT_A {names EN "KBO Product A" classes KBO_PRODUCT_A boms KBO_PRODUCT_BOM}
+
+class KBO_PRODUCT_B extends KBO_PRODUCT {names EN "KBO Product B"}
+material KBO_PRODUCT_B {names EN "KBO Product B" classes KBO_PRODUCT_B boms KBO_PRODUCT_BOM}
+
+class KBO_PRODUCT_C extends KBO_PRODUCT {names EN "KBO Product C"}
+material KBO_PRODUCT_C {names EN "KBO Product C" classes KBO_PRODUCT_C boms KBO_PRODUCT_BOM}
+
+class KBO_PRODUCT_D extends KBO_PRODUCT {names EN "KBO Product D"}
+material KBO_PRODUCT_D {names EN "KBO Product D" classes KBO_PRODUCT_D boms KBO_PRODUCT_BOM}
+
+bom KBO_PRODUCT_BOM {
+	05 material KBO_GLOBALS min 0 max 1,
+	10 class KBO_COMPONENT min 0 max 1
+}
+
+constraint MAKE_PRODUCT_A_COMPONENT {names EN "Make Product A Component"
+	objects:
+	?PROD is_object(material)(300)(nr=KBO_PRODUCT_A)
+	condition:
+	?PROD.KBO_MAKE_COMPONENT in ['YES']
+	restrictions:
+	has_part(?PROD, pos_type=(300)KBO_COMPONENT),
+	has_part(?PROD, pos_type=(material)(300)(nr=KBO_GLOBALS))
+}
+
+constraint MAKE_PRODUCT_B_COMPONENT {names EN "Make Product B Component"
+	objects:
+	?PROD is_object(material)(300)(nr=KBO_PRODUCT_B)
+	condition:
+	?PROD.KBO_MAKE_COMPONENT in ['YES']
+	restrictions:
+	has_part(?PROD, pos_type=(300)KBO_COMPONENT),
+	has_part(?PROD, pos_type=(material)(300)(nr=KBO_GLOBALS))
+}
+
+constraint MAKE_PRODUCT_C_COMPONENT {names EN "Make Product C Component"
+	objects:
+	?PROD is_object(material)(300)(nr=KBO_PRODUCT_C)
+	condition:
+	?PROD.KBO_MAKE_COMPONENT in ['YES']
+	restrictions:
+	has_part(?PROD, pos_type=(300)KBO_COMPONENT),
+	has_part(?PROD, pos_type=(material)(300)(nr=KBO_GLOBALS))
+		
+}
+
+constraint MAKE_PRODUCT_D_COMPONENT {names EN "Make Product D Component"
+	objects:
+	?PROD is_object(material)(300)(nr=KBO_PRODUCT_D)
+	condition:
+	?PROD.KBO_MAKE_COMPONENT in ['YES']
+	restrictions:
+	has_part(?PROD, pos_type=(300)KBO_COMPONENT),
+	has_part(?PROD, pos_type=(material)(300)(nr=KBO_GLOBALS))
+		
+}

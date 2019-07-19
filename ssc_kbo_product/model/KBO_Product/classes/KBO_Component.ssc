@@ -1,0 +1,118 @@
+class KBO_COMPONENT extends SSC_CHILD, SSC_PARENT {names EN "KBO Component"
+	characteristics
+	BOM_POSITION_QUANTITY_DISPLAY invisible,
+	KBO_COMPONENT_IDENTIFIER,
+	KBO_COMPONENT_CSTIC_1,
+	KBO_COMPONENT_CSTIC_2
+}
+
+characteristic KBO_COMPONENT_IDENTIFIER {names EN "KBO Component Identifier" textLength 20 restrictable
+	values
+	"KBO_COMPONENT_A" names EN "KBO Component A",
+	"KBO_COMPONENT_B" names EN "KBO Component B",
+	"KBO_COMPONENT_C" names EN "KBO Component C",
+	"KBO_COMPONENT_D" names EN "KBO Component D"
+}
+
+characteristic KBO_COMPONENT_CSTIC_1 {names EN "KBO Component Characteristic 1" textLength 30 restrictable
+	values
+	"CSTIC_1_AAA" names EN "Component Characteristic One Value AAA",
+	"CSTIC_1_BBB" names EN "Component Characteristic One Value BBB",	
+	"CSTIC_1_CCC" names EN "Component Characteristic One Value CCC",
+	"CSTIC_1_DDD" names EN "Component Characteristic One Value DDD",
+	"CSTIC_1_EEE" names EN "Component Characteristic One Value EEE",
+	"CSTIC_1_FFF" names EN "Component Characteristic One Value FFF"	
+}
+
+characteristic KBO_COMPONENT_CSTIC_2 {names EN "KBO Component Characteristic 2" textLength 30 restrictable
+	values
+	"CSTIC_2_AAA" names EN "Component Characteristic Two Value AAA",
+	"CSTIC_2_BBB" names EN "Component Characteristic Two Value BBB",	
+	"CSTIC_2_CCC" names EN "Component Characteristic Two Value CCC",
+	"CSTIC_2_DDD" names EN "Component Characteristic Two Value DDD",
+	"CSTIC_2_EEE" names EN "Component Characteristic Two Value EEE",
+	"CSTIC_2_FFF" names EN "Component Characteristic Two Value FFF"	
+}
+
+material KBO_COMPONENT_A {names EN "KBO Component A" classes KBO_COMPONENT boms KBO_COMPONENT_BOM}
+material KBO_COMPONENT_B {names EN "KBO Component B" classes KBO_COMPONENT boms KBO_COMPONENT_BOM}
+material KBO_COMPONENT_C {names EN "KBO Component C" classes KBO_COMPONENT boms KBO_COMPONENT_BOM}
+material KBO_COMPONENT_D {names EN "KBO Component D" classes KBO_COMPONENT boms KBO_COMPONENT_BOM}
+
+bom KBO_COMPONENT_BOM {10 class KBO_COMP_CONNECTOR min 0 max 99}
+
+constraintNet COMPONENT_CNET {names EN "Component Constraints"
+	constraints
+	SPECIALIZE_KBO_COMPONENT,
+	SET_COMP_ID_BY_PROD_ID,
+	MAKE_COMPONENT_A_CONNECTORS,
+	MAKE_COMPONENT_B_CONNECTORS,
+	MAKE_COMPONENT_C_CONNECTORS,
+	MAKE_COMPONENT_D_CONNECTORS
+}
+
+constraint SET_COMP_ID_BY_PROD_ID {names EN "Set Product ID by Component ID"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT,
+	?COMP is_a (300)KBO_COMPONENT
+	condition:
+	part_of (?COMP, ?PROD)
+	restrictions:
+	table PROD_ID_COMP_ID (
+	KBO_PRODUCT_IDENTIFIER = ?PROD.KBO_PRODUCT_IDENTIFIER,
+	KBO_COMPONENT_IDENTIFIER = ?COMP.KBO_COMPONENT_IDENTIFIER
+	)
+	inferences:
+	?COMP.KBO_COMPONENT_IDENTIFIER
+}
+
+constraint SPECIALIZE_KBO_COMPONENT {names EN "Specialize KBO Component"
+	objects:
+	?COMP is_a (300)KBO_COMPONENT
+	restrictions:
+	type_of (?COMP, (material)(300)(nr=KBO_COMPONENT_A)) if ?COMP.KBO_COMPONENT_IDENTIFIER in ['KBO_COMPONENT_A'],
+	type_of (?COMP, (material)(300)(nr=KBO_COMPONENT_B)) if ?COMP.KBO_COMPONENT_IDENTIFIER in ['KBO_COMPONENT_B'],	
+	type_of (?COMP, (material)(300)(nr=KBO_COMPONENT_C)) if ?COMP.KBO_COMPONENT_IDENTIFIER in ['KBO_COMPONENT_C'],	
+	type_of (?COMP, (material)(300)(nr=KBO_COMPONENT_D)) if ?COMP.KBO_COMPONENT_IDENTIFIER in ['KBO_COMPONENT_D']	
+}
+
+constraint MAKE_COMPONENT_A_CONNECTORS {names EN "Make Component A Connectors"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT where ?OPI = KBO_OTHER_PRODUCT_IDENTIFIERS,
+	?COMP_A is_object (material)(300)(nr=KBO_COMPONENT_A)
+	condition:
+	part_of (?COMP_A, ?PROD)
+	restrictions:
+	has_part (?COMP_A, pos_type=(300)KBO_COMP_CONNECTOR, with KBO_PRODUCT_IDENTIFIER = ?PROD.KBO_PRODUCT_IDENTIFIER; KBO_OTHER_PRODUCT_IDENTIFIER = ?OPI)	
+}
+
+constraint MAKE_COMPONENT_B_CONNECTORS {names EN "Make Component A Connectors"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT where ?OPI = KBO_OTHER_PRODUCT_IDENTIFIERS,
+	?COMP_B is_object (material)(300)(nr=KBO_COMPONENT_B)
+	condition:
+	part_of (?COMP_B, ?PROD)
+	restrictions:
+	has_part (?COMP_B, pos_type=(300)KBO_COMP_CONNECTOR, with KBO_PRODUCT_IDENTIFIER = ?PROD.KBO_PRODUCT_IDENTIFIER; KBO_OTHER_PRODUCT_IDENTIFIER = ?OPI)	
+}
+
+constraint MAKE_COMPONENT_C_CONNECTORS {names EN "Make Component A Connectors"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT where ?OPI = KBO_OTHER_PRODUCT_IDENTIFIERS,
+	?COMP_C is_object (material)(300)(nr=KBO_COMPONENT_C)
+	condition:
+	part_of (?COMP_C, ?PROD)
+	restrictions:
+	has_part (?COMP_C, pos_type=(300)KBO_COMP_CONNECTOR, with KBO_PRODUCT_IDENTIFIER = ?PROD.KBO_PRODUCT_IDENTIFIER; KBO_OTHER_PRODUCT_IDENTIFIER = ?OPI)	
+}
+
+constraint MAKE_COMPONENT_D_CONNECTORS {names EN "Make Component A Connectors"
+	objects:
+	?PROD is_a (300)KBO_PRODUCT where ?OPI = KBO_OTHER_PRODUCT_IDENTIFIERS,
+	?COMP_D is_object (material)(300)(nr=KBO_COMPONENT_D)
+	condition:
+	part_of (?COMP_D, ?PROD)
+	restrictions:
+	has_part (?COMP_D, pos_type=(300)KBO_COMP_CONNECTOR, with KBO_PRODUCT_IDENTIFIER = ?PROD.KBO_PRODUCT_IDENTIFIER; KBO_OTHER_PRODUCT_IDENTIFIER = ?OPI)	
+}
+

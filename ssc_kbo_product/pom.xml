@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example.customer.ssc.userexit</groupId>
+	<artifactId>ssc-user-exit-sample</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.sap.custdev.projects.fbs.slc</groupId>
+			<artifactId>com.sap.custdev.projects.fbs.slc.ejb-ipc</artifactId>
+			<version>[2.4.0-SNAPSHOT,3.0.0)</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>${basedir}/src</sourceDirectory>
+
+		<plugins>
+
+			<!-- Generate Java 1.6 class files to ensure compatibility while running on SAP AS JAVA -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<!--
+			Configuration of the user-exit deployment plug-in.
+
+			The plug-in provides the following goals
+			- deploy: Deploys the project artifact
+			- undeploy: Undeploys the project artifact
+			- info: Retrieves information about all installed user-exit units
+			- deploy-file: Deploys a file
+			- undeploy-file: Undeploys a file
+			-->
+			<plugin>
+				<groupId>com.sap.custdev.projects.fbs.slc</groupId>
+				<artifactId>ssc-user-exit-maven-plugin</artifactId>
+				<version>2.4.0</version>
+				<configuration>
+					<!-- Enter a server id that is defined in your settings.xml or specify 
+						the username and password properties -->
+					<serverId>server_id_from_settings_xml</serverId>
+					<!-- or -->
+					<username>server_username</username>
+					<password>server_password</password>
+					
+					<!-- Specify the provider url of AS Java -->
+					<providerUrl>localhost:50004</providerUrl>
+
+					<!-- set to false or remove the entry to disable the simulation mode -->
+					<simulate>true</simulate>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

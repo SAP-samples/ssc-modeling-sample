@@ -1,0 +1,23 @@
+knowledgeBase KBO_PRODUCT_KB {
+	version "VERSION_1" 
+	logsys "local"
+ 	tasks
+    	KBO_PRODUCT_TASK
+  	profiles
+		name 'KBO_PRODUCT_A_PRF' material KBO_PRODUCT_A,
+		name 'KBO_PRODUCT_B_PRF' material KBO_PRODUCT_B,
+		name 'KBO_PRODUCT_C_PRF' material KBO_PRODUCT_C,
+		name 'KBO_PRODUCT_D_PRF' material KBO_PRODUCT_D
+}
+
+task KBO_PRODUCT_TASK {
+	constraintNets
+	PRODUCT_CNET,
+	SSC_CONSTRAINTS,
+	COMPONENT_CNET,
+	COMP_CONNECTOR_CNET,
+	COMP_CONNECTION_CNET
+	ruleNets
+	PRODUCT_RNET,
+	COMPONENT_CONNECTION_RNET
+}

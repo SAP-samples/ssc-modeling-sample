@@ -1,0 +1,172 @@
+class KBO_COMP_CONNECTION extends SYNCHRONIZER {names EN "KBO Component Connection"
+	characteristics
+	KBO_COMP_CONNECTION_TYPE noinput,
+	KBO_COMPONENT_CSTIC_1,
+	KBO_COMPONENT_CSTIC_2,
+	KBO_CONNECTION_INVISIBLE,
+	KBO_CONNECTION_REQUIRED,
+	KBO_CONNECTION_NO_INPUT,
+	KBO_CONNECTION_DEFAULT,
+	KBO_CONNECTION_EXCLUDED,
+	KBO_CONNECTION_AGGREGATED
+}
+
+characteristic KBO_CONNECTION_INVISIBLE {names EN "KBO Connection Invisibility Test" textLength 10}
+characteristic KBO_CONNECTION_REQUIRED {names EN "KBO Connection Required Test" textLength 10}
+characteristic KBO_CONNECTION_NO_INPUT {names EN "KBO Connection No Input Test" textLength 10}
+
+characteristic KBO_CONNECTION_DEFAULT {names EN "KBO Connection Required Test" textLength 15
+	values
+	"KBO_PRODUCT_A" names EN "KBO Product A",
+	"KBO_PRODUCT_B" names EN "KBO Product B",
+	"KBO_PRODUCT_C" names EN "KBO Product C",
+	"KBO_PRODUCT_D" names EN "KBO Product D"
+}
+
+characteristic KBO_CONNECTION_EXCLUDED {names EN "KBO Connection Exclusion Test" textLength 15 restrictable
+	values 
+	"KBO_PRODUCT_A" names EN "KBO Product A",
+	"KBO_PRODUCT_B" names EN "KBO Product B",
+	"KBO_PRODUCT_C" names EN "KBO Product C",
+	"KBO_PRODUCT_D" names EN "KBO Product D"	
+}
+
+characteristic KBO_CONNECTION_AGGREGATED {names EN "KBO Connection Aggregation Test" numericLength 2 specialFunction aggregating}
+
+material KBO_COMP_CONNECTION  {names EN "KBO Component Connection" classes KBO_COMP_CONNECTION}
+
+constraintNet COMP_CONNECTION_CNET {names EN "Component Connection Constraints"
+	constraints
+	SET_COMP_CONNECTION_TYPE,
+	SPECIALIZE_COMP_CONNECTION,
+	SET_CONN_CSTIC_1_CONN_CSTIC_1,
+	RSTR_CONN_CSTIC_2_CONN_CSTIC_2,
+	SET_COMP_CONNECTION_FACETS_1,
+	SET_COMP_CONNECTION_FACETS_3,
+	SET_COMP_CONNECTOR_AGGR_RSLT
+}
+
+constraint SET_COMP_CONNECTION_TYPE {names EN "Set Component Connection Type"
+	objects:
+	?CMP_CNNCTR is_a (300)KBO_COMP_CONNECTOR,
+	?CMP_CNNCTN is_a (300)KBO_COMP_CONNECTION
+	condition:
+	part_of (?CMP_CNNCTN, ?CMP_CNNCTR)
+	restrictions:
+	?CMP_CNNCTN.KBO_COMP_CONNECTION_TYPE = ?CMP_CNNCTR.KBO_COMP_CONNECTION_TYPE
+}
+
+constraint SET_CONN_CSTIC_1_CONN_CSTIC_1 {names EN "Set Connection Cstic 1 / Connector Cstic 1"
+	objects:
+	?COMP_CNNCTR is_a (300)KBO_COMP_CONNECTOR,
+	?COMP_CNNCTN is_a (300)KBO_COMP_CONNECTION
+	condition:
+	part_of (?COMP_CNNCTN, ?COMP_CNNCTR)
+	restrictions:
+	?COMP_CNNCTN.KBO_COMPONENT_CSTIC_1 = ?COMP_CNNCTR.KBO_COMPONENT_CSTIC_1
+	inferences:
+	?COMP_CNNCTN.KBO_COMPONENT_CSTIC_1,
+	?COMP_CNNCTR.KBO_COMPONENT_CSTIC_1	
+}
+
+constraint SPECIALIZE_COMP_CONNECTION {names EN "Specialize Component Connection"
+	objects:
+	?COMPCONN is_a (300)KBO_COMP_CONNECTION
+	restrictions:
+	type_of (?COMPCONN, (material)(300)(nr=KBO_COMP_CONNECTION))
+}
+
+constraint RSTR_CONN_CSTIC_2_CONN_CSTIC_2 {names EN "Restrict Component Characteristic 2 Domain"
+	objects:
+	?COMP_CNNCTR is_a (300)KBO_COMP_CONNECTOR,
+	?COMP_CNNCTN is_a (300)KBO_COMP_CONNECTION
+	condition:
+	part_of (?COMP_CNNCTN, ?COMP_CNNCTR)
+	restrictions:
+	table COMP_CSTIC_2 (
+		KBO_COMPONENT_CSTIC_2 = ?COMP_CNNCTR.domain KBO_COMPONENT_CSTIC_2,
+		KBO_COMPONENT_CSTIC_2 = ?COMP_CNNCTN.domain KBO_COMPONENT_CSTIC_2
+	)
+	inferences:
+	?COMP_CNNCTR.domain KBO_COMPONENT_CSTIC_2,
+	?COMP_CNNCTN.domain KBO_COMPONENT_CSTIC_2
+}
+
+constraint SET_COMP_CONNECTION_FACETS_1 {names EN "Set Component Connection Facets One"
+	objects:
+	?COMP_CNNCTR is_a (300)KBO_COMP_CONNECTOR,
+	?COMP_CNNCTN is_a (300)KBO_COMP_CONNECTION
+	condition:
+	part_of (?COMP_CNNCTN, ?COMP_CNNCTR)
+	restrictions:
+	?COMP_CNNCTN.invisible KBO_CONNECTION_INVISIBLE if ?COMP_CNNCTR.KBO_CONNECTION_TEST_INVISIBLE in ['YES'],
+	?COMP_CNNCTN.required KBO_CONNECTION_REQUIRED if ?COMP_CNNCTR.KBO_CONNECTION_TEST_REQUIRED in ['YES'],	
+	?COMP_CNNCTN.no_input KBO_CONNECTION_NO_INPUT if ?COMP_CNNCTR.KBO_CONNECTION_TEST_NO_INPUT in ['YES']
+	inferences:
+	?COMP_CNNCTN.invisible KBO_CONNECTION_INVISIBLE,
+	?COMP_CNNCTN.required KBO_CONNECTION_REQUIRED,	
+	?COMP_CNNCTN.no_input KBO_CONNECTION_NO_INPUT
+}
+ 
+constraint SET_COMP_CONNECTION_FACETS_3 {names EN "Set Component Connection Facets Three"
+	objects:
+	?COMP_CNNCTR is_a (300)KBO_COMP_CONNECTOR,
+	?COMP_CNNCTN is_a (300)KBO_COMP_CONNECTION
+	condition:
+	part_of (?COMP_CNNCTN, ?COMP_CNNCTR) and ?COMP_CNNCTR.KBO_CONNECTION_TEST_EXCLUDED in ['YES']
+	restrictions:
+	?COMP_CNNCTN.KBO_CONNECTION_EXCLUDED <>?COMP_CNNCTR.KBO_PRODUCT_IDENTIFIER
+	inferences:
+	?COMP_CNNCTN.KBO_CONNECTION_EXCLUDED	
+}
+
+constraint SET_COMP_CONNECTOR_AGGR_RSLT {names EN "Set Component Connector Aggregation Result"
+	objects:
+	?COMP_CNNCTR is_a (300)KBO_COMP_CONNECTOR,
+	?COMP_CNNCTN is_a (300)KBO_COMP_CONNECTION
+	condition:
+	part_of (?COMP_CNNCTN, ?COMP_CNNCTR)
+	restrictions:
+	?COMP_CNNCTR.KBO_CONNECTION_TEST_AGGR_RSLT = ?COMP_CNNCTN.KBO_CONNECTION_AGGREGATED
+}
+
+ruleNet COMPONENT_CONNECTION_RNET {names EN "Component Connector Rules"
+	rules
+	SYNCHRONIZE_COMP_CONNECTION,
+	SET_COMP_CONNECTION_FACETS_2,
+	INCREMENT_COMP_CONNECTION_AGGR
+}
+
+rule SYNCHRONIZE_COMP_CONNECTION {names EN "Synchronize A/B Connector"
+	objects:
+	?COMP_CONN is_object (material)(300)(nr=KBO_COMP_CONNECTION)
+	body:
+	then do:
+	pfunction SYNCHRONIZE_INSTANCE (
+		SYNCHRONIZED_INSTANCE = ?COMP_CONN,
+		IDENTIFYING_CSTIC_NAME_1 = 'KBO_COMP_CONNECTION_TYPE',
+		IDENTIFYING_CSTIC_VAL_S_1 = ?COMP_CONN.KBO_COMP_CONNECTION_TYPE
+	)
+}
+
+rule SET_COMP_CONNECTION_FACETS_2 {names EN "Set Component Connections Facets Two"
+	objects:
+	?COMP_CNNCTR is_a (300)KBO_COMP_CONNECTOR,
+	?COMP_CNNCTN is_a (300)KBO_COMP_CONNECTION
+	condition:
+	part_of (?COMP_CNNCTN, ?COMP_CNNCTR) and ?COMP_CNNCTR.KBO_CONNECTION_TEST_DEFAULT in ['YES']
+	body:
+	then do:
+	?COMP_CNNCTN.KBO_CONNECTION_DEFAULT ?= ?COMP_CNNCTR.KBO_PRODUCT_IDENTIFIER
+}
+
+rule INCREMENT_COMP_CONNECTION_AGGR {names EN "Increment Component Connection Aggregator"
+	objects:
+	?COMP_CNNCTR is_a (300)KBO_COMP_CONNECTOR,
+	?COMP_CNNCTN is_a (300)KBO_COMP_CONNECTION
+	condition:
+	part_of (?COMP_CNNCTN, ?COMP_CNNCTR)
+	body:
+	then increment:
+	?COMP_CNNCTN.KBO_CONNECTION_AGGREGATED by ?COMP_CNNCTR.KBO_CONNECTION_TEST_AGGR			
+}

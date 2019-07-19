@@ -1,0 +1,140 @@
+class KBO_COMP_CONNECTOR extends SSC_CHILD {names EN "KBO Component Connector"
+	characteristics
+	KBO_PRODUCT_IDENTIFIER,
+	KBO_OTHER_PRODUCT_IDENTIFIER,
+	KBO_COMP_IDENTIFIER_1_SYMBOL,
+	KBO_COMP_IDENTIFIER_2_SYMBOL,
+	KBO_COMP_CONNECTION_TYPE,
+	KBO_COMPONENT_CSTIC_1,
+	KBO_COMPONENT_CSTIC_2,
+	KBO_CONNECTION_TEST_INVISIBLE,
+	KBO_CONNECTION_TEST_REQUIRED,
+	KBO_CONNECTION_TEST_NO_INPUT,
+	KBO_CONNECTION_TEST_DEFAULT,
+	KBO_CONNECTION_TEST_EXCLUDED,
+	KBO_CONNECTION_TEST_AGGR,
+	KBO_CONNECTION_TEST_AGGR_RSLT noinput
+}
+
+characteristic KBO_OTHER_PRODUCT_IDENTIFIER {names EN "KBO Other Product Identifier" textLength 20}
+characteristic KBO_COMP_IDENTIFIER_1_SYMBOL {names EN "KBO Component Identifier 1 Symbol" textLength 1 values "A", "B", "C", "D"}
+characteristic KBO_COMP_IDENTIFIER_2_SYMBOL {names EN "KBO Component Identifier 2 Symbol" textLength 1 values "A", "B", "C", "D"}
+characteristic KBO_COMP_CONNECTION_TYPE {names EN "KBO Component Connector Type" textLength 2 values "AB", "AC", "AD", "BC", "BD", "CD"}
+
+characteristic KBO_CONNECTION_TEST_INVISIBLE {names EN "KBO Connection Test Invisibility" textLength 3 values "YES" names EN "Yes"}
+characteristic KBO_CONNECTION_TEST_REQUIRED {names EN "KBO Connection Test Required" textLength 3 values "YES" names EN "Yes"}
+characteristic KBO_CONNECTION_TEST_NO_INPUT {names EN "KBO Connection Test No Input" textLength 3 values "YES" names EN "Yes"}
+characteristic KBO_CONNECTION_TEST_DEFAULT {names EN "KBO Connection Test Required" textLength 3 values "YES" names EN "Yes"}
+characteristic KBO_CONNECTION_TEST_EXCLUDED {names EN "KBO Connection Test Exclusion" textLength 3 values "YES" names EN "Yes"}
+characteristic KBO_CONNECTION_TEST_AGGR {names EN "KBO Connection Test Aggregation" numericLength 2 intervals 0 - 99}
+characteristic KBO_CONNECTION_TEST_AGGR_RSLT {names EN "KBO Connection Test Aggregation Result" numericLength 3 intervals 0 - 999}
+
+class KBO_COMP_A_B_CONNECTOR extends KBO_COMP_CONNECTOR {names EN "KBO Component A/B Connector"}
+class KBO_COMP_A_C_CONNECTOR extends KBO_COMP_CONNECTOR {names EN "KBO Component A/C Connector"}
+class KBO_COMP_A_D_CONNECTOR extends KBO_COMP_CONNECTOR {names EN "KBO Component A/D Connector"}
+class KBO_COMP_B_C_CONNECTOR extends KBO_COMP_CONNECTOR {names EN "KBO Component B/C Connector"}
+class KBO_COMP_B_D_CONNECTOR extends KBO_COMP_CONNECTOR {names EN "KBO Component B/D Connector"}
+class KBO_COMP_C_D_CONNECTOR extends KBO_COMP_CONNECTOR {names EN "KBO Component C/D Connector"}
+
+material KBO_COMP_A_B_CONNECTOR {names EN "KBO Component A/B Connector" classes KBO_COMP_A_B_CONNECTOR boms KBO_COMP_CONN_BOM}
+material KBO_COMP_A_C_CONNECTOR {names EN "KBO Component A/C Connector" classes KBO_COMP_A_C_CONNECTOR boms KBO_COMP_CONN_BOM}
+material KBO_COMP_A_D_CONNECTOR {names EN "KBO Component A/D Connector" classes KBO_COMP_A_D_CONNECTOR boms KBO_COMP_CONN_BOM}
+material KBO_COMP_B_C_CONNECTOR {names EN "KBO Component B/B Connector" classes KBO_COMP_B_C_CONNECTOR boms KBO_COMP_CONN_BOM}
+material KBO_COMP_B_D_CONNECTOR {names EN "KBO Component B/C Connector" classes KBO_COMP_B_D_CONNECTOR boms KBO_COMP_CONN_BOM}
+material KBO_COMP_C_D_CONNECTOR {names EN "KBO Component B/D Connector" classes KBO_COMP_C_D_CONNECTOR boms KBO_COMP_CONN_BOM}
+
+bom KBO_COMP_CONN_BOM {10 class KBO_COMP_CONNECTION min 1 max 1}
+
+constraintNet COMP_CONNECTOR_CNET {names EN "Component Connector Constraints"
+	constraints
+	SET_COMP_CONNECTOR_SYMBOLS,
+	SET_COMP_CONNECTOR_TYPE,
+	SPECIALIZE_COMP_CONNECTOR,
+	RSTR_CONNECTOR_CSTIC_1_2_DOM
+//	SET_COMP_CSTIC_1_CONN_CSTIC_1,
+//	RSTR_COMP_CSTIC_2_CONN_CSTIC_2
+}
+
+constraint SET_COMP_CONNECTOR_SYMBOLS {names EN "Set Component Connector Symbols"
+	objects:
+	?COMPCONN is_a (300)KBO_COMP_CONNECTOR
+	restrictions:
+	table PROD_ID_SYMBOLS (
+		KBO_PRODUCT_IDENTIFIER = ?COMPCONN.KBO_PRODUCT_IDENTIFIER,
+		KBO_COMP_IDENTIFIER_1_SYMBOL = ?COMPCONN.KBO_COMP_IDENTIFIER_1_SYMBOL
+	),
+	table PROD_ID_SYMBOLS (
+		KBO_PRODUCT_IDENTIFIER = ?COMPCONN.KBO_OTHER_PRODUCT_IDENTIFIER,
+		KBO_COMP_IDENTIFIER_1_SYMBOL = ?COMPCONN.KBO_COMP_IDENTIFIER_2_SYMBOL
+	)
+	inferences:
+	?COMPCONN.KBO_COMP_IDENTIFIER_1_SYMBOL,
+	?COMPCONN.KBO_COMP_IDENTIFIER_2_SYMBOL
+}
+
+constraint SET_COMP_CONNECTOR_TYPE {names EN "Set Component Connector Type"
+	objects:
+	?COMPCONN is_a (300)KBO_COMP_CONNECTOR
+	restrictions:
+	table SYMBOL_CONNTYPE (
+	KBO_COMP_IDENTIFIER_1_SYMBOL = ?COMPCONN.KBO_COMP_IDENTIFIER_1_SYMBOL,
+	KBO_COMP_IDENTIFIER_2_SYMBOL = ?COMPCONN.KBO_COMP_IDENTIFIER_2_SYMBOL,
+	KBO_COMP_CONNECTION_TYPE = ?COMPCONN.KBO_COMP_CONNECTION_TYPE
+	)	
+	inferences:
+	?COMPCONN.KBO_COMP_CONNECTION_TYPE
+}
+
+constraint RSTR_CONNECTOR_CSTIC_1_2_DOM {names EN "Synchronize Characteristic One and Four"
+	objects:
+	?COMPCONN is_a (300)KBO_COMP_CONNECTOR
+	restrictions:
+	table COMP_CSTIC_1_2 (
+		KBO_COMPONENT_CSTIC_1 = ?COMPCONN.domain KBO_COMPONENT_CSTIC_1,
+		KBO_COMPONENT_CSTIC_2 = ?COMPCONN.domain KBO_COMPONENT_CSTIC_2		
+	)	
+	inferences:
+		?COMPCONN.domain KBO_COMPONENT_CSTIC_1,
+		?COMPCONN.domain KBO_COMPONENT_CSTIC_2		
+}
+
+constraint SPECIALIZE_COMP_CONNECTOR {names EN "Specialize Component Connector"
+	objects:
+	?COMPCONN is_a (300)KBO_COMP_CONNECTOR
+	restrictions:
+	type_of (?COMPCONN, (material)(300)(nr=KBO_COMP_A_B_CONNECTOR)) if ?COMPCONN.KBO_COMP_CONNECTION_TYPE in ['AB'],
+	type_of (?COMPCONN, (material)(300)(nr=KBO_COMP_A_C_CONNECTOR)) if ?COMPCONN.KBO_COMP_CONNECTION_TYPE in ['AC'],
+	type_of (?COMPCONN, (material)(300)(nr=KBO_COMP_A_D_CONNECTOR)) if ?COMPCONN.KBO_COMP_CONNECTION_TYPE in ['AD'],
+	type_of (?COMPCONN, (material)(300)(nr=KBO_COMP_B_C_CONNECTOR)) if ?COMPCONN.KBO_COMP_CONNECTION_TYPE in ['BC'],
+	type_of (?COMPCONN, (material)(300)(nr=KBO_COMP_B_D_CONNECTOR)) if ?COMPCONN.KBO_COMP_CONNECTION_TYPE in ['BD'],
+	type_of (?COMPCONN, (material)(300)(nr=KBO_COMP_C_D_CONNECTOR)) if ?COMPCONN.KBO_COMP_CONNECTION_TYPE in ['CD']
+}
+
+constraint SET_COMP_CSTIC_1_CONN_CSTIC_1 {names EN "Component Cstic 1 equals Connector Cstic 1"
+	objects:
+	?COMP is_a (300)KBO_COMPONENT,
+	?COMP_CONN is_a (300)KBO_COMP_CONNECTOR
+	condition:
+	part_of (?COMP_CONN, ?COMP)
+	restrictions:
+	?COMP.KBO_COMPONENT_CSTIC_1 = ?COMP_CONN.KBO_COMPONENT_CSTIC_1
+	inferences:
+	?COMP.KBO_COMPONENT_CSTIC_1,
+	?COMP_CONN.KBO_COMPONENT_CSTIC_1	
+}
+
+constraint RSTR_COMP_CSTIC_2_CONN_CSTIC_2 {names EN "Restrict Component Characteristic 2 Domain"
+	objects:
+	?COMP is_a (300)KBO_COMPONENT,
+	?COMP_CONN is_a (300)KBO_COMP_CONNECTOR
+	condition:
+	part_of (?COMP_CONN, ?COMP)
+	restrictions:
+	table COMP_CSTIC_2 (
+		KBO_COMPONENT_CSTIC_2 = ?COMP.domain KBO_COMPONENT_CSTIC_2,
+		KBO_COMPONENT_CSTIC_2 = ?COMP_CONN.domain KBO_COMPONENT_CSTIC_2
+	)
+	inferences:
+	?COMP.domain KBO_COMPONENT_CSTIC_2,
+	?COMP_CONN.domain KBO_COMPONENT_CSTIC_2
+}
