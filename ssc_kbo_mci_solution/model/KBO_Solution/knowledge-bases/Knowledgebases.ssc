@@ -1,0 +1,16 @@
+knowledgeBase KBO_SOLUTION_KB {
+	version "VERSION_1" 
+	logsys "local"
+ 	tasks
+    	KBO_SOLUTION_TASK
+  	profiles
+		name 'KBO_SOLUTION_PRF' material KBO_SOLUTION
+}
+
+task KBO_SOLUTION_TASK {
+	constraintNets
+	SOLUTION_CNET,
+	SSC_CONSTRAINTS
+	ruleNets
+	SOLUTION_RNET
+}

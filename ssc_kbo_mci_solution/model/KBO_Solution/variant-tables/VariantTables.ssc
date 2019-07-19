@@ -1,0 +1,57 @@
+variantTable CSTIC_1_CSTIC_4 {names EN "Characteristic One / Characteristic Four Relationships"
+	characteristics
+	KBO_PRODUCT_CSTIC_1 primary,
+	KBO_PRODUCT_CSTIC_4 primary
+	rows
+	"CSTIC_1_AAA", "CSTIC_4_AAA";
+	"CSTIC_1_BBB", "CSTIC_4_BBB";
+	"CSTIC_1_CCC", "CSTIC_4_CCC";
+	"CSTIC_1_DDD", "CSTIC_4_DDD";
+	"CSTIC_1_EEE", "CSTIC_4_EEE";
+	"CSTIC_1_FFF", "CSTIC_4_FFF";
+}
+
+variantTable CSTIC_3_CSTIC_6 {names EN "Characteristic One / Characteristic Four Relationships"
+	characteristics
+	KBO_PRODUCT_CSTIC_3 primary,
+	KBO_PRODUCT_CSTIC_6 primary
+	rows
+	"CSTIC_3_AAA", "CSTIC_6_AAA";
+	"CSTIC_3_BBB", "CSTIC_6_BBB";
+	"CSTIC_3_CCC", "CSTIC_6_CCC";
+	"CSTIC_3_DDD", "CSTIC_6_DDD";
+	"CSTIC_3_EEE", "CSTIC_6_EEE";
+	"CSTIC_3_FFF", "CSTIC_6_FFF";
+}
+
+variantTable CSTIC_2_CSTIC_5 {names EN "Characteristic One / Characteristic Four Relationships"
+	characteristics
+	KBO_PRODUCT_CSTIC_2 primary,
+	KBO_PRODUCT_CSTIC_5 primary
+	rows
+	"CSTIC_2_AAA", "CSTIC_5_AAA";
+	"CSTIC_2_BBB", "CSTIC_5_BBB";
+	"CSTIC_2_CCC", "CSTIC_5_CCC";
+	"CSTIC_2_DDD", "CSTIC_5_DDD";
+	"CSTIC_2_EEE", "CSTIC_5_EEE";
+	"CSTIC_2_FFF", "CSTIC_5_FFF";
+}
+
+variantTable CSTIC_1_CSTIC_2 {names EN "Characteristic One / Characteristic Four Relationships"
+	characteristics
+	KBO_PRODUCT_CSTIC_1 primary,
+	KBO_PRODUCT_CSTIC_2 primary
+	rows
+	"CSTIC_1_AAA", "CSTIC_2_AAA";
+	"CSTIC_1_BBB", "CSTIC_2_AAA";
+	"CSTIC_1_BBB", "CSTIC_2_BBB";
+	"CSTIC_1_CCC", "CSTIC_2_AAA";
+	"CSTIC_1_CCC", "CSTIC_2_BBB";
+	"CSTIC_1_CCC", "CSTIC_2_CCC";
+	"CSTIC_1_DDD", "CSTIC_2_DDD";
+	"CSTIC_1_DDD", "CSTIC_2_EEE";
+	"CSTIC_1_DDD", "CSTIC_2_FFF";
+	"CSTIC_1_EEE", "CSTIC_2_EEE";
+	"CSTIC_1_EEE", "CSTIC_2_FFF";
+	"CSTIC_1_FFF", "CSTIC_2_FFF";
+}

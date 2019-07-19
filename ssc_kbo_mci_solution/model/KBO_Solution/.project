@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>KBO_Solution</name>
+	<comment></comment>
+	<projects>
+		<project>FunctionLibrary_2016_01_01</project>
+		<project>KBO_Synchronizers</project>
+		<project>SSC_Classes_2016_01_01</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+	</natures>
+</projectDescription>
