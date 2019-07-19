@@ -4,8 +4,7 @@ Bundle-Name: SME Office Example
 Bundle-SymbolicName: sme_office_example;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: SAP
-Require-Bundle: com.sap.custdev.projects.fbs.slc.ejb-ipc;bundle-version="2.0.0";resolution:=optional,
- SSC_FRAMEWORK_LIBRARY;bundle-version="1.0.0"
+Require-Bundle: com.sap.custdev.projects.fbs.slc.ejb-ipc;bundle-version="2.0.0";resolution:=optional
 Eclipse-RegisterBuddy: com.sap.custdev.projects.fbs.slc.ejb-ipc
 Export-Package: com.sap.sce.user
 Bundle-ClassPath: pfunc.jar

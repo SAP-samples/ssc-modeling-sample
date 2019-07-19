@@ -3,7 +3,7 @@
 	<name>sme_office_example</name>
 	<comment></comment>
 	<projects>
-		<project>SSC_COMMON_LIBRARY</project>
+		<project>ssc_framework_library</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
