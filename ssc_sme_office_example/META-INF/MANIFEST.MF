@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SME Office Example
 Bundle-SymbolicName: ssc_sme_office_example;singleton:=true
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-Vendor: SAP
 Require-Bundle: com.sap.custdev.projects.fbs.slc.ejb-ipc;bundle-version="2.0.0";resolution:=optional
 Eclipse-RegisterBuddy: com.sap.custdev.projects.fbs.slc.ejb-ipc

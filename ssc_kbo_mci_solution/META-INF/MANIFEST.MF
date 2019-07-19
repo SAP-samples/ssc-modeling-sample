@@ -3,10 +3,10 @@ Require-Bundle: com.sap.custdev.projects.fbs.slc.ejb-ipc;bundle-version="2.0.0";
 Bundle-Vendor: SAP
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: fbs_slc_exit_pvFunctions.jar
-Bundle-Version: 1.0.0.qualifier
-Bundle-Name: FunctionLibrary
+Bundle-Version: 1.0.0
+Bundle-Name: SSC KBO MCI Project
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: fbs_slc_exit_pvFunctions_Synchronize_Instances;singleton:=true
+Bundle-SymbolicName: ssc_kbo_mci_project;singleton:=true
 Eclipse-RegisterBuddy: com.sap.custdev.projects.fbs.slc.ejb-ipc
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.apache.log4j;version="1.2.15"

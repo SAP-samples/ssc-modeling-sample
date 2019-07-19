@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ejb-ipc_test_example
+Bundle-Name: SSC API usage demo through JUnits
 Bundle-SymbolicName: ssc_sme_office_junits_example
-Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit;bundle-version="4.11.0",
  com.sap.custdev.projects.fbs.slc.ejb-ipc;bundle-version="3.0.13",
  com.sap.conn.jco;bundle-version="3.0.13",
