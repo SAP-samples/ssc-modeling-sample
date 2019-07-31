@@ -8,4 +8,4 @@ Require-Bundle: com.sap.custdev.projects.fbs.slc.ejb-ipc;bundle-version="2.0.0";
 Eclipse-RegisterBuddy: com.sap.custdev.projects.fbs.slc.ejb-ipc
 Export-Package: com.sap.sce.user
 Bundle-ClassPath: pfunc.jar
-Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-RequiredExecutionEnvironment: J2SE-1.8
