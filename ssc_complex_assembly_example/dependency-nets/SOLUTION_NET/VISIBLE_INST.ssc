@@ -1,0 +1,33 @@
+constraint VISIBLE_INST {
+  objects:
+    ?S is_object (material)(300)(nr=FBS_SSC_CA)
+
+  restrictions:
+ //set visibility of server name based on specd indicators      
+     ?S.invisible STD_SELF_SERVER_NAME
+        if ?S.STD_SELFSERV_USERS not specified,
+        
+        
+     ?S.invisible SCM_SALES_SERVER_NAME
+        if ?S.SCM_SALES_USERS not specified,
+       
+ //set visibility of instance selecting based on specd indicators      
+     ?S.invisible STD_SELF_INST_SELECT
+        if ?S.STD_SELF_SERVER_NAME  not specified
+        or ?S.STD_SELFSERV_USERS    not specified,
+                
+     ?S.invisible SCM_SALES_INST_SELECT
+        if ?S.SCM_SALES_SERVER_NAME  not specified
+        or ?S.SCM_SALES_USERS        not specified
+ 
+ inferences:
+      ?S.invisible STD_SELF_INST_SELECT        
+     ,?S.invisible SCM_SALES_INST_SELECT
+
+     ,?S.invisible STD_SELF_SERVER_NAME 
+     ,?S.invisible SCM_SALES_SERVER_NAME
+          
+  explanations: 
+    "Hide Server Names til user num specd,
+    Hide Inst nums til server name and user num picked."
+}

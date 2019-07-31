@@ -1,0 +1,68 @@
+material HT3_BL_280C_G6 {
+	names DE "ConServ BL280c G6 blade Server",
+	EN "ConServ BL280c G6 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_460C_G7 {
+	names DE "ConServ BL460c G7 blade Server",
+	EN "ConServ BL460c G7 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_465C_G6 {
+	names DE "ConServ BL465c G6 blade Server",
+	EN "ConServ BL465c G6 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_465C_G7 {
+	names DE "ConServ 465C G7 blade Server",
+	EN "ConServ 465C G7 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_480C_G6 {
+	names DE "ConServ 480CG6 blade Server",
+	EN "ConServ 480C G6 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_490C_G7 {
+	names DE "ConServ 490CG7 blade Server",
+	EN "ConServ 490C G7 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_680C_G5 {
+	names DE "ConServ BL680c G5 blade Server",
+	EN "ConServ BL680c G5 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_680C_G7 {
+	names DE "ConServ 680CG7 blade Server",
+	EN "ConServ 680C G7 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_685C_G5 {
+	names DE "ConServ BL685c G5 blade server",
+	EN "ConServ BL685c G5 blade server"
+	classes
+	HT3_BLADE_1
+//	boms HT3_BL_685C_G5
+}
+material HT3_BL_685C_G6 {
+	names DE "ConServ 685C G6 blade Server",
+	EN "ConServ 685C G6 blade Server"
+	classes
+	HT3_BLADE_1
+}
+material HT3_BL_685C_G7 {
+	names DE "ConServ 685C G7 blade Server",
+	EN "ConServ 685C G7 blade Server"
+	classes
+	HT3_BLADE_1
+}
+

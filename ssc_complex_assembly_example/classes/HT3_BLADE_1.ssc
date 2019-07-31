@@ -1,0 +1,191 @@
+
+class HT3_BLADE_1 extends BLADE_DATA {
+	names EN "Blade 1"
+	characteristics
+		HT3_FORM_FACTOR_1,
+		HT3_ENCLOSURE_CHOICE,
+		HT3_ENCL_BL_MNGT_SYS,
+		HT3_ADD_MNGNT_1,
+		HT3_C7000_ENCL_POW,
+		HT3_BL_620C_G7,
+		HT3_MEM_KIT_1,
+		HT3_MEM_KIT_2,
+		HT3_MEM_KIT_3,
+		HT3_MEM_KIT_4,
+		HT3_HARD_DRIVE_1,
+		HT3_HARD_DRIVE_2
+}
+
+characteristic HT3_FORM_FACTOR_1 {
+	names EN "Form Factor"
+	status prepared
+	textLength 25
+	values
+		"1"
+		names EN "Rack and Power on Site",
+		"2"
+		names EN "Add to existing rack",
+		"3"
+		names EN "Add 42U rack - 10KG2",
+		"4"
+		names EN "Add 36U rack - 10KG2",
+		"5"
+		names EN "Add 22U rack - 10KG2",
+		"6"
+		names EN "Tower"
+}
+characteristic HT3_ENCLOSURE_CHOICE {
+	names EN "Cclass Enlosure Choice"
+	status prepared
+	textLength 25
+	values
+		"1"
+		names EN "ConServ BL c3000 Server Enclos",
+		"2"
+		names EN " BladeSystem BL c7000 Server E",
+		"3"
+		names EN " Integrity rx 9800 base system",
+		"4"
+		names EN " Integrity rx 9900 base system",
+		"5"
+		names EN "Enclosure On Site (Not Include"
+}
+characteristic HT3_ENCL_BL_MNGT_SYS {
+	names EN "C3000/C7000 Blade Management S"
+	status prepared
+	textLength 25
+	values
+		"16 ICE"
+		names EN "ROHS - 16 ICE Licenses (BTO)",
+		"8 ICE"
+		names EN "ROHS - 8 ICE 30 Day Eval Licen"
+}
+characteristic HT3_ADD_MNGNT_1 {
+	names EN "Additional Management module o"
+	status prepared
+	textLength 25
+	values
+		"1"
+		names EN " BLc 7000 DDR2 Encl Mgmt Optio",
+		"NONE"
+		names EN "None"
+}
+characteristic HT3_C7000_ENCL_POW {
+	names EN "c7000 Enclosure Power"
+	status prepared
+	textLength 25
+	values
+		"1PHASE"
+		names EN " 1phase Power Module& 2400 wat",
+		"3PHASE"
+		names EN " 3phase Power Module & 2400 wa"
+}
+characteristic HT3_BL_620C_G7 {
+	names EN "BL 620c G7 Blade"
+	status prepared
+	textLength 25
+	values
+		"2830"
+		names EN " BL620c G7 E7-2830 32G Svr (64",
+		"2850"
+		names EN " BL620c G7 E7-2850 32G Svr (64",
+		"2860"
+		names EN " BL620c G7 E7-2860 32G Svr (64",
+		"6510"
+		names EN " BL 620c G7 E6510 1P 8G Svr (5",
+		"6540"
+		names EN " BL 620c G7 E6540 1P 8G  Svr (",
+		"6550"
+		names EN " BL 620c G7 X6550 1P 8G Svr (5",
+		"7530"
+		names EN " BL 620c G7 E7530 1P 8G Svr (5"
+}
+characteristic HT3_MEM_KIT_1 {
+	names EN "Memory Kit 1"
+	status prepared
+	textLength 25
+	values
+		"16GB"
+		names EN " 16GB 4Rx4 PC3-8500R-7 Kit (R-",
+		"2GB"
+		names EN " 2GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"4GB"
+		names EN " 4GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"8GB"
+		names EN " 8GB 2Rx8 PC3-10600R-9 Kit (RD"
+}
+characteristic HT3_MEM_KIT_2 {
+	names EN "Memory Kit 2"
+	status prepared
+	textLength 25
+	values
+		"16GB"
+		names EN " 16GB 4Rx4 PC3-8500R-7 Kit (R-",
+		"2GB"
+		names EN " 2GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"4GB"
+		names EN " 4GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"8GB"
+		names EN " 8GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"NONE"
+		names EN "None"
+}
+characteristic HT3_MEM_KIT_3 {
+	names EN "Memory Kit 3"
+	status prepared
+	textLength 25
+	values
+		"16GB"
+		names EN " 16GB 4Rx4 PC3-8500R-7 Kit (R-",
+		"2GB"
+		names EN " 2GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"4GB"
+		names EN " 4GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"8GB"
+		names EN " 8GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"NONE"
+		names EN "None"
+}
+characteristic HT3_MEM_KIT_4 {
+	names EN "Memory Kit 4"
+	status prepared
+	textLength 25
+	values
+		"16GB"
+		names EN " 16GB 4Rx4 PC3-8500R-7 Kit (R-",
+		"2GB"
+		names EN " 2GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"4GB"
+		names EN " 4GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"8GB"
+		names EN " 8GB 2Rx8 PC3-10600R-9 Kit (RD",
+		"NONE"
+		names EN "None"
+}
+characteristic HT3_HARD_DRIVE_1 {
+	names EN "Hard Drive 1"
+	status prepared
+	textLength 25
+	values
+		"120 GB"
+		names EN " 120GB 3G N 2.5 SATA ETY SSD (",
+		"60 GB"
+		names EN " 60GB 3G N 2.5 SATA ETY SSD (5",
+		"NONE"
+		names EN "None"
+}
+characteristic HT3_HARD_DRIVE_2 {
+	names EN "Hard Drive 2"
+	status prepared
+	textLength 25
+	values
+		"60 GB"
+		names EN " 60GB 3G N 2.5 SATA ETY SSD (5",
+		"NONE"
+		names EN "None"
+}
+
+//bom HT3_BL_685C_G5 {
+//	name "BOM for HT3_BL_685C_G5"
+//	10 material ES_TEST_BL_149 min 0 max 1
+//}

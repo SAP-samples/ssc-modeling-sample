@@ -1,0 +1,9 @@
+rule AGGR_SV_HW {
+  objects: 
+    ?SV is_a (300) SERVICE
+     where ?HW = HAS_ITEM_SV
+       
+  body:  
+    then increment:
+     ?SV.SV_HW_COUNT by 1   
+}

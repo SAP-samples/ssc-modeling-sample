@@ -1,0 +1,47 @@
+characteristic SERVER_NAME {
+  name "HW Server" 
+  textLength 30
+  restrictable
+  values
+      "BL460CG7" name "ConServ BL460c G7 blade server" 
+     ,"BL465CG6" name "ConServ BL465c G6 blade server"
+     ,"BL465CG7" name "ConServ BL465c G7 blade server"
+   ,"BL480CG6"   name "ConServ BL480c blade server"
+   ,"BL490CG7" name "ConServ BL490c G7 blade server"
+     ,"BL680CG5" name "ConServ BL680c G5 blade server"
+     ,"BL680CG7" name "ConServ BL680c G7 blade server"
+     ,"BL685CG6" name "ConServ BL685c G6 blade server"
+     ,"BL685CG7" name "ConServ BL685c G7 blade server"
+   ,"BL280CG6" name "ConServ BL280c G6 blade server"
+   
+}
+ characteristic STD_SELF_SERVER_NAME {
+  name "Standard SelfServe Server" 
+  textLength 30
+  restrictable
+  }
+ characteristic SCM_SELF_SERVER_NAME {
+  name "SCM SelfServe Server" 
+  textLength 30
+  restrictable
+  }
+ characteristic PM_SELF_SERVER_NAME {
+  name "PM SelfServe Server" 
+  textLength 30
+  restrictable
+  }
+ characteristic CRM_SALES_SERVER_NAME {
+  name "CRM Sales Server" 
+  textLength 30
+  restrictable
+  }
+ characteristic STD_SALES_SERVER_NAME {
+  name "Standard Sales Server" 
+  textLength 30
+  restrictable
+  }    
+ characteristic SCM_SALES_SERVER_NAME {
+  name "SCM Sales Server" 
+  textLength 30
+  restrictable
+  }     

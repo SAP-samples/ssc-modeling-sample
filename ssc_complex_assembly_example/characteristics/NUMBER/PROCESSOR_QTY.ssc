@@ -1,0 +1,5 @@
+characteristic PROCESSOR_QTY {
+  name "HW Processor"
+  numericLength 6 decimalPlaces 0
+    restrictable
+}

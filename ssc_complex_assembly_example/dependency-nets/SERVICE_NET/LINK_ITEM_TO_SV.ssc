@@ -1,0 +1,12 @@
+constraint LINK_ITEM_TO_SV {
+   objects:
+    
+    ?SV is_a (300)SERVICE
+    where ?IS = HAS_ITEM_SV
+    
+   restrictions:
+    ?IS.IS_ITEM_OF_SV = ?SV     
+  
+  explanations: 
+    "ADT link from HW to Service"
+}

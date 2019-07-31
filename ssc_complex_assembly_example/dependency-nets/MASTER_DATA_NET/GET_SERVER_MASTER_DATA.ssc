@@ -1,0 +1,30 @@
+constraint GET_SERVER_MASTER_DATA {
+  objects
+    ?MD is_a (300) SERVER_MASTER_DATA
+            
+   restrictions
+  /*  get values for SERVER from vtable */
+  
+      table T_SERVER_DATA (
+ 		SERVER_NAME     = ?MD.SERVER_NAME
+		,PROCESSOR_NAME = ?MD.domain PROCESSOR_NAME
+		,PROCESSOR_SPD  = ?MD.domain PROCESSOR_SPD
+		,PROCESSOR_QTY  = ?MD.domain PROCESSOR_QTY
+		,MIN_MEMORY     = ?MD.domain MIN_MEMORY
+		,MAX_MEMORY     = ?MD.domain MAX_MEMORY
+		,FORM_FACTOR    = ?MD.domain FORM_FACTOR
+
+      )
+  inferences
+      ?MD.domain PROCESSOR_NAME
+      ,?MD.domain PROCESSOR_SPD
+      ,?MD.domain PROCESSOR_QTY
+      ,?MD.domain MIN_MEMORY
+      ,?MD.domain MAX_MEMORY
+      ,?MD.domain FORM_FACTOR
+      
+      
+      
+  explanations 
+    "get data for each SERVER"
+}

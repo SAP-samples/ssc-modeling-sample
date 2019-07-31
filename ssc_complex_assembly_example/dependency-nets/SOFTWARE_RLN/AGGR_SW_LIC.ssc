@@ -1,0 +1,9 @@
+rule AGGR_SW_LIC {
+  objects: 
+    ?SW is_a (300) SOFTWARE
+     where ?SRV = RUNS_ON_HW
+       
+  body:  
+    then increment:
+     ?SW.SW_LIC_COUNT by 1   
+}

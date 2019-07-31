@@ -1,0 +1,8 @@
+characteristic PROCESSOR_NAME {
+  name "HW Processor"
+  textLength 30
+  restrictable
+//  values
+//    "XEON"    name "Intel XEON",
+//    "OPTERON" name "AMD Opteron"
+}

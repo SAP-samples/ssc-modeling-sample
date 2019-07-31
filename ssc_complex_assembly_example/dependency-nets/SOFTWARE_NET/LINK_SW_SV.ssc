@@ -1,0 +1,12 @@
+constraint LINK_SW_SV {
+   objects:
+    
+    ?SW is_a (300)SOFTWARE
+    where ?SV = IS_ITEM_OF_SV
+    
+   restrictions:
+    ?SV.HAS_ITEM_SV = ?SW     
+  
+  explanations: 
+    "ADT link from HW to SW"
+}

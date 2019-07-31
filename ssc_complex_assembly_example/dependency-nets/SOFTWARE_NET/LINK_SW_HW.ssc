@@ -1,0 +1,12 @@
+constraint LINK_SW_HW {
+   objects:
+    
+    ?SW is_a (300)SOFTWARE
+    where ?HW = RUNS_ON_HW
+    
+   restrictions:
+    ?HW.RUNS_SW = ?SW     
+  
+  explanations: 
+    "ADT link from HW to SW"
+}

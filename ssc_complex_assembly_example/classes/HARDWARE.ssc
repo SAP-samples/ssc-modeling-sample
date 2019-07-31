@@ -1,0 +1,7 @@
+class HARDWARE extends SERVICABLE, SSC_PARENT, SSC_CHILD {
+  name"Hardware"
+  characteristics
+     HW_MFG   invisible
+    ,HW_TYPE  invisible
+    ,HW_MODEL invisible 
+}

@@ -1,0 +1,6 @@
+characteristic RUNS_ON_HW {
+	name "Runs on this hardware"
+	classType
+		SERVER
+	multiValue	
+}

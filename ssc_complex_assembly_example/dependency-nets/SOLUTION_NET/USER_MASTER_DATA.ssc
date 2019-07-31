@@ -1,0 +1,27 @@
+constraint USER_MASTER_DATA {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+    
+  condition:
+      ?S.STD_SELFSERV_USERS specified
+   or ?S.SCM_SALES_USERS  specified
+  
+   restrictions:
+  /*  get MIN's from vtable (from spec) */
+  
+   find_or_create (
+       (300) USER_MASTER_DATA,
+       with USER_TYPE = 'STD_SELF';
+            DATA_FOR_SOLUTION_ADT = ?S)
+     if ?S.STD_SELFSERV_USERS specified,
+  
+   find_or_create (
+       (300) USER_MASTER_DATA,
+       with USER_TYPE = 'SCM_SALES';
+            DATA_FOR_SOLUTION_ADT = ?S)
+     if ?S.SCM_SALES_USERS specified
+        
+
+  explanations: 
+    "create instances of User_type USER_MASTER data"
+}

@@ -1,0 +1,6 @@
+characteristic USERS_PER_CPU {
+  name "HW Users per CPU"
+  numericLength 4 decimalPlaces 2
+  restrictable
+}
+

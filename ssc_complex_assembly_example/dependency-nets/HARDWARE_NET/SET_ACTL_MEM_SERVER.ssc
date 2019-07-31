@@ -1,0 +1,51 @@
+/* STD_SELF */
+constraint ACTL_MEM_STD_SELF {
+  objects:
+    ?SRV is_a (300)SERVER
+      where ?S = SERVER_IN_SOL_ADT
+
+  condition:
+    ?SRV.USER_TYPE = 'STD_SELF'
+    and (?SRV.MAX_INST_NUM < ?SRV.MAX_INST_NUM  or
+         ?SRV.MAX_INST_NUM = ?SRV.MAX_INST_NUM) 
+
+  restrictions:  
+    // spread the memory evenly across the servers; unless the user sets the value  
+    ?SRV.ACTL_MEM = ?S.REQ_STD_SELF_MEM / ?S.REQ_STD_SELF_NUM
+        if ?SRV.SPEC_MEM <> 'USER'
+        
+    ,?SRV.domain ACTL_MEM <= ?SRV.MAX_MEMORY    
+  inferences:
+     ?SRV.ACTL_MEM
+    
+  explanations: 
+    "value Actual Memory set on Server" 
+  } 
+ 
+      
+
+       
+/* SCM_SALES */    
+ constraint ACTL_MEM_SCM_SALES {
+  objects:
+    ?SRV is_a (300)SERVER
+      where ?S = SERVER_IN_SOL_ADT
+
+  condition:
+    ?SRV.USER_TYPE = 'SCM_SALES'
+    and (?SRV.MAX_INST_NUM < ?SRV.MAX_INST_NUM  or
+         ?SRV.MAX_INST_NUM = ?SRV.MAX_INST_NUM)
+
+  restrictions:  
+    // spread the memory evenly across the servers; unless the user sets the value  
+    ?SRV.ACTL_MEM = ?S.REQ_SCM_SALES_MEM / ?S.REQ_SCM_SALES_NUM
+        if ?SRV.SPEC_MEM <> 'USER'
+        
+    ,?SRV.domain ACTL_MEM <= ?SRV.MAX_MEMORY    
+  inferences:
+     ?SRV.ACTL_MEM
+    
+  explanations: 
+    "value Actual Memory set on Server" 
+} 
+ 

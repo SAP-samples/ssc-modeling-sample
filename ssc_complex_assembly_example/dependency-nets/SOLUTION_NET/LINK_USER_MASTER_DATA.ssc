@@ -1,0 +1,12 @@
+constraint LINK_USER_MASTER_DATA {
+  objects:
+    
+    ?MD is_a (300) USER_MASTER_DATA
+    where ?S = DATA_FOR_SOLUTION_ADT
+ 
+ restrictions:
+    ?S.HAS_USER_MASTER_DATA = ?MD
+  
+  explanations: 
+    "ADT link from solution to Master Data instances."
+}

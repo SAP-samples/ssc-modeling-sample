@@ -1,0 +1,8 @@
+characteristic SOFTWARE_SELECT {
+	name "Select Software"
+	textLength 30
+	restrictable
+	multiValue 
+	values 'OS'      name 'Operating System'
+	      ,'CONSERV' name 'CONSERV ESS Soft'
+}

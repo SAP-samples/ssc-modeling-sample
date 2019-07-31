@@ -1,0 +1,4 @@
+characteristic NUM_BLADES {
+	name "Number of Blades"
+	numericLength 5
+}

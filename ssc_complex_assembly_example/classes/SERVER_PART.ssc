@@ -1,0 +1,5 @@
+class SERVER_PART extends HARDWARE {
+  name "Server Part"
+  characteristics
+    IN_SERVER     
+}

@@ -1,0 +1,26 @@
+constraint DEMAND_SCM_SALES {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+    where ?MD = HAS_USER_MASTER_DATA
+ 
+  condition:
+    ?MD.USER_TYPE = 'SCM_SALES'
+    
+  restrictions:
+  /* SCM SELFSERV */   
+    ?S.REQ_SCM_SALES_CPU_SPD =
+    ?MD.MIN_CPU_SPD,
+        
+    ?S.REQ_SCM_SALES_CPU =
+    ?S.SCM_SALES_USERS / ?MD.USERS_PER_CPU ,
+       
+    ?S.REQ_SCM_SALES_MEM =
+    ?MD.MEM_PER_USER * ?S.SCM_SALES_USERS 
+      
+  inferences:
+     ?S.REQ_SCM_SALES_CPU_SPD
+    ,?S.REQ_SCM_SALES_CPU
+    ,?S.REQ_SCM_SALES_MEM
+  explanations: 
+    "calc the demand based on user input."
+}

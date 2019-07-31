@@ -1,0 +1,9 @@
+characteristic HW_TYPE {
+  name "HW Type"
+  textLength 30
+  values
+    "BLDSRV" name "Blase Server",
+    "PRCSR"  name "Processor",
+    "RACK"  name "Rack",
+    "MEMRY"  name "Memory"  
+}

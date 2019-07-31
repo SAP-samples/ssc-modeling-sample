@@ -1,0 +1,14 @@
+characteristic CONSERV_ESS_SOFT {
+	name "HSS CONSERV ESS SOFT"
+	textLength 30
+	restrictable
+	values 
+	 'HPILO1'    name 'HP iLO Adv BL 1 Srv, 1 yr TS&U'
+	,'HPILO8'    name 'HP iLO Adv BL 8 BL, 1 yr TS&U'
+	,'HPILOF'    name 'HP iLO Adv BL Flex, 1 yr TS&U'
+	,'HPILOT'    name 'HP iLO Adv BL Track, 1 yr TS&U'
+	,'HPILOE'    name 'HP iLO Adv BL Elec, 1 yr TS&U'
+	,'ICEFLO'    name 'ICE FLO Nm 1 Srv 24x7'
+	,'NM1'       name 'Nm 1 Srv 24x7'
+	,'ICELTU'    name 'ICE E-LTU 24x7'
+}

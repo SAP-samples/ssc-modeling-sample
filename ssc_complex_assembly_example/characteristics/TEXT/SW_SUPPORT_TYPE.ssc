@@ -1,0 +1,7 @@
+characteristic SW_SUPPORT_TYPE {
+	name "SW_SUPPORT_TYPE"
+	textLength 20
+	values 'SWSUPPORT1YR' name '1 year SW Support'
+	,'SWSUPPORT3YR' name '3 year SW Support'
+	,'SWSUPPORT5YR' name '5 year SW Support'
+}

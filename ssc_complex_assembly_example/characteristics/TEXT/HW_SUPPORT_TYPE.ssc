@@ -1,0 +1,8 @@
+characteristic HW_SUPPORT_TYPE {
+	name "HW_SUPPORT_TYPE"
+	textLength 20
+	values 'CALL2REPAIR1YR' name '1 year Call-toRepair'
+	,'CALL2REPAIR3YR' name '3 year Call-toRepair'
+	,'CALL2REPAIR5YR' name '5 year Call-toRepair'
+	,'NONE' name 'No additional Support, SW Only'
+}

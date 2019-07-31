@@ -1,0 +1,15 @@
+constraint AUTO_ASSIGN_SV {
+  objects:
+    
+    ?SRVABLE is_a (300) SERVICABLE  // covers HW and Software 
+    ,?SRV is_a (300) SERVICE
+  condition:
+      ?SRVABLE.AUTO_ASSIGN_TXT = '2' or //Service
+      ?SRVABLE.AUTO_ASSIGN_TXT = '3'    //All
+
+  restrictions:
+    ?SRVABLE.IS_ITEM_OF_SV = ?SRV     
+  
+  explanations: 
+    "ADT link from HW to SW"
+}

@@ -1,0 +1,5 @@
+characteristic DATA_FOR_SOLUTION_ADT {
+	name "DATA_FOR_SOLUTION_ADT"
+	classType
+		FBS_SSC_CA 
+}

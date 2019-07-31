@@ -1,0 +1,9 @@
+/*
+ * This Hardware, Software, Services Solution class 
+ */
+class MASTER_DATA extends SSC_CHILD {
+  name "HSS Master Data"
+  characteristics
+  DATA_FOR_SOLUTION_ADT  invisible
+
+}

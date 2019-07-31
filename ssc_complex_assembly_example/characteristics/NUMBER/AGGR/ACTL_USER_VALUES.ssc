@@ -1,0 +1,35 @@
+/* Actual CPU Speed */  /* not aggr*/
+characteristic ACTL_STD_SELF_CPU_SPD {
+	name "Actual STD_SELF CPU Speed"
+	numericLength 4 decimalPlaces 2
+	restrictable 
+	}
+characteristic ACTL_SCM_SALES_CPU_SPD {
+	name "Actual SSM_SALES CPU Speed"
+	numericLength 4 decimalPlaces 2
+restrictable }
+
+/* Actual number of CPUs */
+characteristic ACTL_STD_SELF_CPU {
+	name "Actual STD_SELF CPUs"
+	numericLength 9 decimalPlaces 0 
+	specialFunction aggregating 
+}
+characteristic ACTL_SCM_SALES_CPU {
+	name "Actual SCM_Sales CPUs"
+	numericLength 9 decimalPlaces 0 
+	specialFunction aggregating 
+}
+
+/* Actual Mem */
+characteristic ACTL_STD_SELF_MEM {
+	name "Actual STD_SELF Mem"
+	numericLength 9 decimalPlaces 0 
+	specialFunction aggregating 
+}
+characteristic ACTL_SCM_SALES_MEM {
+	name "Actual SCM_Sales Mem"
+	numericLength 9 decimalPlaces 0 
+	specialFunction aggregating 
+}
+

@@ -1,0 +1,5 @@
+characteristic MAX_MEMORY {
+	name "MAX_MEMORY"
+	numericLength 5
+	  restrictable
+}

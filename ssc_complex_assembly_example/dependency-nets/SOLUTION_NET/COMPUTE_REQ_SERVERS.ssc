@@ -1,0 +1,49 @@
+constraint COMPUTE_REQ_SERVERS {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+       where ?MD = HAS_SERVER_MASTER_DATA
+    
+  restrictions:
+
+// MEM requirement
+   /* STD_SELF */       
+   ?S.REQ_STD_SELF_MEM_NUM = round((?S.REQ_STD_SELF_MEM / ?MD.MAX_MEMORY) + 0.49)
+        if ?S.STD_SELF_SERVER_NAME = ?MD.SERVER_NAME,
+   /* SCM_SALES */     
+   ?S.REQ_SCM_SALES_MEM_NUM = round((?S.REQ_SCM_SALES_MEM / ?MD.MAX_MEMORY) + 0.49)
+        if ?S.SCM_SALES_SERVER_NAME = ?MD.SERVER_NAME,
+ 
+// CPU requirement
+   /* STD_SELF */       
+   ?S.REQ_STD_SELF_CPU_NUM = round((?S.REQ_STD_SELF_CPU / ?MD.PROCESSOR_QTY) + 0.49)
+        if ?S.STD_SELF_SERVER_NAME = ?MD.SERVER_NAME,
+   
+   /* SCM_SALES */     
+   ?S.REQ_SCM_SALES_CPU_NUM = round((?S.REQ_SCM_SALES_CPU / ?MD.PROCESSOR_QTY) + 0.49)
+        if ?S.SCM_SALES_SERVER_NAME = ?MD.SERVER_NAME,
+
+ 
+// THE  requirement
+   /* STD_SELF */       
+   ?S.REQ_STD_SELF_NUM = ?S.REQ_STD_SELF_CPU_NUM
+       if  ?S.STD_SELF_SERVER_NAME = ?MD.SERVER_NAME       
+       and ?S.REQ_STD_SELF_CPU_NUM > ?S.REQ_STD_SELF_MEM_NUM,
+   ?S.REQ_STD_SELF_NUM = ?S.REQ_STD_SELF_MEM_NUM
+       if  ?S.STD_SELF_SERVER_NAME = ?MD.SERVER_NAME       
+       and ?S.REQ_STD_SELF_CPU_NUM <= ?S.REQ_STD_SELF_MEM_NUM,
+       
+   /* SCM_SALES */     
+   ?S.REQ_SCM_SALES_NUM = ?S.REQ_SCM_SALES_CPU_NUM
+       if  ?S.SCM_SALES_SERVER_NAME = ?MD.SERVER_NAME       
+       and ?S.REQ_SCM_SALES_CPU_NUM > ?S.REQ_SCM_SALES_MEM_NUM,
+   ?S.REQ_SCM_SALES_NUM = ?S.REQ_SCM_SALES_MEM_NUM
+       if  ?S.SCM_SALES_SERVER_NAME = ?MD.SERVER_NAME       
+       and ?S.REQ_SCM_SALES_CPU_NUM <= ?S.REQ_SCM_SALES_MEM_NUM
+       
+  inferences:
+     ?S.REQ_STD_SELF_NUM
+    ,?S.REQ_SCM_SALES_NUM
+
+  explanations: 
+    "CALC Recommended Number of each type of server"
+}

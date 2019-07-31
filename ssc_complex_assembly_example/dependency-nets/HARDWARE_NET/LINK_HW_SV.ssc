@@ -1,0 +1,12 @@
+constraint LINK_HW_SV {
+   objects:
+    
+    ?HW is_a (300) HARDWARE
+    where ?SV = IS_ITEM_OF_SV
+       
+   restrictions:
+    ?SV.HAS_ITEM_SV = ?HW     
+  
+  explanations: 
+    "ADT link from HW to Service"
+}

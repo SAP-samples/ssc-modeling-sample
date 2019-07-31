@@ -1,0 +1,22 @@
+variantTable T_SERVER_DATA {
+	name "T_SERVER_DATA" 
+	characteristics
+		SERVER_NAME primary  
+		,PROCESSOR_NAME  primary
+	    ,PROCESSOR_SPD  primary
+		,PROCESSOR_QTY primary
+		,MIN_MEMORY primary
+		,MAX_MEMORY primary
+		,FORM_FACTOR primary
+	rows
+	'BL460CG7','XEON',3.0,2,6,600,'H';
+	'BL465CG6','OPTERON',2.6,2,2,500,'H';
+	'BL465CG7','OPTERON',2.4,2,8,500,'F';
+	'BL480CG6','XEON',3.5,2,2,1000,'F';
+	'BL490CG7','XEON',3.0,2,12,240,'H';
+	'BL680CG5','XEON',2.4,4,8,500,'F';
+	'BL680CG7','XEON',2.1 ,4,8,1000,'F';
+	'BL685CG6','OPTERON',2.9,2,8,600,'F';
+	'BL685CG7','OPTERON',2.4,4,8,600,'H';
+	'BL280CG6','XEON',2.67,2,2,600,'H'
+}

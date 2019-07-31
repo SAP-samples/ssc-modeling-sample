@@ -1,0 +1,15 @@
+variantTable T_USER_DATA {
+	name "T_USER_DATA"
+	characteristics
+	     USER_TYPE  primary
+	    ,USERS_PER_CPU
+	    ,MIN_CPU_SPD
+		,MEM_PER_USER
+	rows
+	    'STD_SELF', 30, 02, 2;
+	    'SCM_SELF', 30, 02, 2;
+	    'PM_SELF', 30, 02, 4;
+	    'CRM_SALES', 30, 03, 4;
+	    'STD_SALES', 30, 03, 8;
+	    'SCM_SALES', 30, 03, 12;
+	    }

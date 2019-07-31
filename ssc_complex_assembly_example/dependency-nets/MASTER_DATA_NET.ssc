@@ -1,0 +1,5 @@
+constraintNet MASTER_DATA_NET {
+	constraints
+	GET_USER_MASTER_DATA
+	,GET_SERVER_MASTER_DATA
+}

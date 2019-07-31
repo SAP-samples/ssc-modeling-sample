@@ -1,0 +1,21 @@
+/* STD_SELF */
+constraint SET_MEM_PER_BLADE {
+  objects:
+    ?SRV is_a (300)SERVER
+
+  condition:
+    ?SRV.NUM_BLADES specified   and
+    ?SRV.ACTL_MEM   specified
+
+  restrictions:  
+    // spread the memory evenly across the blades 
+     ?SRV.MEM_PER_BLADE = (?SRV.ACTL_MEM / ?SRV.NUM_BLADES )
+    
+   inferences:
+     ?SRV.MEM_PER_BLADE
+    
+  explanations: 
+    "value Actual Memory set on Server" 
+  } 
+ 
+ 

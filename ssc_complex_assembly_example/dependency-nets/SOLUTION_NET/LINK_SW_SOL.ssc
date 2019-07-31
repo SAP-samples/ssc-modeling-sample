@@ -1,0 +1,15 @@
+constraint LINK_SW_SOL {
+  objects:
+    ?S1 is_a (300) FBS_SSC_CA
+   ,?SW is_a (300) SOFTWARE
+    where ?S2 = IS_PART_OF_SD_SOFT
+ condition:
+    ?S1 = ?S2
+ 
+ restrictions:
+    ?S2.HAS_PART_SD_SOFT = ?SW
+   ,?S1.SOFTWARE_ADT = ?SW
+  
+  explanations: 
+    "Link SW to SOL."
+}

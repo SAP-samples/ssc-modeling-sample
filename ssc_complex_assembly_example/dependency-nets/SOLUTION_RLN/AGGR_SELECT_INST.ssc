@@ -1,0 +1,68 @@
+/*
+rule AGGR_STD_SELF_SELECT_INST {
+  objects: 
+    ?S is_a (300) FBS_SSC_CA
+     
+  condition:
+     ?S.STD_SELF_INST_SELECT specified
+       
+  body:  
+    then increment:
+     ?S.STD_SELF_INST_CNT by 1     
+}
+rule AGGR_SCM_SELF_SELECT_INST {
+  objects: 
+    ?S is_a (300) FBS_SSC_CA
+     
+  condition:
+     ?S.SCM_SELF_INST_SELECT specified
+       
+  body:  
+    then increment:
+     ?S.SCM_SELF_INST_CNT by 1     
+}
+rule AGGR_PM_SELF_SELECT_INST {
+  objects: 
+    ?S is_a (300) FBS_SSC_CA
+     
+  condition:
+     ?S.PM_SELF_INST_SELECT specified
+       
+  body:  
+    then increment:
+     ?S.PM_SELF_INST_CNT by 1     
+}
+rule AGGR_CRM_SALES_SELECT_INST {
+  objects: 
+    ?S is_a (300) FBS_SSC_CA
+     
+  condition:
+     ?S.CRM_SALES_INST_SELECT specified
+       
+  body:  
+    then increment:
+     ?S.CRM_SALES_INST_CNT by 1     
+}
+rule AGGR_STD_SALES_SELECT_INST {
+  objects: 
+    ?S is_a (300) FBS_SSC_CA
+     
+  condition:
+     ?S.STD_SALES_INST_SELECT specified
+       
+  body:  
+    then increment:
+     ?S.STD_SALES_INST_CNT by 1     
+}
+rule AGGR_SCM_SALES_SELECT_INST {
+  objects: 
+    ?S is_a (300) FBS_SSC_CA
+     
+  condition:
+     ?S.SCM_SALES_INST_SELECT specified
+       
+  body:  
+    then increment:
+     ?S.SCM_SALES_INST_CNT by 1     
+}
+*/

@@ -1,0 +1,5 @@
+class HW_SUPPORT extends MAINTENANCE {
+  name "Hardware Support"
+  characteristics
+      HW_SUPPORT_TYPE
+}

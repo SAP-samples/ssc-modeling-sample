@@ -1,0 +1,10 @@
+characteristic OS {
+	name "OS"
+	textLength 30
+	restrictable
+	values 'NOOP'      name 'No Operating System'
+	      ,'XNESX86'   name 'XNES x86 32/64 bit'
+	      ,'XNESENCL'  name 'XNES per Enclosure'
+	      ,'LINUX'     name 'LINUX Debian (Support Only)'
+	      ,'MICROSOFT' name 'MicroSoft (Support Only)'
+}

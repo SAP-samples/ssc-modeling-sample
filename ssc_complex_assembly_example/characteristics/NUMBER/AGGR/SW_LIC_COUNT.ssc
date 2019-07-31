@@ -1,0 +1,8 @@
+/* Actual CPU Speed */  /* not aggr*/
+characteristic SW_LIC_COUNT {
+	name "Number of Licences"
+	numericLength 4 
+	specialFunction aggregating 
+	}
+	
+	

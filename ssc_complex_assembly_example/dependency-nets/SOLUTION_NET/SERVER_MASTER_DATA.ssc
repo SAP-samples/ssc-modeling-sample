@@ -1,0 +1,26 @@
+constraint SERVER_MASTER_DATA {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+    
+  condition:
+      ?S.STD_SELF_SERVER_NAME specified
+   or ?S.SCM_SALES_SERVER_NAME  specified
+  
+   restrictions:
+  /*  Create instance of master data for each spec'd Server name */
+  
+   find_or_create (
+       (300) SERVER_MASTER_DATA,
+       with SERVER_NAME = ?S.STD_SELF_SERVER_NAME;
+            DATA_FOR_SOLUTION_ADT = ?S)
+     if ?S.STD_SELF_SERVER_NAME specified,
+
+  find_or_create (
+       (300) SERVER_MASTER_DATA,
+       with SERVER_NAME = ?S.SCM_SALES_SERVER_NAME;
+            DATA_FOR_SOLUTION_ADT = ?S)
+     if ?S.SCM_SALES_SERVER_NAME specified       
+
+  explanations: 
+    "create instances of SERVER_MASTER data FOR each named server"
+}

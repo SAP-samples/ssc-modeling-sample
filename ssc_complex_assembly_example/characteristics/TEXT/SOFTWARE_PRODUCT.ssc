@@ -1,0 +1,5 @@
+characteristic SOFTWARE_PRODUCT {
+	name "Software"
+	textLength 30
+	restrictable
+}

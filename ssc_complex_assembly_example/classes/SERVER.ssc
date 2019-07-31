@@ -1,0 +1,22 @@
+class SERVER extends HARDWARE {
+  name"Server"
+  characteristics
+     
+    SERVER_IN_SOL_ADT       invisible
+    ,USER_TYPE      required 
+    ,SPEC_MEM       required defaultValues("SYS") 
+    ,SERVER_NAME	required
+    ,PROCESSOR_NAME	required
+    ,PROCESSOR_QTY	required
+    ,PROCESSOR_SPD	required
+    ,MIN_MEMORY	    required
+    ,ACTL_MEM       required
+    ,MAX_MEMORY	    required
+    ,FORM_FACTOR 	required
+    ,RUNS_SW  
+    ,NUM_BLADES               invisible
+    ,HAS_BLADE                invisible  
+    ,MAX_BLADE_MEM            invisible
+    ,MEM_PER_BLADE            invisible
+    ,MAX_INST_NUM             invisible 
+}

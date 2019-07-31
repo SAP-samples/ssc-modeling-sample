@@ -1,0 +1,5 @@
+characteristic SERVER_IN_SOL_ADT {
+	name "In Solution"
+	classType
+		FBS_SSC_CA
+}

@@ -1,0 +1,21 @@
+characteristic HW_MODEL {
+  name "HW Model"
+  textLength 30
+  values
+  /* Servers */
+    "BL465CG6"   name "BL465c G6",
+    "BL2X220CG6" name "BL2x220c G6",
+    "BL2X220CG7" name "BL2x220c G7",
+    "BL465CG7"   name "BL465c G7",
+    "BL460CG7"   name "BL460c G7",  
+    "BL480C"     name "BL480c",
+    "BL490CG7"   name "BL490c G7",
+    "BL620CG7"   name "BL620c G7",  
+    "BL680CG5"   name "BL680c G5",
+    "BL680CG7"   name "BL680c G7",
+    "BL685CG6"   name "BL685c G6",
+    "BL685CG7"   name "BL685c G7",   
+    "BL280CG6"   name "BL280c G6",
+  /* Racks */
+    "C3000"      name "c3000 "  
+}

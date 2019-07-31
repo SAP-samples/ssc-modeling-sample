@@ -1,0 +1,6 @@
+characteristic HAS_BLADE {
+	name "contains blade"
+	status released
+	classType HT3_BLADE_1
+	multiValue
+}

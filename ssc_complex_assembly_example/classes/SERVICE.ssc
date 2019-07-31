@@ -1,0 +1,9 @@
+class SERVICE extends SSC_CHILD {
+  name "Service"
+  characteristics
+    HAS_ITEM_SV 
+    ,SV_HW_COUNT 
+    ,STPO_MENGE 
+    ,SERVICE_PROFILE
+    ,SERVICE_IN_SOL_ADT
+}

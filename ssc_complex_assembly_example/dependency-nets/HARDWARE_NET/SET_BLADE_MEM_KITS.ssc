@@ -1,0 +1,146 @@
+
+constraint SET_BLADE_MEM_KIT_1 {
+  objects:
+    ?SRV is_a (300)SERVER
+      where ?BLD = HAS_BLADE
+
+  condition:
+    ?SRV.MEM_PER_BLADE < 16
+    or ?SRV.MEM_PER_BLADE = 16
+
+  restrictions:  
+    ?BLD.HT3_MEM_KIT_1 = '16GB'  
+      if ?SRV.MEM_PER_BLADE > 8,
+    ?BLD.HT3_MEM_KIT_1 = '8GB'  
+      if (?SRV.MEM_PER_BLADE > 4
+      and ?SRV.MEM_PER_BLADE < 8)
+      or  ?SRV.MEM_PER_BLADE = 8,
+    ?BLD.HT3_MEM_KIT_1 = '4GB'  
+      if (?SRV.MEM_PER_BLADE > 2
+      and ?SRV.MEM_PER_BLADE < 4)
+      or  ?SRV.MEM_PER_BLADE = 4,       
+    ?BLD.HT3_MEM_KIT_1 = '2GB'  
+      if ?SRV.MEM_PER_BLADE < 2
+      or  ?SRV.MEM_PER_BLADE = 2
+      
+  inferences:
+     ?BLD.HT3_MEM_KIT_1
+
+    
+  explanations: 
+    'value Actual Memory KIts on Blades' 
+  } 
+constraint SET_BLADE_MEM_KIT_2 {
+  objects:
+    ?SRV is_a (300)SERVER
+      where ?BLD = HAS_BLADE
+
+  condition:
+    ?SRV.MEM_PER_BLADE > 16
+    and (?SRV.MEM_PER_BLADE < 32
+    or ?SRV.MEM_PER_BLADE = 32)
+
+  restrictions:  
+    ?BLD.HT3_MEM_KIT_1 = '16GB', 
+    ?BLD.HT3_MEM_KIT_2 = '16GB' 
+      if ?SRV.MEM_PER_BLADE - 16 > 8,
+      
+    ?BLD.HT3_MEM_KIT_2 = '8GB'  
+      if ?SRV.MEM_PER_BLADE - 16 > 4
+      and (?SRV.MEM_PER_BLADE - 16 < 8
+      or   ?SRV.MEM_PER_BLADE - 16 = 8),
+      
+    ?BLD.HT3_MEM_KIT_2 = '4GB'  
+      if (?SRV.MEM_PER_BLADE - 16 > 2
+      and ?SRV.MEM_PER_BLADE - 16 < 4)
+      or  ?SRV.MEM_PER_BLADE - 16 = 4,  
+           
+    ?BLD.HT3_MEM_KIT_2 = '2GB'  
+      if  ?SRV.MEM_PER_BLADE - 16 < 2
+      or  ?SRV.MEM_PER_BLADE - 16 = 2
+      
+  inferences:
+     ?BLD.HT3_MEM_KIT_1
+    ,?BLD.HT3_MEM_KIT_2
+    
+  explanations: 
+    'value Actual Memory KIts on Blades' 
+  } 
+constraint SET_BLADE_MEM_KIT_3 {
+  objects:
+    ?SRV is_a (300)SERVER
+      where ?BLD = HAS_BLADE
+
+  condition:
+    ?SRV.MEM_PER_BLADE > 32
+    and (?SRV.MEM_PER_BLADE < 48
+    or ?SRV.MEM_PER_BLADE = 48)
+
+  restrictions:  
+    ?BLD.HT3_MEM_KIT_1 = '16GB', 
+    ?BLD.HT3_MEM_KIT_2 = '16GB',
+    ?BLD.HT3_MEM_KIT_3 = '16GB' 
+      if ?SRV.MEM_PER_BLADE - 32 > 8,
+      
+    ?BLD.HT3_MEM_KIT_3 = '8GB'  
+      if ?SRV.MEM_PER_BLADE - 32 > 4
+      and (?SRV.MEM_PER_BLADE - 32 < 8
+      or   ?SRV.MEM_PER_BLADE - 32 = 8),
+      
+    ?BLD.HT3_MEM_KIT_3 = '4GB'  
+      if (?SRV.MEM_PER_BLADE - 32 > 2
+      and ?SRV.MEM_PER_BLADE - 32 < 4)
+      or  ?SRV.MEM_PER_BLADE - 32 = 4,  
+           
+    ?BLD.HT3_MEM_KIT_3 = '2GB'  
+      if  ?SRV.MEM_PER_BLADE - 32 < 2
+      or  ?SRV.MEM_PER_BLADE - 32 = 2
+      
+  inferences:
+     ?BLD.HT3_MEM_KIT_1
+    ,?BLD.HT3_MEM_KIT_2
+    ,?BLD.HT3_MEM_KIT_3    
+  explanations: 
+    'value Actual Memory KIts on Blades' 
+  }   
+constraint SET_BLADE_MEM_KIT_4 {
+  objects:
+    ?SRV is_a (300)SERVER
+      where ?BLD = HAS_BLADE
+
+  condition:
+    ?SRV.MEM_PER_BLADE > 48
+    and (?SRV.MEM_PER_BLADE < 64
+    or ?SRV.MEM_PER_BLADE = 64)
+
+  restrictions:  
+    ?BLD.HT3_MEM_KIT_1 = '16GB', 
+    ?BLD.HT3_MEM_KIT_2 = '16GB',
+    ?BLD.HT3_MEM_KIT_3 = '16GB',
+        
+    ?BLD.HT3_MEM_KIT_4 = '16GB' 
+      if ?SRV.MEM_PER_BLADE - 48 > 8,
+      
+    ?BLD.HT3_MEM_KIT_4 = '8GB'  
+      if ?SRV.MEM_PER_BLADE - 48 > 4
+      and (?SRV.MEM_PER_BLADE - 48 < 8
+      or   ?SRV.MEM_PER_BLADE - 48 = 8),
+      
+    ?BLD.HT3_MEM_KIT_4 = '4GB'  
+      if (?SRV.MEM_PER_BLADE - 48 > 2
+      and ?SRV.MEM_PER_BLADE - 48 < 4)
+      or  ?SRV.MEM_PER_BLADE - 48 = 4,  
+           
+    ?BLD.HT3_MEM_KIT_4 = '2GB'  
+      if  ?SRV.MEM_PER_BLADE - 48 < 2
+      or  ?SRV.MEM_PER_BLADE - 48 = 2
+      
+  inferences:
+     ?BLD.HT3_MEM_KIT_1
+    ,?BLD.HT3_MEM_KIT_2
+    ,?BLD.HT3_MEM_KIT_3 
+    ,?BLD.HT3_MEM_KIT_4   
+  explanations: 
+    'value Actual Memory KIts on Blades' 
+  }   
+  

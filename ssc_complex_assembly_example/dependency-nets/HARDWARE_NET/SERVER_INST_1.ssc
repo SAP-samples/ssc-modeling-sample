@@ -1,0 +1,36 @@
+constraint SERVER_INST_1 {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+    
+  condition:
+    (?S.STD_SELF_INST_SELECT specified or
+    ?S.SCM_SALES_INST_SELECT specified) 
+
+  restrictions:
+   
+    find_or_create (
+    (300) SERVER,
+    with  
+       SSC_INSTANCE_NUMBER = 1;
+       SERVER_NAME = ?S.STD_SELF_SERVER_NAME;
+       USER_TYPE = 'STD_SELF';
+       IS_PART_OF_SD_SOFT = ?S;
+       SERVER_IN_SOL_ADT = ?S 
+     )
+       if ?S.STD_SELF_INST_SELECT specified,
+
+    find_or_create (
+    (300) SERVER,
+    with  
+       SSC_INSTANCE_NUMBER = 1;
+       SERVER_NAME = ?S.SCM_SALES_SERVER_NAME;
+       USER_TYPE = 'SCM_SALES';
+       IS_PART_OF_SD_SOFT = ?S;
+       SERVER_IN_SOL_ADT = ?S
+     )
+       if ?S.SCM_SALES_INST_SELECT specified
+ 
+
+  explanations: 
+    "create as many instances as are selected in the INST_SELECT fields, this is the first one"
+}

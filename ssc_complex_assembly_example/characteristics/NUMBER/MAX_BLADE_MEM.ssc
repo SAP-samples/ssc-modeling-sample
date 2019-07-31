@@ -1,0 +1,5 @@
+characteristic MAX_BLADE_MEM {
+	name "Max Blade Memory"
+	numericLength 5
+	values 64
+}

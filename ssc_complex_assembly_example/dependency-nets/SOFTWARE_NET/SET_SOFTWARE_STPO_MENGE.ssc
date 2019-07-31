@@ -1,0 +1,10 @@
+constraint SET_SOFTWARE_STPO_MENGE {
+  objects:
+    ?S is_a (300)SOFTWARE
+  restrictions:
+    ?S.STPO_MENGE = ?S.SW_LIC_COUNT
+  inferences:
+    ?S.STPO_MENGE
+  explanations: 
+    "set line qty from count"
+}

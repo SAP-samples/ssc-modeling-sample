@@ -1,0 +1,39 @@
+constraint BLADE_MAT {
+  objects:
+    ?BLD is_a (300) HT3_BLADE_1
+    
+  restrictions:
+
+    type_of(?BLD,(material)(300) (nr=HT3_BL_280C_G6))
+      if ?BLD.BLADE_NAME = 'BL280CG6'
+      
+   ,type_of(?BLD,(material)(300) (nr=HT3_BL_460C_G7))
+      if ?BLD.BLADE_NAME = 'BL460CG7' 
+
+   ,type_of(?BLD,(material)(300)(nr=HT3_BL_465C_G6))
+      if ?BLD.BLADE_NAME = 'BL465CG6' 
+      
+   ,type_of(?BLD,(material)(300) (nr=HT3_BL_465C_G7))
+      if ?BLD.BLADE_NAME = 'BL465CG7' 
+
+   ,type_of(?BLD,(material)(300) (nr=HT3_BL_480C_G6))
+      if ?BLD.BLADE_NAME = 'BL480CG6'
+
+   ,type_of(?BLD,(material)(300) (nr=HT3_BL_490C_G7))
+      if ?BLD.BLADE_NAME = 'BL490CG7' 
+            
+   ,type_of(?BLD,(material)(300)(nr=HT3_BL_680C_G5))
+      if ?BLD.BLADE_NAME = 'BL680CG5'  
+      
+   ,type_of(?BLD,(material)(300) (nr=HT3_BL_680C_G7))
+      if ?BLD.BLADE_NAME = 'BL680CG7'
+            
+   ,type_of(?BLD,(material)(300) (nr=HT3_BL_685C_G6))
+      if ?BLD.BLADE_NAME = 'BL685CG6' 
+      
+   ,type_of(?BLD,(material)(300) (nr=HT3_BL_685C_G7))
+      if ?BLD.BLADE_NAME = 'BL685CG7'      
+
+  explanations: 
+    "Specialize to Materials with Classical Models "
+}

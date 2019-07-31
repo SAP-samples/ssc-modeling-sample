@@ -1,0 +1,10 @@
+constraint SET_SERVICE_STPO_MENGE {
+  objects:
+    ?S is_a (300)SERVICE
+  restrictions:
+    ?S.STPO_MENGE = ?S.SV_HW_COUNT
+  inferences:
+    ?S.STPO_MENGE
+  explanations: 
+    "set line qty from count"
+}

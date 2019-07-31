@@ -1,0 +1,15 @@
+constraint AUTO_ASSIGN_SW { 
+  objects:
+    
+    ?HW is_a (300) SERVER
+    ,?SW is_a (300) SOFTWARE
+  condition:
+      ?HW.AUTO_ASSIGN_TXT = '1' or //Software
+      ?HW.AUTO_ASSIGN_TXT = '3'    //All
+
+  restrictions:
+    ?HW.RUNS_SW = ?SW     
+  
+  explanations: 
+    "ADT link from HW to SW"
+}

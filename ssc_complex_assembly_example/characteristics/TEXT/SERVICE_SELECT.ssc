@@ -1,0 +1,29 @@
+characteristic SERVICE_SELECT {
+	name "Services requested"
+	textLength 4
+	restrictable
+	multiValue
+	values 
+	   'INST' name 'Installation'
+	  ,'S021' name 'Support - 5x10'
+	  ,'S022' name 'Support - 6x12'
+	  ,'S023' name 'Support - 7x24'
+}
+characteristic INST_SERVICE_SELECT {
+	name "Install Service requested?"
+	textLength 1
+	restrictable
+	values 'Y' name 'Yes'
+	      ,'N' name 'No'
+//	   'INST' name 'Installation'
+}
+characteristic MAINT_SERVICE_SELECT {
+	name "Select Support SLA"
+	textLength 4
+	restrictable
+	multiValue
+	values 
+	   'S021' name 'Support - 5x10'
+	  ,'S022' name 'Support - 6x12'
+	  ,'S023' name 'Support - 7x24'
+}

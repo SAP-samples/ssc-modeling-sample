@@ -1,0 +1,5 @@
+characteristic PROCESSOR_SPD {
+  name "HW Processor"
+  numericLength 4 decimalPlaces 2
+    restrictable
+}

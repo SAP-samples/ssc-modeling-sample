@@ -1,0 +1,23 @@
+constraint CREATE_BLADE_N {
+  objects:
+    ?SRV is_a (300)SERVER
+    where ?BLD = HAS_BLADE 
+
+  condition:
+    ?SRV.NUM_BLADES > ?BLD.SSC_INSTANCE_NUMBER
+    and (?SRV.SSC_INSTANCE_NUMBER < ?SRV.MAX_INST_NUM  or
+         ?SRV.SSC_INSTANCE_NUMBER = ?SRV.MAX_INST_NUM) 
+
+  restrictions:
+     find_or_create (
+       (300) HT3_BLADE_1,
+       with SSC_INSTANCE_NUMBER = ?BLD.SSC_INSTANCE_NUMBER +1;
+            BLADE_NAME = ?SRV.SERVER_NAME;
+            IN_SERVER  = ?SRV;
+            IS_PART_OF_SD_HARD = ?SRV)    
+
+  explanations: 
+    "there is a server with a blade, and this blade is not the blade whose instance number is the highest needed;
+    and this server is not an 'excess' server,
+    then there is another blade with a higher instance number."
+}

@@ -1,0 +1,18 @@
+
+constraint CREATE_SOFTWARE_INST {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+  condition:
+    ?S.SOFTWARE_SELECT specified
+  restrictions:
+    find_or_create
+     ((300) SOFTWARE,
+       with SOFTWARE_TYPE = ?S.SOFTWARE_SELECT;
+            IS_PART_OF_SD_SOFT = ?S)
+ 
+//  inferences:
+  
+  explanations: 
+    "CREATE software instance.  multiValue will find_create for each value."
+}
+ 

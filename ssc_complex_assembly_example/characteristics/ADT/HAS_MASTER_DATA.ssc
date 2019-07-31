@@ -1,0 +1,12 @@
+characteristic HAS_USER_MASTER_DATA {
+	name "USER TYPE MASTER DATA"
+	classType
+		USER_MASTER_DATA
+	multiValue
+}
+characteristic HAS_SERVER_MASTER_DATA {
+	name "SERVER MASTER DATA"
+	classType
+		SERVER_MASTER_DATA
+	multiValue
+}

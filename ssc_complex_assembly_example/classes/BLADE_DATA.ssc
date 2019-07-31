@@ -1,0 +1,6 @@
+class BLADE_DATA extends SERVER_PART{
+  name "Server Part"
+  characteristics  
+    BLADE_NAME
+     
+}

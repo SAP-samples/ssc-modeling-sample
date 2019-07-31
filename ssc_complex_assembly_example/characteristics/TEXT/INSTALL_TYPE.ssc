@@ -1,0 +1,6 @@
+characteristic INSTALL_TYPE {
+	name "INSTALL_TYPE"
+	textLength 20
+	values 'SIMPLE' name 'Simple onSite'
+	,'INSTALLSTARTUP' name 'Install & StartUp'
+}

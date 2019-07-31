@@ -1,0 +1,45 @@
+
+constraint SPECIALIZE_SOFTWARE {
+  objects:
+    ?S is_a (300) SOFTWARE
+  condition:
+    ?S.SOFTWARE_TYPE specified
+  restrictions:
+    type_of (?S,(300)SOFTWARE_OS)
+       if ?S.SOFTWARE_TYPE = 'OS'
+    ,
+    type_of (?S,(300)SOFTWARE_CONSERV)
+       if ?S.SOFTWARE_TYPE = 'CONSERV'
+    
+//  inferences:
+  
+  explanations: 
+    "CREATE software instance. "
+}
+
+constraint SPECIALIZE_OS_TO_MATL {
+  objects:
+    ?OS is_a (300) SOFTWARE_OS
+
+  restrictions:
+    type_of (?OS,(material)(300)(nr=SOFTWARE_OS))
+    
+//  inferences:
+  
+  explanations: 
+    "CREATE OS Material"
+}
+
+constraint SPECIALIZE_CONSERV_TO_MATL {
+  objects:
+    ?S is_a (300) SOFTWARE_CONSERV
+
+  restrictions:
+
+    type_of (?S,(material)(300)(nr=SOFTWARE_CONSERV))
+    
+//  inferences:
+  
+  explanations: 
+    "CREATE Conserve Material."
+} 

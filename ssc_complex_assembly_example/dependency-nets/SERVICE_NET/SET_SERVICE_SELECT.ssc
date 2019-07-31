@@ -1,0 +1,28 @@
+constraint SET_INSTALL_SERVICE {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+  condition:
+    ?S.INST_SERVICE_SELECT specified
+  restrictions:
+    ?S.SERVICE_SELECT = 'INST'
+      if ?S.INST_SERVICE_SELECT = 'Y'
+ 
+//  inferences:
+  
+  explanations: 
+    "add Install to the requested services"
+}
+constraint SET_SUPPORT_SERVICE {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+  condition:
+    ?S.MAINT_SERVICE_SELECT specified
+  restrictions:
+    ?S.SERVICE_SELECT = ?S.MAINT_SERVICE_SELECT
+ 
+//  inferences:
+  
+  explanations: 
+    "add Support to the requested services"
+}
+ 

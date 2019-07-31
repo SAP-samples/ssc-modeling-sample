@@ -1,0 +1,69 @@
+/*
+ * This Hardware, Software, Services Solution class 
+ */
+class FBS_SSC_CA extends SSC_PARENT {
+  name "Solution Cls"
+  characteristics
+   HAS_USER_MASTER_DATA invisible
+  ,HAS_SERVER_MASTER_DATA invisible
+      /* User Requirements Input */
+   /* Standard Selfserv */ 
+  ,STD_SELFSERV_USERS
+  ,STD_SELF_SERVER_NAME  
+  ,STD_SELF_INST_SELECT   noinput  
+  
+    /* SCM Sales */ 
+  ,SCM_SALES_USERS 
+  ,SCM_SALES_SERVER_NAME 
+  ,SCM_SALES_INST_SELECT  noinput  
+  
+     /* ADTs pointing to each Server added to config */
+  ,STD_SELF_SERVERS_ADT invisible  
+  ,SCM_SALES_SERVERS_ADT invisible
+  /* System Requirements computed from user input and master data */
+    /* CPU Speed */  
+  ,REQ_STD_SELF_CPU_SPD  invisible
+  ,REQ_SCM_SALES_CPU_SPD   invisible
+    /* Number of CPU's required */  
+  ,REQ_STD_SELF_CPU invisible
+  ,REQ_SCM_SALES_CPU   invisible
+    /* Amount of Memory required */  
+  ,REQ_STD_SELF_MEM invisible
+  ,REQ_SCM_SALES_MEM  invisible
+  /* Number of Servers needed to satisfy CPU requirement */  
+  ,REQ_STD_SELF_CPU_NUM invisible
+  ,REQ_SCM_SALES_CPU_NUM  invisible
+  /* Number of Servers needed to satisfy MEM requirement */  
+  ,REQ_STD_SELF_MEM_NUM invisible
+  ,REQ_SCM_SALES_MEM_NUM  invisible
+  /* Number of Servers needed to satisfy requirement */  
+  ,REQ_STD_SELF_NUM invisible
+  ,REQ_SCM_SALES_NUM  invisible
+
+  
+  /* Actual values selected, cummulative */     
+    /* CPU Speed */  
+  ,ACTL_STD_SELF_CPU_SPD  invisible
+  ,ACTL_SCM_SALES_CPU_SPD invisible 
+//  ,ACTL_ALL_CPU_SPD invisible 
+      /* number of CPU's */  
+  ,ACTL_STD_SELF_CPU invisible
+  ,ACTL_SCM_SALES_CPU   invisible
+//  ,ACTL_ALL_CPU   invisible
+    /* Amount of Memory */ 
+  ,ACTL_STD_SELF_MEM invisible
+  ,ACTL_SCM_SALES_MEM  invisible
+//  ,ACTL_ALL_MEM  invisible  
+
+//  ,SOFTWARE 
+   ,SOFTWARE_SELECT 
+   ,SOFTWARE_ADT   invisible
+    // SERVICES (set based on user answers to install and SLA quesitons)
+   ,SERVICE_SELECT invisible
+   ,SERVICE_ADT   invisible
+    // INSTALL SERVICES
+   ,INST_SERVICE_SELECT 
+     // Support SERVICES
+   ,MAINT_SERVICE_SELECT  
+  
+}

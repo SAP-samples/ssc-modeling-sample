@@ -1,0 +1,43 @@
+
+constraint SET_MAX_INST_STD_SELF {
+  objects:
+    ?SRV is_a (300)SERVER
+    where ?S = SERVER_IN_SOL_ADT 
+    
+  condition:
+    ?SRV.USER_TYPE = 'STD_SELF'
+    
+  restrictions:
+    ?SRV.MAX_INST_NUM = ?S.STD_SELF_INST_SELECT
+       if ?S.STD_SELF_INST_SELECT <= ?S.REQ_STD_SELF_NUM,
+       
+    ?SRV.MAX_INST_NUM = ?S.REQ_STD_SELF_NUM
+       if ?S.STD_SELF_INST_SELECT > ?S.REQ_STD_SELF_NUM
+
+
+
+  explanations: 
+    "set the maximum server instance num based on the selection on solution"
+}
+
+
+constraint SET_MAX_INST_SCM_SALES {
+  objects:
+    ?SRV is_a (300)SERVER
+    where ?S = SERVER_IN_SOL_ADT 
+    
+  condition:
+    ?SRV.USER_TYPE = 'SCM_SALES'
+    
+  restrictions:
+    ?SRV.MAX_INST_NUM = ?S.SCM_SALES_INST_SELECT
+       if ?S.SCM_SALES_INST_SELECT <= ?S.REQ_SCM_SALES_NUM,
+       
+    ?SRV.MAX_INST_NUM = ?S.REQ_SCM_SALES_NUM
+       if ?S.SCM_SALES_INST_SELECT > ?S.REQ_SCM_SALES_NUM
+
+
+
+  explanations: 
+    "set the maximum server instance num based on the selection on solution"
+}

@@ -1,0 +1,5 @@
+characteristic MEM_PER_USER {
+	name "Memory Per User"
+	numericLength 2
+	restrictable
+}

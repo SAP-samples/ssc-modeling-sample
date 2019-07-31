@@ -1,0 +1,6 @@
+characteristic SERVICE_ADT {
+	name "Has These Services"
+	classType
+		SERVICE
+	multiValue
+}

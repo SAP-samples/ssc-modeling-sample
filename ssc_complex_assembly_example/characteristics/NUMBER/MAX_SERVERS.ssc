@@ -1,0 +1,4 @@
+characteristic MAX_SERVERS {
+	name "MAX_SERVERS"
+	numericLength 2
+}

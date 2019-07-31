@@ -1,0 +1,20 @@
+material SER_021 {
+  name "5X10 Service Matl"
+  classes
+    SER_021
+}
+material SER_022 {
+  name "6X12 Service Matl"
+  classes
+    SER_021
+}
+material SER_023 {
+  name "7X24 Service Matl"
+  classes
+    SER_021
+}
+material INSTALL_SERVICE {
+  name "Installation Service"
+  classes
+    INSTALL_SERVER
+}

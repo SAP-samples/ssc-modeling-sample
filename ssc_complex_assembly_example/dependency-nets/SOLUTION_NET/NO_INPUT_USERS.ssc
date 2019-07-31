@@ -1,0 +1,20 @@
+//constraint NO_INPUT_USERS {
+//  objects:
+//    ?S is_object (material)(300)(nr=FBS_SSC_CA)
+//
+//  restrictions:
+// //set visibility of server name based on specd indicators      
+//     ?S.no_input STD_SELFSERV_USERS
+//        if ?S.STD_SELF_INST_SELECT     specified,
+// 
+//     ?S.no_input SCM_SALES_USERS
+//        if ?S.SCM_SALES_INST_SELECT     specified
+// 
+// 
+// inferences:
+//      ?S.no_input STD_SELFSERV_USERS        
+//     ,?S.no_input SCM_SALES_USERS
+//               
+//  explanations: 
+//    "Block pudate of Demand if already started instantiating"
+//}

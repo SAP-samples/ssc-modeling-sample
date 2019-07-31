@@ -1,0 +1,21 @@
+constraint GET_USER_MASTER_DATA {
+  objects
+    ?MD is_a (300) USER_MASTER_DATA
+            
+   restrictions
+  /*  get values for user type from vtable (from spec) */
+  
+      table T_USER_DATA  (
+        USER_TYPE     = ?MD.USER_TYPE
+       ,USERS_PER_CPU = ?MD.USERS_PER_CPU
+       ,MIN_CPU_SPD   = ?MD.MIN_CPU_SPD
+       ,MEM_PER_USER  = ?MD.MEM_PER_USER
+      )
+  inferences
+        ?MD.USERS_PER_CPU
+       ,?MD.MIN_CPU_SPD
+       ,?MD.MEM_PER_USER
+      
+  explanations 
+    "get data for each user type"
+}

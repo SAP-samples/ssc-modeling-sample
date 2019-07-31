@@ -1,0 +1,5 @@
+characteristic MIN_CPU_SPD {
+  name "HW Min CPU Speed"
+  numericLength 4 decimalPlaces 2
+  restrictable
+}

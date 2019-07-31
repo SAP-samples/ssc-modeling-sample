@@ -1,0 +1,4 @@
+ruleNet  SOFTWARE_RLN {
+	rules
+       AGGR_SW_LIC        
+}

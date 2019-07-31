@@ -1,0 +1,6 @@
+characteristic RUNS_SW {
+	name "Runs this Software"
+	classType
+		SOFTWARE
+	multiValue	
+}

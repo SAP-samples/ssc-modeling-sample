@@ -1,0 +1,11 @@
+characteristic USER_TYPE {
+  name 'User Type'
+  textLength 30
+  values
+    'STD_SELF' name 'Std Self-Serv'
+   ,'SCM_SELF' name 'SCM Self-Serv'   
+   ,'PM_SELF'  name 'PM Self-Serv'
+   ,'CRM_SALES'     name 'CRM Sales'
+   ,'STD_SALES' name 'Std Ent Sales'
+   ,'SCM_SALES' name 'CSCMEnt Sales' 
+}

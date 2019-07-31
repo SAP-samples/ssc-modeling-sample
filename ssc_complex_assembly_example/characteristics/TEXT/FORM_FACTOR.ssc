@@ -1,0 +1,7 @@
+characteristic FORM_FACTOR {
+	name "FORM_FACTOR"
+	textLength 1
+	  restrictable
+	values "F" name "Full"
+	,"H" name "Half"
+}

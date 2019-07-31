@@ -1,0 +1,12 @@
+/*
+ * This Hardware, Software, Services Solution class 
+ */
+class USER_MASTER_DATA extends MASTER_DATA {
+  name "User Type Master Data"
+  characteristics
+   USER_TYPE
+  ,MIN_CPU_SPD  required /* nn.nn ghz */  
+  ,USERS_PER_CPU  required  /* nn per cpu */
+  ,MEM_PER_USER  required /* n gb2 per user */
+
+}

@@ -1,0 +1,18 @@
+class SERVICABLE   { //extends SSC_CHILD
+  name"Service-able items"
+  characteristics
+  		IS_ITEM_OF_SV 
+   		,AUTO_ASSIGN_TXT defaultValues('3')
+}
+
+
+characteristic AUTO_ASSIGN_TXT {
+  name "AUTO ASSIGN"
+  textLength 1 
+  restrictable
+  values "0" name "None"
+        ,"1" name "Software"
+        ,"2" name "Services"
+        ,"3" name "All"
+}
+

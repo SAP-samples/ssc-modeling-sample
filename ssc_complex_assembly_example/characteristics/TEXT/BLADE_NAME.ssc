@@ -1,0 +1,17 @@
+characteristic BLADE_NAME {
+  name "HW Server" 
+  textLength 30
+  restrictable
+  values
+      "BL280CG6" name "ConServ BL280c G6 blade server"
+     ,"BL460CG7" name "ConServ BL460c G7 blade server" 
+     ,"BL465CG6" name "ConServ BL465c G6 blade server"
+     ,"BL465CG7" name "ConServ BL465c G7 blade server"
+     ,"BL480CG6" name "ConServ BL480c G6 blade server"
+     ,"BL490CG7" name "ConServ BL490c G7 blade server"
+     ,"BL680CG5" name "ConServ BL680c G5 blade server"
+     ,"BL680CG7" name "ConServ BL680c G7 blade server"
+     ,"BL685CG6" name "ConServ BL685c G6 blade server"
+     ,"BL685CG7" name "ConServ BL685c G7 blade server"
+   
+}

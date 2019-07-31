@@ -1,0 +1,35 @@
+/* STD_SELF */
+constraint LINK_STD_SELF_SERVER {
+   objects:
+    
+    ?SRV is_a (300)SERVER
+    where ?S = SERVER_IN_SOL_ADT
+ 
+   condition
+    ?SRV.USER_TYPE = 'STD_SELF'
+    
+   restrictions:
+    ?S.HAS_PART_SD_SOFT = ?SRV,     
+    ?S.STD_SELF_SERVERS_ADT = ?SRV
+  
+  explanations: 
+    "ADT link from solution to servers."
+}
+
+/* SCM_SALES  */
+constraint LINK_SCM_SALES_SERVER {
+   objects:
+    
+    ?SRV is_a (300)SERVER
+    where ?S = SERVER_IN_SOL_ADT
+
+   condition
+    ?SRV.USER_TYPE = 'SCM_SALES'
+  
+ restrictions:
+    ?S.HAS_PART_SD_SOFT = ?SRV,
+    ?S.SCM_SALES_SERVERS_ADT = ?SRV
+    
+  explanations: 
+    "ADT link from solution to servers."
+}

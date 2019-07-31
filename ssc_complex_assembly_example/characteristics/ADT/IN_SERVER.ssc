@@ -1,0 +1,5 @@
+characteristic IN_SERVER {
+	name "In Server"
+	status released
+	classType SERVER
+}

@@ -1,0 +1,25 @@
+kbName "FBS_SSC_CA_SAMPLE_KB" ;
+kbVersion "0.0.1.0" ;
+kbProfile "FBS_SSC_CA_SAMPLE_PRF" ;
+databaseName "cpqTraining" ;
+databaseHostname "localhost" ;
+databasePort "1433" ;
+databaseUser "sa" ;
+setValues "100" onCharacteristic "STD_SELFSERV_USERS" inInstance "1-FBS_SSC_CA_SAMPLE_KB$1" obyKey "FBS_SSC_CA"
+obyType "MARA" occurrence 0 ;
+setValues "Y" onCharacteristic "INST_SERVICE_SELECT" inInstance "1-FBS_SSC_CA_SAMPLE_KB$1" obyKey "FBS_SSC_CA" obyType
+"MARA" occurrence 0 ;
+setValues "BL480CG6" onCharacteristic "STD_SELF_SERVER_NAME" inInstance "1-FBS_SSC_CA_SAMPLE_KB$1" obyKey "FBS_SSC_CA"
+obyType "MARA" occurrence 0 ;
+setValues "OS" , "CONSERV" onCharacteristic "SOFTWARE_SELECT" inInstance "1-FBS_SSC_CA_SAMPLE_KB$1" obyKey
+"FBS_SSC_CA" obyType "MARA" occurrence 0 ;
+setValues "S023" onCharacteristic "MAINT_SERVICE_SELECT" inInstance "1-FBS_SSC_CA_SAMPLE_KB$1" obyKey "FBS_SSC_CA"
+obyType "MARA" occurrence 0 ;
+setValues "1" onCharacteristic "AUTO_ASSIGN_TXT" inInstance "1-FBS_SSC_CA_SAMPLE_KB$11" obyKey "SOFTWARE_CONSERV"
+obyType "MARA" occurrence 0 ;
+setValues "1-FBS_SSC_CA_SAMPLE_KB$3" onCharacteristic "IS_ITEM_OF_SV" inInstance "1-FBS_SSC_CA_SAMPLE_KB$11" obyKey
+"SOFTWARE_CONSERV" obyType "MARA" occurrence 0 ;
+setValues "1" onCharacteristic "AUTO_ASSIGN_TXT" inInstance "1-FBS_SSC_CA_SAMPLE_KB$10" obyKey "HT3_BL_480C_G6"
+obyType "MARA" occurrence 0 ;
+setValues "1-FBS_SSC_CA_SAMPLE_KB$13" onCharacteristic "IS_ITEM_OF_SV" inInstance "1-FBS_SSC_CA_SAMPLE_KB$10" obyKey
+"HT3_BL_480C_G6" obyType "MARA" occurrence 0 ;

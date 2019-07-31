@@ -1,0 +1,8 @@
+characteristic STPO_MENGE {
+	names
+		EN 'Component quantity',
+		DE 'Komponentenmenge'
+	numericLength 13 decimalPlaces 3
+	negativeValues
+	reference table 'STPO' field 'MENGE'
+}

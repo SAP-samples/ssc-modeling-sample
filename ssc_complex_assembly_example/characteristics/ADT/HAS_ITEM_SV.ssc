@@ -1,0 +1,6 @@
+characteristic HAS_ITEM_SV {
+	name "serves"
+	status released
+	classType SERVICABLE
+	multiValue
+}

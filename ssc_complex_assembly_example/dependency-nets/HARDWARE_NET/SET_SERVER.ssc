@@ -1,0 +1,29 @@
+constraint SET_SERVER {
+  objects:
+    ?SRV is_a (300)SERVER
+      where ?S = SERVER_IN_SOL_ADT
+
+  restrictions:
+    
+    table T_SERVER_DATA
+       (SERVER_NAME  = ?SRV.SERVER_NAME
+       ,PROCESSOR_NAME = ?SRV.domain PROCESSOR_NAME 
+       ,PROCESSOR_QTY = ?SRV.domain PROCESSOR_QTY
+       ,PROCESSOR_SPD = ?SRV.domain PROCESSOR_SPD
+       ,MIN_MEMORY = ?SRV.domain MIN_MEMORY 
+       ,MAX_MEMORY = ?SRV.domain MAX_MEMORY 
+       ,FORM_FACTOR  = ?SRV.domain FORM_FACTOR
+       
+       )
+      
+  inferences:
+     ?SRV.domain PROCESSOR_NAME
+    ,?SRV.domain PROCESSOR_QTY
+    ,?SRV.domain PROCESSOR_SPD
+    ,?SRV.domain MIN_MEMORY
+    ,?SRV.domain MAX_MEMORY
+    ,?SRV.domain FORM_FACTOR 
+    
+  explanations: 
+    "values of fixed cstics are set based on server name"
+}

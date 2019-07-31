@@ -1,0 +1,19 @@
+
+constraint CREATE_SERVICE_INST {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+  condition:
+    ?S.SERVICE_SELECT specified
+  restrictions:
+    find_or_create
+     ((300) SERVICE,
+       with SERVICE_PROFILE    = ?S.SERVICE_SELECT;
+            IS_PART_OF_SD_SOFT = ?S;
+            SERVICE_IN_SOL_ADT = ?S)
+ 
+//  inferences:
+  
+  explanations: 
+    "CREATE service instance.  multiValue will find_create for each value."
+}
+ 

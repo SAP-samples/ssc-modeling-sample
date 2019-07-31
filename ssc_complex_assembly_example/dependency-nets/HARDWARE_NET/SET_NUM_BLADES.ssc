@@ -1,0 +1,20 @@
+/* STD_SELF */
+constraint SET_NUM_BLADES {
+  objects:
+    ?SRV is_a (300)SERVER
+
+  condition:
+    ?SRV.ACTL_MEM specified
+
+  restrictions:  
+    // spread the memory evenly across the blades 
+    ?SRV.MAX_BLADE_MEM = 64,
+    ?SRV.NUM_BLADES = round(0.499999 + (?SRV.ACTL_MEM / ?SRV.MAX_BLADE_MEM))
+   inferences:
+     ?SRV.NUM_BLADES
+    
+  explanations: 
+    "value required blades to provide required memory on server" 
+  } 
+ 
+ 

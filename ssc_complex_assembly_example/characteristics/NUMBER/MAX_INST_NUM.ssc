@@ -1,0 +1,5 @@
+ characteristic MAX_INST_NUM {
+  name "Maximum required Instance number"
+  numericLength 9 decimalPlaces 0
+  
+ }

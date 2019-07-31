@@ -1,0 +1,22 @@
+knowledgeBase FBS_SSC_CA_SAMPLE_KB {
+  version "0.0.1.0"
+  validFrom 2015-04-01
+  tasks
+    SOLUTION_TASK_1   
+  profiles
+    name 'FBS_SSC_CA_SAMPLE_PRF' material FBS_SSC_CA 
+
+}
+task SOLUTION_TASK_1  {
+  constraintNets 
+    SOLUTION_NET
+   ,MASTER_DATA_NET 
+   ,HARDWARE_NET   
+   ,SOFTWARE_NET 
+   ,SERVICE_NET 
+  ruleNets 
+    HARDWARE_RLN 
+   ,SOFTWARE_RLN  
+   ,SERVICE_RLN 
+//   ,SOLUTION_RLN 
+}

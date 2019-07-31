@@ -1,0 +1,7 @@
+characteristic SOFTWARE_TYPE {
+	name "Type of Software"
+	textLength 30
+	restrictable
+	values 'OS'      name 'Operating System'
+	      ,'CONSERV' name 'CONSERV ESS Soft'
+}

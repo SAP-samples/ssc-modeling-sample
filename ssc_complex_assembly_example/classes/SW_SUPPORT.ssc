@@ -1,0 +1,5 @@
+class SW_SUPPORT extends MAINTENANCE {
+  name "Software Support"
+  characteristics
+      SW_SUPPORT_TYPE
+}

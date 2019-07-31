@@ -1,0 +1,15 @@
+constraint LINK_BLADE_SRV {
+  objects:
+    ?BLD is_a (300)HT3_BLADE_1
+    where ?SRV = IN_SERVER  
+
+  restrictions:
+     ?SRV.HAS_BLADE        = ?BLD,
+     ?SRV.HAS_PART_SD_HARD = ?BLD
+     
+  inferences:
+     ?SRV.HAS_BLADE    
+    ,?SRV.HAS_PART_SD_HARD
+  explanations: 
+    "set ADT to link Server to Blade."
+}

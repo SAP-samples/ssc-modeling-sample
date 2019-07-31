@@ -1,0 +1,4 @@
+ruleNet  SERVICE_RLN {
+	rules
+       AGGR_SV_HW        
+}

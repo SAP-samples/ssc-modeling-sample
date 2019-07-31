@@ -1,0 +1,7 @@
+characteristic SPEC_MEM {
+	name "SPEC_MEM"
+	textLength 4
+	restrictable  
+	values 'SYS'  name 'System'
+	      ,'USER' name 'User'   
+}

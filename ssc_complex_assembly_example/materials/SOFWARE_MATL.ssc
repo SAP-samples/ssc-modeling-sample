@@ -1,0 +1,15 @@
+material SOFTWARE_MATL {
+  name "Software Matl"
+  classes
+    SOFTWARE
+}
+material SOFTWARE_OS {
+  name "Operating System"
+  classes
+    SOFTWARE_OS
+}
+material SOFTWARE_CONSERV {
+  name "Conserve Software"
+  classes
+    SOFTWARE_CONSERV
+}

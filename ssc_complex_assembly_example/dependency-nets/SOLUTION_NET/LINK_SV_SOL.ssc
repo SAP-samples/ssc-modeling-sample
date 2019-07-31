@@ -1,0 +1,14 @@
+constraint LINK_SV_SOL {
+  objects:
+    ?S1 is_a (300) FBS_SSC_CA
+   ,?SV is_a (300) SERVICE
+    where ?S = IS_PART_OF_SD_SOFT
+  condition:
+   ?S1 = ?S
+  restrictions:
+    ?S.HAS_PART_SD_SOFT = ?SV
+   ,?S1.SERVICE_ADT = ?SV 
+  
+  explanations: 
+    "Link Service to SOL."
+}

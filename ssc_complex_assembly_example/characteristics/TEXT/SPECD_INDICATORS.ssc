@@ -1,0 +1,89 @@
+
+//   number of users specified
+characteristic STD_SELFSERV_USERS_SPECD {
+	name "STD_SELFSERV_USERS Specd?"
+	textLength 3
+restrictable }
+characteristic SCM_SELFSERV_USERS_SPECD {
+	name "SCM_SELFSERV_USERS Specd?"
+	textLength 3
+restrictable }
+characteristic PM_SELFSERV_USERS_SPECD {
+	name "PM_SELFSERV_USERS Specd?"
+	textLength 3
+restrictable }
+characteristic CRM_SALES_USERS_SPECD {
+	name "CRM_SALES_USERS Specd?"
+	textLength 3
+restrictable }
+characteristic STD_SALES_USERS_SPECD {
+	name "STD_SALES_USERS Specd?"
+	textLength 3
+restrictable }
+characteristic SCM_SALES_USERS_SPECD  {
+	name "SCM_SALES_USERS Specd?"
+	textLength 3
+restrictable }
+ // server names specified 
+characteristic STD_SELF_SERVER_SPECD {
+  name "Specd std SelfServe Name" 
+  textLength 3
+  restrictable
+  }
+ characteristic SCM_SELF_SERVER_SPECD {
+  name "Specd SCM SelfServe Name" 
+  textLength 3
+  restrictable
+  }
+ characteristic PM_SELF_SERVER_SPECD {
+  name "Specd PM SelfServe Name" 
+  textLength 3
+  restrictable
+  }
+ characteristic CRM_SALES_SERVER_SPECD {
+  name "Specd CRM Sales Name" 
+  textLength 3
+  restrictable
+  }
+ characteristic STD_SALES_SERVER_SPECD {
+  name "Specd STD Sales Name" 
+  textLength 3
+  restrictable
+  }    
+ characteristic SCM_SALES_SERVER_SPECD {
+  name "Specd SCM Sales Name" 
+  textLength 3
+  restrictable
+  } 
+ // specific instances selected 
+ characteristic STD_SELF_INST_SPECD {
+  name "Specd STD Self Inst Specd" 
+  textLength 3
+  restrictable
+  }
+ characteristic SCM_SELF_INST_SPECD {
+  name "Specd SCM Self Inst Specd" 
+  textLength 3
+  restrictable
+  }
+ characteristic PM_SELF_INST_SPECD {
+  name "Specd PM Self Inst Specd" 
+  textLength 3
+  restrictable
+  }
+ characteristic CRM_SALES_INST_SPECD {
+  name "Specd CRM Sales Inst Specd" 
+  textLength 3
+  restrictable
+  }
+ characteristic STD_SALES_INST_SPECD {
+  name "Specd STD Sales Inst Specd" 
+  textLength 3
+  restrictable
+  }
+ characteristic SCM_SALES_INST_SPECD {
+  name "Specd SCM Sales Inst Specd" 
+  textLength 3
+  restrictable
+  }    
+     

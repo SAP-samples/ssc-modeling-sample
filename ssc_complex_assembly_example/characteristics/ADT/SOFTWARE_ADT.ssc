@@ -1,0 +1,6 @@
+characteristic SOFTWARE_ADT {
+	name "Has This Software"
+	classType
+		SOFTWARE
+	multiValue
+}

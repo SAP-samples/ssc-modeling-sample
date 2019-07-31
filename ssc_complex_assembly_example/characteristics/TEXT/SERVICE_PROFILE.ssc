@@ -1,0 +1,11 @@
+characteristic SERVICE_PROFILE {
+	name "SERVICE PROFILE"
+	textLength 4
+	restrictable
+	values 
+	   'INST' name 'Installation'
+	  ,'S021' name 'Maintenance - 5x10'
+	  ,'S022' name 'Maintenance - 6x12'
+	  ,'S023' name 'Maintenance - 7x24'
+	  ,'WARR' name 'Warranty'
+}

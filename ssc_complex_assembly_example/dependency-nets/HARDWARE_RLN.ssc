@@ -1,0 +1,8 @@
+ruleNet  HARDWARE_RLN {
+	rules
+       AGGR_STD_SELF_CPU  
+      ,AGGR_SCM_SALES_CPU    
+      ,AGGR_STD_SELF_MEM  
+      ,AGGR_SCM_SALES_MEM    
+      
+}

@@ -1,0 +1,24 @@
+
+constraint SPECIALIZE_SERVICE {
+  objects:
+    ?S is_a (300) SERVICE
+
+  restrictions:
+    type_of(?S,(material)(300)(nr=INSTALL_SERVICE))
+      if ?S.SERVICE_PROFILE ='INST'
+    ,
+
+    type_of(?S,(material)(300)(nr=SER_021))
+      if ?S.SERVICE_PROFILE ='S021'
+    ,
+    type_of(?S,(material)(300)(nr=SER_022))
+      if ?S.SERVICE_PROFILE ='S022'
+    ,
+    type_of(?S,(material)(300)(nr=SER_023))
+      if ?S.SERVICE_PROFILE ='S023'
+     
+//  inferences:
+  
+  explanations: 
+    "Specializ Service based on Profile"
+}

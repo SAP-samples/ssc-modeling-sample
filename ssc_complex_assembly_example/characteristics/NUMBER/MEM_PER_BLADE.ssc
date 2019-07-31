@@ -1,0 +1,4 @@
+characteristic MEM_PER_BLADE {
+	name "Memory reqd per Blade"
+	numericLength 5 decimalPlaces 1
+}

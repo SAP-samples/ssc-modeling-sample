@@ -1,0 +1,14 @@
+constraint LINK_HW_SOL {
+  objects:
+    
+    ?HW is_a (300) HARDWARE
+    where ?S = IS_PART_OF_SD_SOFT
+/*    where ?S = IS_PART_OF_SD_HARD */
+ 
+ restrictions:
+/*    ?S.HAS_PART_SD_HARD = ?HW */
+    ?S.HAS_PART_SD_SOFT = ?HW
+  
+  explanations: 
+    "Link HW to SOL."
+}

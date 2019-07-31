@@ -1,0 +1,9 @@
+characteristic HW_MFG {
+	name "HW_MFG"
+	textLength 30
+	restrictable
+	values
+	"AMD" name "AMD"
+	,"INTEL" name "Intel"
+	,"CONSRV" name "ConServ"
+}

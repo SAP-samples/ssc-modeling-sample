@@ -1,0 +1,5 @@
+/* Actual Mem */
+characteristic ACTL_MEM {
+	name "Actual Memory assigned"
+	numericLength 9 decimalPlaces 1
+restrictable }

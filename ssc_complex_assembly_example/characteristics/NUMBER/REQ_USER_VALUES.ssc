@@ -1,0 +1,60 @@
+/* REQ CPU Speed */
+characteristic REQ_STD_SELF_CPU_SPD {
+	name "Reqd STD_SELF CPU Speed"
+	numericLength 4 decimalPlaces 2
+restrictable }
+characteristic REQ_SCM_SALES_CPU_SPD {
+	name "Reqd SSM_SALES CPU Speed"
+	numericLength 4 decimalPlaces 2
+restrictable }
+
+/* Required CPUs */
+characteristic REQ_STD_SELF_CPU {
+	name "Reqd STD_SELF CPUs"
+	numericLength 9 decimalPlaces 1
+restrictable }
+characteristic REQ_SCM_SALES_CPU {
+	name "Reqd SCM_Sales CPUs"
+	numericLength 9 decimalPlaces 1
+restrictable }
+
+/* Required Mem */
+characteristic REQ_STD_SELF_MEM {
+	name "Reqd STD_SELF Mem"
+	numericLength 9 decimalPlaces 1
+restrictable }
+characteristic REQ_SCM_SALES_MEM {
+	name "Reqd SCM_Sales Mem"
+	numericLength 9 decimalPlaces 1
+restrictable }
+
+/* Required Number of Servers based on CPU req*/
+characteristic REQ_STD_SELF_CPU_NUM {
+	name "Reqd STD_SELF NUM by CPU"
+	numericLength 9 decimalPlaces 1
+restrictable }
+characteristic REQ_SCM_SALES_CPU_NUM {
+	name "Reqd SCM_Sales NUM by CPU"
+	numericLength 9 decimalPlaces 1
+restrictable }
+
+/* Required Number of Servers based on MEM req*/
+characteristic REQ_STD_SELF_MEM_NUM {
+	name "Reqd STD_SELF NUM by Mem"
+	numericLength 9 decimalPlaces 1
+restrictable }
+characteristic REQ_SCM_SALES_MEM_NUM {
+	name "Reqd SCM_Sales NUM by Mem"
+	numericLength 9 decimalPlaces 1
+restrictable }
+
+/* Required Number of Servers */
+characteristic REQ_STD_SELF_NUM {
+	name "Reqd STD_SELF NUM"
+	numericLength 9 decimalPlaces 1
+restrictable }
+characteristic REQ_SCM_SALES_NUM {
+	name "Reqd SCM_Sales NUM"
+	numericLength 9 decimalPlaces 1
+restrictable }
+

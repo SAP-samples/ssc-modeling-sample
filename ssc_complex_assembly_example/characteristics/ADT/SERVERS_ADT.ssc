@@ -1,0 +1,36 @@
+characteristic STD_SELF_SERVERS_ADT {
+	name "Has these STD SELF Servers"
+	classType
+		SERVER
+	multiValue
+}
+characteristic SCM_SELF_SERVERS_ADT {
+	name "Has these SCM SELF Servers"
+	classType
+		SERVER
+	multiValue
+}
+characteristic PM_SELF_SERVERS_ADT {
+	name "Has these PM SELF Servers"
+	classType
+		SERVER
+	multiValue
+}
+characteristic CRM_SALES_SERVERS_ADT {
+	name "Has these CRM SALES Servers"
+	classType
+		SERVER
+	multiValue
+}
+characteristic STD_SALES_SERVERS_ADT {
+	name "Has these STD SALES Servers"
+	classType
+		SERVER
+	multiValue
+}
+characteristic SCM_SALES_SERVERS_ADT {
+	name "Has these SCM SALES Servers"
+	classType
+		SERVER
+	multiValue
+}

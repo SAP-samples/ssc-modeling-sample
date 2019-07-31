@@ -1,0 +1,14 @@
+/*
+ * MASTER DATA READ FROM VTABLE 
+ */
+class SERVER_MASTER_DATA extends MASTER_DATA {
+  name "Server Master Data"
+  characteristics
+   		SERVER_NAME   required
+		,PROCESSOR_NAME required
+		,PROCESSOR_SPD  required
+		,PROCESSOR_QTY required
+		,MIN_MEMORY  required
+		,MAX_MEMORY  required
+		,FORM_FACTOR required
+}

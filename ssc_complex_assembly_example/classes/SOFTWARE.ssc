@@ -1,0 +1,14 @@
+class SOFTWARE extends SERVICABLE, SSC_CHILD  {
+  name "Software"
+  characteristics
+    SOFTWARE_TYPE 
+    ,RUNS_ON_HW 
+    ,SW_LIC_COUNT
+    ,STPO_MENGE 
+}
+class SOFTWARE_OS extends SOFTWARE   {
+  name "Operating System"
+}
+class SOFTWARE_CONSERV extends SOFTWARE   {
+  name "Conserve Software"
+}

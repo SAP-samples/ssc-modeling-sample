@@ -1,0 +1,5 @@
+class INSTALL_SERVER extends SERVICE {
+  name"Integration & Install Service"
+  characteristics
+      INSTALL_TYPE
+}

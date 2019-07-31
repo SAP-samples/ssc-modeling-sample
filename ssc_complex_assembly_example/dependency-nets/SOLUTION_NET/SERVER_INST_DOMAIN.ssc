@@ -1,0 +1,26 @@
+constraint SERVER_INST_DOMAIN {
+  objects:
+    ?S is_a (300) FBS_SSC_CA
+
+  restrictions:    
+
+/*    ?S.domain STD_SELF_INST_SELECT <= ?S.REQ_STD_SELF_NUM
+    ,?S.domain SCM_SELF_INST_SELECT <= ?S.REQ_SCM_SELF_NUM
+    ,?S.domain PM_SELF_INST_SELECT <= ?S.REQ_PM_SELF_NUM
+    ,?S.domain CRM_SALES_INST_SELECT <= ?S.REQ_CRM_SALES_NUM
+    ,?S.domain STD_SALES_INST_SELECT <= ?S.REQ_STD_SALES_NUM
+    ,?S.domain SCM_SALES_INST_SELECT <= ?S.REQ_SCM_SALES_NUM
+*/ 
+    ?S.STD_SELF_INST_SELECT = ?S.REQ_STD_SELF_NUM
+   ,?S.SCM_SALES_INST_SELECT = ?S.REQ_SCM_SALES_NUM
+
+  inferences:
+    ?S.STD_SELF_INST_SELECT 
+   ,?S.SCM_SALES_INST_SELECT
+    
+  explanations: 
+//    "Set domain of instance numbers to be selected."
+    "Set VALUE of number of instances to be generated."
+// with next release of SME, set teh default using '=?' syntax
+// and make it editable again    
+}

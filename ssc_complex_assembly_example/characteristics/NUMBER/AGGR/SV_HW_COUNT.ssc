@@ -1,0 +1,8 @@
+/* count hardware covered by on each service */
+characteristic SV_HW_COUNT {
+	name "Number of items served"
+	numericLength 4 
+	specialFunction aggregating 
+	}
+	
+	

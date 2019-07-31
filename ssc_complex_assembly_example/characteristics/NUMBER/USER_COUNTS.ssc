@@ -1,0 +1,30 @@
+characteristic STD_SELFSERV_USERS {
+	name "How many Std Self-Serve Users?"
+	longName "How many Users are Standard SelfService?"
+	numericLength 9
+}
+characteristic SCM_SELFSERV_USERS {
+	longName "How many Users are SCM SelfService?"
+	name "How many SCM Self-Serve Users?"
+	numericLength 9
+restrictable }
+characteristic PM_SELFSERV_USERS {
+	longName "How many Users are PM SelfService?"
+	name "How many PM Self-Serve Users?"
+	numericLength 9
+restrictable }
+characteristic STD_SALES_USERS {
+	longName "How many Users are Standard Sales?"	
+	name "How many Standard Sales Users?"
+	numericLength 9
+restrictable }
+characteristic SCM_SALES_USERS  {
+	longName "How many Users are SCM Sales?"	
+	name "How many SCM Sales Users?"
+	numericLength 9
+restrictable }
+characteristic CRM_SALES_USERS {
+	longName "How many Users are CRM Sales?"	
+	name "How many Users are CRM Sales?"
+	numericLength 9
+restrictable }

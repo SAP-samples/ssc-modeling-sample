@@ -1,0 +1,5 @@
+characteristic MIN_MEMORY {
+	name "Min Memory"
+	numericLength 2
+	  restrictable
+}

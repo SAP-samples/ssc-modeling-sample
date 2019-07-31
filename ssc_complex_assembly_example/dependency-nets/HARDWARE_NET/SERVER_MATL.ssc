@@ -1,0 +1,46 @@
+constraint SERVER_MATL {
+  objects:
+    ?SRV is_a (300)SERVER
+  condition:
+    ?SRV.SERVER_NAME specified 
+  restrictions:
+    
+    type_of(?SRV,(material)(300)(nr=BL_SYS_280C_G6))
+      if ?SRV.SERVER_NAME = 'BL280CG6',
+
+    type_of(?SRV,(material)(300)(nr=BL_SYS_460C_G7))
+      if ?SRV.SERVER_NAME = 'BL460CG7',
+    
+    type_of(?SRV,(material)(300)(nr=BL_SYS_465C_G6))
+      if ?SRV.SERVER_NAME = 'BL465CG6',
+    
+    type_of(?SRV,(material)(300)(nr=BL_SYS_465C_G7))
+      if ?SRV.SERVER_NAME = 'BL465CG7',
+    
+    type_of(?SRV,(material)(300)(nr=BL_SYS_480C_G6))
+      if ?SRV.SERVER_NAME = 'BL480CG6',
+    
+    type_of(?SRV,(material)(300)(nr=BL_SYS_490C_G7))
+      if ?SRV.SERVER_NAME = 'BL490CG7',
+    
+    type_of(?SRV,(material)(300)(nr=BL_SYS_680C_G5))
+      if ?SRV.SERVER_NAME = 'BL680CG5',
+    
+    type_of(?SRV,(material)(300)(nr=BL_SYS_680C_G7))
+      if ?SRV.SERVER_NAME = 'BL680CG7', 
+
+    type_of(?SRV,(material)(300)(nr=BL_SYS_685C_G5))
+      if ?SRV.SERVER_NAME = 'BL6850CG5',
+
+    type_of(?SRV,(material)(300)(nr=BL_SYS_685C_G6))
+      if ?SRV.SERVER_NAME = 'BL685CG6',
+
+    type_of(?SRV,(material)(300)(nr=BL_SYS_685C_G7))
+      if ?SRV.SERVER_NAME = 'BL685CG7'
+
+      
+//  inferences:
+     
+  explanations: 
+    "blades go into a blade system"
+}

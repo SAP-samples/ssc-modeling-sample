@@ -1,0 +1,10 @@
+constraintNet SERVICE_NET {
+	constraints
+       CREATE_SERVICE_INST
+      ,AUTO_ASSIGN_SV 
+      ,LINK_ITEM_TO_SV 
+      ,SET_INSTALL_SERVICE
+      ,SET_SUPPORT_SERVICE
+      ,SET_SERVICE_STPO_MENGE 
+      ,SPECIALIZE_SERVICE
+} 

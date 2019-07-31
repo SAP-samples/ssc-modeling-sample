@@ -1,0 +1,7 @@
+class 
+RACK extends HARDWARE {
+  name "Rack"
+  characteristics
+    MAX_SERVERS
+    
+}
