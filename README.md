@@ -45,4 +45,5 @@ Example projects are provided on 'as-is' basis . In case you observe any defect 
 
 Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved. 
 
-This project is provided under "SAP SAMPLE CODE LICENSE AGREEMENT".  Refer to LICENSE.txt file in this project for details.
+This file is licensed under the SAP Sample Code License except as noted otherwise in the [LICENSE](LICENSE) file.
+
