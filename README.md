@@ -1,4 +1,4 @@
-## Project Description :
+## Project Description
 
 SAP Solution Sales Configuration enables building of complex configurable solutions comprising of any type of products and services across all SAP sales processes and in standalone mode. It comprises of :
   - Solution Configuration Engine : Advanced inference engine, object oriented and automated reasoning based upon declarative constraints.
@@ -12,7 +12,7 @@ Developing Solution Models is a specialized skill set and and some ramp up curve
 
 This project aims to provide example solution models and java user exits which can help in learning solution modeling capabilities quickly along with some basic documentation around these models. 
 
-## Requirements:
+## Requirements
 
 In order to use the SSC sample projects , users should have valid license for SAP Solution Sales Configuration using which they can download and install SME from SAP Software Center. Kindly refer to product installation documentation at https://help.sap.com/viewer/p/SAP_SOLUTION_SALES_CONFIGURATION to setup SME correctly. 
 
