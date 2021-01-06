@@ -40,9 +40,11 @@ Examples are provided on "as-is" basis. Currently there are no know issues for t
 
 Example projects are provided on 'as-is' basis . In case you observe any defect in the product usage itself , kindly use the SAP Product support channel and raise an incident adequately for the defects observed.
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ssc-modeling-sample)](https://api.reuse.software/info/github.com/SAP-samples/ssc-modeling-sample) 
+
 ## License
 
 Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved. 
 
-This file is licensed under the SAP Sample Code License except as noted otherwise in the [LICENSE](LICENSE) file.
+This file is licensed under the SAP Sample Code License except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
 
