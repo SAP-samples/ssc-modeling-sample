@@ -1,3 +1,5 @@
+# SAP Solution Sales Configuration Models
+
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ssc-modeling-sample)](https://api.reuse.software/info/github.com/SAP-samples/ssc-modeling-sample) 
 
 ## Project Description
