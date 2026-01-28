@@ -168,7 +168,7 @@ public class VARIANT_TABLE_LOOKUP implements sce_user_fn{
 	void setMultipleValues (kb_query_table_result result, ddbc_inst outputInst,kb_cstic outputCstic,
 			explc_owner userOwner,tmsc_trigger trigger,int jtype){
 		for (int row = 0; row < result.kb_get_row_count();row++) {
-			bdt_value rowVal = result.kb_elt(row, 0);
+			bdt_value rowVal = (bdt_value) result.kb_elt(row, 0);
 			outputInst.ddb_set_val(outputCstic,rowVal,userOwner,trigger,jtype);
 		}
 	}
@@ -178,7 +178,7 @@ public class VARIANT_TABLE_LOOKUP implements sce_user_fn{
 		domain dom = null;
 		boolean domInitialized = false;
 		for (int row = 0; row < result.kb_get_row_count();row++) {
-			bdt_value rowVal = result.kb_elt(row, 0);
+			bdt_value rowVal = (bdt_value) result.kb_elt(row, 0);
 			if (!domInitialized){dom = getDom(rowVal); domInitialized = true;}
 			dom.util_push(rowVal);
 		}
@@ -305,3 +305,4 @@ public class VARIANT_TABLE_LOOKUP implements sce_user_fn{
 		return ((symbol_value)str_bind).toString();
 	}
 }
+
