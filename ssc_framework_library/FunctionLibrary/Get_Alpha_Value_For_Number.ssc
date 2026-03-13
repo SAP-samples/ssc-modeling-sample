@@ -1,0 +1,10 @@
+characteristic OUTPUT_ALPHANUMERIC_VALUE {names EN "Output Alphanumeric Value" textLength 30}
+characteristic DROP_INPUT_DECIMAL_ZERO {names EN "Drop Input Zero Decimal Values" textLength 3 values "YES", "NO"}
+
+function GET_ALPHA_VALUE_FOR_NUMBER {names EN "Get Alphanumeric Value for Number" //Returns the alphanumeric string representation of an input number
+	characteristics
+	INPUT_NUMERIC_VALUE primary, //Mandatory, takes as input a numeric value; specified with an actual Instance Characteristic (e.g. ?JPR.NUMBER_LENGTH)
+	DROP_INPUT_DECIMAL_ZERO primary, //Optional, dictates whether or not to drop zeros to the right of the Decimal; defaults to "NO" if not specified
+	OUTPUT_ALPHANUMERIC_VALUE //Mandatory, identifies the Instance Characteristic (e.g. ?JPR.ALPHA_LENGTH) into which the output alphanumeric valuse is to be assigned
+}
+
