@@ -1,5 +1,6 @@
 characteristic OUTPUT_ALPHANUMERIC_VALUE {names EN "Output Alphanumeric Value" textLength 30}
 characteristic DROP_INPUT_DECIMAL_ZERO {names EN "Drop Input Zero Decimal Values" textLength 3 values "YES", "NO"}
+characteristic INPUT_NUMERIC_VALUE {names EN "Input Numeric Valuse" numericLength 6}
 
 function GET_ALPHA_VALUE_FOR_NUMBER {names EN "Get Alphanumeric Value for Number" //Returns the alphanumeric string representation of an input number
 	characteristics
