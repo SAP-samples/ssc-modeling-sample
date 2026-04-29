@@ -1,4 +1,4 @@
-package com.sap.sce.user;
+package com.sap.ssc.framework.userfunctions;
 
 import com.sap.sce.engine.expl.explc_owner;
 import com.sap.sce.user.helpers.GenericUserHelper;
