@@ -1,7 +1,9 @@
 package com.sap.ssc.framework.userfunctions;
 
-import com.sap.sce.engine.expl.explc_owner;
-import com.sap.sce.user.helpers.GenericUserHelper;
+import com.sap.sce.user.fn_args;
+import com.sap.sce.user.fn_args_deluxe;
+import com.sap.sce.user.sce_user_fn;
+import com.sap.ssc.framework.lib.GenericUserHelper;
 import com.sap.sxe.util.imp.float_value_imp;
 
 public class GET_ALPHA_VALUE_FOR_NUMBER implements sce_user_fn {
@@ -14,14 +16,13 @@ public class GET_ALPHA_VALUE_FOR_NUMBER implements sce_user_fn {
 	public boolean execute(fn_args args, Object obj) {
 
 		fn_args_deluxe args_deluxe = (fn_args_deluxe) args;
-		explc_owner ruleOwner = (explc_owner)args_deluxe.get_owner();
 		
-		float_value_imp inputNumericFloatValue = GenericUserHelper.getFloatValueBindingFromArgs(this, ruleOwner, args_deluxe, INPUT_NUMERIC_VALUE_ARGUMENT);
+		float_value_imp inputNumericFloatValue = GenericUserHelper.getFloatValueBindingFromArgs(this, args_deluxe, INPUT_NUMERIC_VALUE_ARGUMENT);
 		
 		String dropInputDecimalZero = GenericUserHelper.getStringValueFromArgsOptional(this, args_deluxe, DROP_INPUT_DECIMAL_ZERO_ARGUMENT);
 		
 		if (dropInputDecimalZero == null){ dropInputDecimalZero = "NO"; }
-		if (!dropInputDecimalZero.equals("NO") && !dropInputDecimalZero.equals("YES")) {GenericUserHelper.throwException(this, ruleOwner, "Characteristic [" + DROP_INPUT_DECIMAL_ZERO_ARGUMENT + "] specified with incorrect value"); }
+		if (!dropInputDecimalZero.equals("NO") && !dropInputDecimalZero.equals("YES")) {GenericUserHelper.throwException(this, "Characteristic [" + DROP_INPUT_DECIMAL_ZERO_ARGUMENT + "] specified with incorrect value"); }
 		
 		double inputNumericDouble = inputNumericFloatValue.get_value();		
 		int inputNumericInteger = (int)inputNumericDouble; 
